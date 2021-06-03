@@ -1,0 +1,22 @@
+<div class="container">
+    <div class="row">
+      <div class="create-sub-container">
+    <form class="post-form" [formGroup]="createSubForm" (ngSubmit)="createSub()">
+          <div class="form-group">
+            <div class="create-sub-heading">Create A New Sub</div>
+            <hr />
+            <input type="text" [formControlName]="'subname'" class="form-control" style="margin-top: 5px"
+              placeholder="Title">
+            <textarea type="text" [formControlName]="'description'" style="width: 100%; margin-top: 5px"
+              placeholder="Description"></textarea>
+            <div>
+              <div style="margin-top: 5px" class="float-right">
+                <button (click)="discard()" class="btnDiscard">Discard</button>
+                <button class="btnCreateSub">Create</button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
