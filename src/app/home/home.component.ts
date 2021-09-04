@@ -11,12 +11,13 @@ export class HomeComponent implements OnInit {
 
   // To pass to post tile
   posts: Array<PostModel> =[];
+
   constructor(private postService: PostService) {
-    postService.getAllPost().subscribe(post=>{
+  }
+
+  ngOnInit(): void {
+    this.postService.getAllPost().subscribe(post=>{
       this.posts = post;
     });
   }
-
-  ngOnInit(): void {}
-
 }

@@ -12,10 +12,10 @@ const routes: Routes = [
   {path: '', component: HomeComponent },
   {path: 'sign-up', component: SignUpComponent},
   {path: 'login', component: LoginComponent},
-  {path: "list-sub", component: ListSubsComponent},
+  {path: "list-subs", component: ListSubsComponent},
   {path: "create-sub", component: CreateSubComponent},
   {path: "create-post", component: CreatePostComponent},
-  {path: "view-post", component: ViewPostComponent},
+  {path: "view-post/:postid", component: ViewPostComponent},
 ];
 
 @NgModule({

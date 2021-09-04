@@ -18,7 +18,7 @@ import { environment } from 'src/environments/environment';
 export class AuthService {
 
   @Output() loggedIn: EventEmitter<boolean> = new EventEmitter();
-  @Output() username: EventEmitter<string> = new EventEmitter();
+  @Output() username: EventEmitter<string>  = new EventEmitter();
 
   refreshTokenPayload = {
     refreshToken: this.getRefreshToken(),

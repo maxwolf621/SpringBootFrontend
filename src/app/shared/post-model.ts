@@ -8,7 +8,7 @@ export interface PostModel {
     description: string;
     username: string;
     subname: string;
-    createdDate: string;
+    duration: string;
     voteCount: number;
     commentCount: number;
     upVote: boolean;

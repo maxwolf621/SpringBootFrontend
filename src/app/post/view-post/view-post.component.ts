@@ -18,7 +18,7 @@ import { PostService } from 'src/app/shared/post.service';
 })
 export class ViewPostComponent implements OnInit {
   
-  postId: number;
+  postId: any;
   post!: PostModel;
   comments!: CommentPayload[];
   commentForm: FormGroup;
@@ -26,34 +26,36 @@ export class ViewPostComponent implements OnInit {
 
   constructor(private postService: PostService, private activateRoute: ActivatedRoute,
     private commentService: CommentService, private router: Router) {
-    this.postId = this.activateRoute.snapshot.params.id;
 
     this.commentForm = new FormGroup({
       text: new FormControl('', Validators.required)
     });
+
     this.commentPayload = {
-      commentText: '',
+      text: "null",
       postId: this.postId
     };
   }
 
   ngOnInit(): void {
-    this.getPostById();
+    this.postId = this.activateRoute.snapshot.params.postid;
+    console.info("-----------get PostId" + this.postId);
+
+    this.getPostById(this.postId);
     this.getCommentsForThisPost();
   }
 
   postComment() {
-    this.commentPayload.commentText = this.commentForm.get('text')!.value;
+    this.commentPayload.text = this.commentForm.get('text')!.value;
     this.commentService.postComment(this.commentPayload).subscribe(data => {
       this.commentForm.get('commentText')!.setValue('');
-      this.getCommentsForThisPost();
     }, error => {
       throwError(error);
     })
   }
 
-  private getPostById() {
-    this.postService.getPost(this.postId).subscribe(post => {
+  private getPostById(postId:number) {
+    this.postService.getPost(postId).subscribe(post => {
       this.post = post;
     }, error => {
       throwError(error);
@@ -67,5 +69,14 @@ export class ViewPostComponent implements OnInit {
       throwError(error);
     });
   }
+
+    // New features
+    ReportComment() {
+      console.info("1234");
+    }
+  
+    HideComment() {
+      console.info("54321");
+    }
 
 }

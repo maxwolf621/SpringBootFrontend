@@ -10,6 +10,9 @@ import { AuthService } from './auth/shared/auth.service';
 import { catchError, switchMap } from 'rxjs/operators';
 import { LoginResponse } from './auth/login/login-response.payload';
 
+/**
+ * reference https://stackoverflow.com/questions/47400929/how-to-add-authorization-header-to-angular-http-request
+ */
 @Injectable({
     providedIn: 'root'
 })
@@ -17,27 +20,30 @@ export class TokenInterceptor implements HttpInterceptor {
 
     refreshTokenSubject: BehaviorSubject<any> = new BehaviorSubject(null);
     NeedToRefreshToken = false;
-
     constructor(private authService:AuthService) {}
 
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-        if (this.authService.getToken()) {
-            console.log("Add Token To the RequestPayload")
-            this.addToken(req, this.authService.getToken());
+
+        let jwt = this.authService.getToken();
+        // fetch the jwt from backend
+        if (jwt) {
+            console.log("Add Token To the RequestPayload");
+            req = this.addToken(req, jwt);
         }
-        return next.handle(req).pipe(catchError(error => {
-            if (error instanceof HttpErrorResponse && 
-                error.status === 403) 
-            {
-                return this.handleAuthErrors(req, next);
-            } else {
-                return throwError(error);
+
+        return next.handle(req).pipe(
+            catchError(error => {
+                // if http status equal 403 then
+                if (error instanceof HttpErrorResponse && error.status === 403) {
+                    return this.handleAuthErrors(req, next);
+                } else {
+                    return throwError(error);
             }
         }));
     }
 
     /**
-     * @description check if the user's token needs to refresh 
+     * @description check if the user's jwt needs to refresh or not 
      * @param req rqeust to backend
      * @param next The `next` object represents the next interceptor in the chain of interceptors 
      * @returns refereshtoken
@@ -47,6 +53,8 @@ export class TokenInterceptor implements HttpInterceptor {
             this.NeedToRefreshToken = true;
             this.refreshTokenSubject.next(null);
         }
+        // to get a valid refresh jwt 
+        // add this token in the request header
         return this.authService.refreshToken().pipe(
             switchMap((refreshTokenResponse: LoginResponse) => {
                 this.NeedToRefreshToken = false;
@@ -66,11 +74,14 @@ export class TokenInterceptor implements HttpInterceptor {
      * @param token token we sent to backend
      * @returns A request that contains the header { 'Authorizaion' : 'beart TOKEN'}
      */
-    private addToken(req: HttpRequest<any>, token: string){
+    private addToken(req: HttpRequest<any>, jwt: string){
         console.log("Set A JWT header");
         return req.clone({
-            // add the new token to request
-            setHeaders: {'Authorization': `Bearer ${token}`}
+            setHeaders: {
+                'Content-Type' : 'application/json; charset=utf-8',
+                'Accept'       : 'application/json',
+                'Authorization': `Bearer ${jwt}`,
+            },
         });
     }
 

@@ -4,12 +4,13 @@
     margin-top: 10px;
     margin-bottom: 10px;
     overflow: hidden;
-    background-color: rgba(255,255,255,0.8);
+    background-color: #242526;
     color: #878A8C;
     position: relative;
     border-radius: 4px;
     padding:5px;
 }
+
 
 .btnCommments{
     border-radius: 2px solid;
@@ -29,10 +30,11 @@
 }
 
 .posturl, .postname{    
-    color: black;
+    color: #B0B3B8;
 }
 
-.subreddit-text{
+
+.sub-text{
     font-weight: bold;
 }
 

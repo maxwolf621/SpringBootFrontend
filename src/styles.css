@@ -3,10 +3,26 @@ input.ng-invalid.ng-touched {
     border: 1px solid red;
   }
   
+html {
+    padding: 0px;
+    height: 100%;
+} 
+
+body {
+    margin-top:63px;
+    height: 100%;
+    background-color: #18191A;
+    color : #E4E6EB;
+}
+
+input.ng-invalid.ng-touched {
+    border: 1px solid red;
+}
+
 .login,
-.sign-up 
-{
+.sign-up {
     background-color: #0079D3;
+    border-color: #0079D3;
     color: aliceblue;
     fill: #0079D3;
     border: 1px solid;
@@ -21,16 +37,10 @@ input.ng-invalid.ng-touched {
     text-transform: uppercase;
     padding: 3px 16px;
     opacity: 1;
-    float: right;
-    fill: #0079D3;
-
     box-sizing: border-box;
-    margin-right: 100px;  
-}
-
-
-.login.signup{
-    background-color: #0079D3;
-    border-color: #0079D3;
-    color: aliceblue;
+    
+    /** Position Start from Right Side**/
+    float: right;
+    /** Distance btw login and sign-up **/
+    margin-right: 5px;  
 }
