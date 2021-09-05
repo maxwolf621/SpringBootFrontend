@@ -7,7 +7,7 @@
 
 
                 <!-- LABEL OF username -->
-                <label [ngClass]="{'error': submitted && myForm.username.errors}">
+                <label [ngClass]="{'error': isLoggedIn && myForm.username.errors}">
                   Username</label>
 
                 <div class="mb-3">
@@ -17,11 +17,11 @@
                   class="form-control" 
                   formControlName="username" 
                   name="username" required
-                  [ngClass]="{'error': submitted && myForm.username.errors}"
+                  [ngClass]="{'error': isLoggedIn && myForm.username.errors}"
                   />
                   
                   <!-- Error Blocks -->
-                  <div *ngIf="submitted && myForm.username.errors" class="alert alert-danger">
+                  <div *ngIf="isLoggedIn && myForm.username.errors" class="alert alert-danger">
                     <div *ngIf="myForm.username.errors.required">Username is required</div>
                   </div>
 
@@ -29,7 +29,7 @@
 
               </div>
                 <!-- Lebel of Password-->
-                <label [ngClass]="{ 'error' : submitted && myForm.password.errors }">Password</label>
+                <label [ngClass]="{ 'error' : isLoggedIn && myForm.password.errors }">Password</label>
                 
                 <div class="md-3">
 
@@ -39,11 +39,11 @@
                   class="form-control" 
                   formControlName="password" 
                   name="password" required
-                  [ngClass]="{ 'error' : submitted && myForm.password.errors }"
+                  [ngClass]="{ 'error' : isLoggedIn && myForm.password.errors }"
                   />
 
                   <!-- Error Blocks-->
-                  <div *ngIf="submitted && myForm.password.errors" class="alert alert-danger">
+                  <div *ngIf="isLoggedIn && myForm.password.errors" class="alert alert-danger">
                     <div *ngIf="myForm.password.errors.required"> Password is Required </div>
                   </div>
                 </div> 

@@ -76,6 +76,8 @@ export class AuthService {
       }, error => {
         throwError(error);
       })
+
+
       // clearing localStorage
       this.localStorage.clear('Token');
       this.localStorage.clear('username');
@@ -93,6 +95,10 @@ export class AuthService {
   }
   getUserName(){
     return this.localStorage.retrieve('username');
+  }
+
+  getUserPhoto(){
+    // 
   }
 
   /**

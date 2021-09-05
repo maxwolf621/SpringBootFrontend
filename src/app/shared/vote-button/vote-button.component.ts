@@ -11,7 +11,7 @@ import { ToastrService } from 'ngx-toastr';
 
 
 /**
- * Donwvote or Upload A Certain Post
+ * Down vote or Upload A Certain Post
  */
 @Component({
   selector: 'app-vote-button',
@@ -21,7 +21,7 @@ import { ToastrService } from 'ngx-toastr';
 export class VoteButtonComponent implements OnInit {
 
   /* Each Post has voteComponent */
-  @Input() post!: PostModel;
+  @Input('post') post!: PostModel;
 
   votePayload!: VotePayload;
   
@@ -29,7 +29,7 @@ export class VoteButtonComponent implements OnInit {
   faArrowUp = faArrowUp;
   faArrowDown = faArrowDown;
   
-  /* sytle binding */
+  /* style binding */
   upvoteColor!: string;
   downvoteColor!: string;
 
@@ -55,20 +55,27 @@ export class VoteButtonComponent implements OnInit {
    * update Vote Details
    */
   ngOnInit(): void {
-    this.updateVoteDetails();
+    console.info("------postId " + this.post.id);
+
+    this.updateVoteDetails(this.post.id);
   }
 
-
   upvotePost() {
-    this.votePayload.voteType = VoteType.UPVOTE;
-    this.vote();
+    let upvote = VoteType.UPVOTE;
+    this.votePayload.voteType = upvote ;
+    console.info("Up vote this post" + upvote);
 
+
+    this.DoVoting();
     this.downvoteColor = '';
   }
 
   downvotePost() {
-    this.votePayload.voteType = VoteType.DOWNVOTE;
-    this.vote();
+    let downvote = VoteType.DOWNVOTE;
+    this.votePayload.voteType = downvote;
+    console.info("Down vote this post" + downvote);
+
+    this.DoVoting();
 
     this.upvoteColor = '';
   }
@@ -76,12 +83,13 @@ export class VoteButtonComponent implements OnInit {
   /**
    * To vote this Post
    */
-  private vote() {
+  private DoVoting() {
     // Which post to vote
     this.votePayload.postId = this.post.id;
     // Do voting and Subscribe `the response`
+
     this.voteService.VoteForPost(this.votePayload).subscribe(() => {
-      this.updateVoteDetails();
+      this.updateVoteDetails(this.votePayload.postId);
     }, error => {
       this.toastr.error(error.error.message);
       throwError(error);
@@ -89,12 +97,16 @@ export class VoteButtonComponent implements OnInit {
   }
 
   /**
-   * Refresh Certain Post 
-   * api/post/getByPost/pistid
+   * Refresh Certain Post (`api/post/getByPost/{postId}`)
    */
-  private updateVoteDetails() {
-    this.postService.getPost(this.post.id).subscribe(postarr => {
-      this.post = postarr;
-    });
+  private updateVoteDetails(postId:number) {
+    this.postService.getPostById(postId).subscribe(post => {
+      console.info("update the post");
+      this.post = post;
+    }, error =>{
+      throwError(error);
+    }
+    
+    );
   }
 }

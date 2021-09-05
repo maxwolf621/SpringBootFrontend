@@ -8,7 +8,9 @@ export const environment = {
   apiPost   : 'http://localhost:8080/api/post',
   apiSub    : 'http://localhost:8080/api/sub',
   apiComment: 'http://localhost:8080/api/comment',
-  apiVote   : 'http://localhost:8080/api/vote'
+  apiVote   : 'http://localhost:8080/api/vote',
+  apiBookMark:'http://localhost:8080/api/bookmark',
+  apiUserProfile:'http://localhost:8080/api/user'
 };
 
 /*

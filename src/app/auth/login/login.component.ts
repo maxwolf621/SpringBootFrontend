@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
 
   loginForm!: FormGroup;
   loginRequestPayload! : LoginRequestPayload;
-  submitted = false;
+  isLoggedIn:boolean = false;
 
   // dependency injection
   constructor(private authService: AuthService,
@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
       
       this.loginRequestPayload ={
         username : '',
-        password : '1234'
+        password : ''
       }
     }
 
@@ -51,11 +51,11 @@ export class LoginComponent implements OnInit {
     // to backend
     this.authService.login(this.loginForm.value).subscribe(
       data => { 
-        this.submitted = true;
+        this.isLoggedIn = true;
         this.router.navigateByUrl('');
         this.toastr.success('Login Successful');
     }, error => {
-      this.submitted = false;
+      this.isLoggedIn = false;
       //alert('Login Fail Please Check Again')
       throwError(error);
     });

@@ -18,9 +18,17 @@ import { PostService } from 'src/app/shared/post.service';
 })
 export class ViewPostComponent implements OnInit {
   
-  postId: any;
+  postId!: number ;
   post!: PostModel;
+
+  /**
+   * display comments
+   */
   comments!: CommentPayload[];
+  
+  /**
+   * To post　a comment
+   */
   commentForm: FormGroup;
   commentPayload: CommentPayload;
 
@@ -38,32 +46,41 @@ export class ViewPostComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.postId = this.activateRoute.snapshot.params.postid;
-    console.info("-----------get PostId" + this.postId);
+    this.postId = this.activateRoute.snapshot.params.postId;
 
+    console.info("-----------get PostId " + this.postId);
     this.getPostById(this.postId);
     this.getCommentsForThisPost();
   }
 
+  /**
+   * post the comment
+   */
   postComment() {
     this.commentPayload.text = this.commentForm.get('text')!.value;
+    this.commentPayload.postId = this.postId;
     this.commentService.postComment(this.commentPayload).subscribe(data => {
-      this.commentForm.get('commentText')!.setValue('');
+      console.info(data);
     }, error => {
       throwError(error);
     })
   }
 
+  
   private getPostById(postId:number) {
-    this.postService.getPost(postId).subscribe(post => {
+    this.postService.getPostById(postId).subscribe(post => {
       this.post = post;
     }, error => {
       throwError(error);
     });
   }
 
+  /**
+   * display comments of this post
+   */
   private getCommentsForThisPost() {
     this.commentService.getAllCommentsForPost(this.postId).subscribe(comment => {
+      console.info(comment);
       this.comments = comment;
     }, error => {
       throwError(error);

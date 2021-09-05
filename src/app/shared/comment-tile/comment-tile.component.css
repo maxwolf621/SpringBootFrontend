@@ -1,0 +1,27 @@
+.comment{
+    --post-line-color: #ccc;    
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+    overflow: hidden;
+    background-color: #242526;
+    color: #878A8C;
+    position: relative;
+    border-radius: 4px;
+    padding:5px;
+    /* new patch */
+    display: flex;
+    width: 100%;
+
+}
+
+.comment-details{    
+    color: #B0B3B8;
+}
+
+.comment-text{
+    font-weight: bold;
+}
+
+.col-md-11 {
+    width: 90%;
+}

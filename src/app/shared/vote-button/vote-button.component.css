@@ -4,6 +4,10 @@
     font-size: 1em;    
 }
 
+.col-md-1 {
+    width: 10%;
+}
+
 
 .upvote,.downvote {
     cursor: pointer;

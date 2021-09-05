@@ -29,20 +29,21 @@ export class PostService {
   
   /**
    * 
-   * @param postPayload contains postname, who post it, description ... 
+   * @param postPayload {@link post-}
    * @returns DOT (post response) from backend
    */
   createPost(postPayload: CreatePostPayload): Observable<any> {
       return this.http.post(`${environment.apiPost}`, postPayload);
   }
-
+  
   /**
    * 
    * @param id looking for a certain post by post id
    * @returns a certain post 
    */
-  getPost(id: number): Observable<PostModel> {
-      return this.http.get<PostModel>(`${environment.apiPost}/` + id);
+  getPostById(id: number): Observable<PostModel> {
+      console.log("Get Post By Id");
+      return this.http.get<PostModel>(`${environment.apiPost}/getByPost/` + id);
   }
 
   /**
@@ -51,6 +52,6 @@ export class PostService {
    * @returns a certain post
    */
   getAllPostsByUser(name: string): Observable<PostModel[]> {
-    return this.http.get<PostModel[]>(`${environment.apiPost}/user/` + name);
+    return this.http.get<PostModel[]>(`${environment.apiPost}/getByUser/` + name);
   }
 }
