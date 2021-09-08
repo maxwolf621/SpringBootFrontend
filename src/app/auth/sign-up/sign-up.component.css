@@ -1,7 +1,23 @@
+.close-button{
+  float: right;
+  top:-24px;
+  right:-24px;
+}
+
+.close-icon {
+  transition: 1s ease-in-out;
+}
+
+.close-icon:hover {
+  transform: rotate(180deg);
+}
+
+
 .register-section{
     margin: 100px;
 }
 
+/**
 .sign-up {
     background-color: #0079D3;
     border-color: #0079D3;
@@ -19,8 +35,36 @@
     text-transform: uppercase;
     padding: 3px 16px;
     opacity: 1;
+    position: relative;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-around;
+    align-items: stretch;
+  
+    width: 300px;
+    max-width: 100%;
+    text-align: center;
   }
   
   input.ng-invalid.ng-touched{
     border: 1px solid red;    
 }
+**/
+
+:host {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  margin: 0;
+  top: 0;
+  left: 0;
+  width: 200;
+  height: 300;
+}
+
+.mat-small {
+  font-size: large;
+}
+
+
+
