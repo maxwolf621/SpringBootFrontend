@@ -9,7 +9,6 @@ import { CreatePostPayload } from '../post/create-post/create-post.pyload';
   providedIn: 'root'
 })
 export class PostService {
-<<<<<<< HEAD
   
   /**
    * 
@@ -54,25 +53,5 @@ export class PostService {
    */
   getAllPostsByUser(name: string): Observable<PostModel[]> {
     return this.http.get<PostModel[]>(`${environment.apiPost}/getByUser/` + name);
-=======
-  constructor(private http:HttpClient) {
-  }
-
-  getAllPost() : Observable<PostModel[]>{
-      console.log("Get All Posts From BackEnd")
-      return this.http.get<PostModel[]>(`${environment.apiPost}`);
-  }
-  
-  createPost(postPayload: CreatePostPayload): Observable<any> {
-      return this.http.post(`${environment.apiPost}`, postPayload);
-  }
-
-  getPost(id: number): Observable<PostModel> {
-      return this.http.get<PostModel>(`${environment.apiPost}/` + id);
-  }
-
-  getAllPostsByUser(name: string): Observable<PostModel[]> {
-    return this.http.get<PostModel[]>(`${environment.apiPost}/user/` + name);
->>>>>>> 16d04d84c7edae24a77f9e0157dea16273c2cad6
   }
 }
