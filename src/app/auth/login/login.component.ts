@@ -6,6 +6,8 @@ import { AuthService } from '../shared/auth.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { throwError } from 'rxjs';
+import { MatDialogRef } from '@angular/material/dialog'
+import { MatFormField, MatFormFieldControl, MatFormFieldModule } from '@angular/material/form-field';
 
 /**
  * Reference
@@ -21,21 +23,22 @@ export class LoginComponent implements OnInit {
 
   loginForm!: FormGroup;
   loginRequestPayload! : LoginRequestPayload;
-  submitted = false;
+  isLoggedIn:boolean = false;
 
   // dependency injection
   constructor(private authService: AuthService,
               private activatedRoute: ActivatedRoute,
               private router: Router, 
               private toastr: ToastrService,
-              private formBuilder: FormBuilder){ 
+              private formBuilder: FormBuilder,
+              public matdialogRef : MatDialogRef<LoginComponent>
+              ){ 
       
       this.loginRequestPayload ={
         username : '',
-        password : '1234'
+        password : ''
       }
     }
-
   ngOnInit(): void {
       this.loginForm = this.formBuilder.group({
       username: ['', Validators.required],
@@ -51,13 +54,21 @@ export class LoginComponent implements OnInit {
     // to backend
     this.authService.login(this.loginForm.value).subscribe(
       data => { 
-        this.submitted = true;
-        this.router.navigateByUrl('');
         this.toastr.success('Login Successful');
+        this.isLoggedIn = true;
+        console.info("login");  
+        this.router.navigateByUrl('');
+        
+        this.matdialogRef.close();
+
     }, error => {
-      this.submitted = false;
+      this.isLoggedIn = false;
       //alert('Login Fail Please Check Again')
       throwError(error);
     });
+  }
+
+  closeClick(){
+    this.matdialogRef.close();
   }
 }

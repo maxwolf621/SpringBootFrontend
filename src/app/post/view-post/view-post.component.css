@@ -1,0 +1,388 @@
+  
+.sub-and-post-info {
+    display :inline;
+    font-weight: bold;
+    font-family: IBMPlexSans, Arial, sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    line-height: 12px;
+    text-decoration: none solid rgb(129, 131, 132);
+    text-transform: uppercase;
+    word-spacing: 0px;
+  }
+    
+
+.post-title {
+/* Font & Text */
+        font-family: IBMPlexSans, Arial, sans-serif;
+        font-size: 18px;
+        font-style: normal;
+        font-variant: normal;
+        font-weight: 500;
+        letter-spacing: normal;
+        line-height: 22px;
+        text-decoration: none solid rgb(215, 218, 220);
+        text-align: start;
+        text-indent: 0px;
+        text-transform: none;
+        vertical-align: baseline;
+        white-space: normal;
+        word-spacing: 0px;
+    
+        /* Color & Background */
+        background-attachment: scroll;
+        background-color: rgba(0, 0, 0, 0);
+        background-image: none;
+        background-position: 0% 0%;
+        background-repeat: repeat;
+        color: rgb(215, 218, 220);
+    
+        /* Box */
+        height: auto;
+        width: auto;
+        border: 0px none rgb(215, 218, 220);
+        border-top: 0px none rgb(215, 218, 220);
+        border-right: 0px none rgb(215, 218, 220);
+        border-bottom: 0px none rgb(215, 218, 220);
+        border-left: 0px none rgb(215, 218, 220);
+        margin: 0px;
+        padding: 0px;
+        max-height: none;
+        min-height: 0px;
+        max-width: none;
+        min-width: 0px;
+    
+        /* Positioning */
+        position: static;
+        top: auto;
+        bottom: auto;
+        right: auto;
+        left: auto;
+        float: none;
+        display: inline;
+        clear: none;
+        z-index: auto;
+    
+        /* List */
+        list-style-image: none;
+        list-style-type: disc;
+        list-style-position: outside;
+    
+        /* Table */
+        border-collapse: separate;
+        border-spacing: 0px 0px;
+        caption-side: top;
+        empty-cells: show;
+        table-layout: auto;
+    
+        /* Miscellaneous */
+        overflow: visible;
+        cursor: pointer;
+        visibility: visible;
+    
+
+}
+
+.post-title:hover {
+  opacity: 0.6;
+}
+
+.username{
+    color: #e4e6eb;
+}
+
+.post-text{
+    /* Font & Text */
+    font-family: "Noto Sans", Arial, sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 400;
+    letter-spacing: normal;
+    line-height: 21px;
+    text-decoration: none solid rgb(215, 218, 220);
+    text-align: start;
+    text-indent: 0px;
+    text-transform: none;
+    white-space: normal;
+    word-spacing: 0px;
+
+    /* Color & Background */
+    background-attachment: scroll;
+    background-color: rgba(0, 0, 0, 0);
+    background-image: none;
+    background-position: 0% 0%;
+    background-repeat: repeat;
+    color: rgb(215, 218, 220);
+
+
+    /* Positioning */
+    position: static;
+    top: auto;
+    bottom: auto;
+    right: auto;
+    left: auto;
+    float: none;
+    display: block;
+    clear: none;
+    z-index: auto;
+
+
+    /* Table */
+    border-collapse: separate;
+    border-spacing: 0px 0px;
+    caption-side: top;
+    empty-cells: show;
+    table-layout: auto;
+
+}
+
+.commentBAR{
+        /* Font & Text */
+        font-family: IBMPlexSans, Arial, sans-serif;
+        font-size: 16px;
+        font-style: normal;
+        font-variant: normal;
+        font-weight: 400;
+        letter-spacing: normal;
+        line-height: 16px;
+        text-decoration: none solid rgb(0, 0, 0);
+        text-align: start;
+        text-indent: 0px;
+        text-transform: none;
+        vertical-align: baseline;
+        white-space: normal;
+        word-spacing: 0px;
+    
+        /* Color & Background */
+        background-attachment: scroll;
+        background-color: rgba(0, 0, 0, 0);
+        background-image: none;
+        background-position: 0% 0%;
+        background-repeat: repeat;
+        color: rgb(0, 0, 0);
+    
+        /* Box */
+        height: 101px;
+        width: 642px;
+        border: 1px solid rgba(0, 0, 0, 0);
+        border-top: 1px solid rgba(0, 0, 0, 0);
+        border-right: 1px solid rgba(0, 0, 0, 0);
+        border-bottom: 1px solid rgba(0, 0, 0, 0);
+        border-left: 1px solid rgba(0, 0, 0, 0);
+        margin: 0px 0px 0px 6px;
+        padding: 0px;
+        max-height: none;
+        min-height: auto;
+        max-width: 800px;
+        min-width: auto;
+    
+        /* Positioning */
+        position: static;
+        top: auto;
+        bottom: auto;
+        right: auto;
+        left: auto;
+        float: none;
+        display: block;
+        clear: none;
+        z-index: auto;
+    
+        /* List */
+        list-style-image: none;
+        list-style-type: disc;
+        list-style-position: outside;
+    
+        /* Table */
+        border-collapse: separate;
+        border-spacing: 0px 0px;
+        caption-side: top;
+        empty-cells: show;
+        table-layout: auto;
+    
+        /* Miscellaneous */
+        overflow: visible;
+        cursor: auto;
+        visibility: visible;
+    
+        /* Effects */
+        transform: none;
+        transition: all 0s ease 0s;
+        outline: rgb(255, 0, 0) dashed 1px;
+        outline-offset: 0px;
+        box-sizing: border-box;
+        resize: none;
+        text-shadow: none;
+        text-overflow: clip;
+        word-wrap: normal;
+        box-shadow: none;
+        border-top-left-radius: 4px;
+        border-top-right-radius: 4px;
+        border-bottom-left-radius: 4px;
+        border-bottom-right-radius: 4px;
+}
+
+.post{
+    --post-line-color: #ccc;    
+    border: 1px solid #ccc;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    overflow: hidden;
+    background-color: #252627;
+    color: #878A8C;
+    position: relative;
+    border-radius: 4px;
+    padding:5px;
+
+}
+
+.display-commenter{
+	/* Font & Text */
+	font-family: IBMPlexSans, Arial, sans-serif;
+	font-size: 16px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 400;
+	letter-spacing: normal;
+	line-height: 16px;
+	text-decoration: none solid rgb(0, 0, 0);
+	text-align: start;
+	text-indent: 0px;
+	text-transform: none;
+	vertical-align: baseline;
+	white-space: normal;
+	word-spacing: 0px;
+
+	/* Color & Background */
+	background-attachment: scroll;
+	background-color: rgba(0, 0, 0, 0);
+	background-image: none;
+	background-position: 0% 0%;
+	background-repeat: repeat;
+	color: rgb(0, 0, 0);
+}
+
+.commentUser {
+	/* Font & Text */
+	font-family: IBMPlexSans, Arial, sans-serif;
+	font-size: 14px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 500;
+	letter-spacing: normal;
+	line-height: 16px;
+	text-decoration: underline solid rgb(215, 218, 220);
+	text-align: start;
+	text-indent: 0px;
+	text-transform: none;
+	vertical-align: baseline;
+	white-space: normal;
+	word-spacing: 0px;
+
+	/* Color & Background */
+	background-attachment: scroll;
+	background-color: rgba(0, 0, 0, 0);
+	background-image: none;
+	background-position: 0% 0%;
+	background-repeat: repeat;
+	color: rgb(215, 218, 220);
+}
+
+.comment-duration{
+        /* Font & Text */
+        font-family: "Noto Sans", Arial, sans-serif;
+        font-size: 12px;
+        font-style: normal;
+        font-variant: normal;
+        font-weight: 400;
+        letter-spacing: normal;
+        line-height: 18px;
+        text-decoration: none solid rgb(129, 131, 132);
+        text-align: start;
+        text-indent: 0px;
+        text-transform: none;
+        vertical-align: baseline;
+        white-space: normal;
+        word-spacing: 0px;
+    
+        /* Color & Background */
+        background-attachment: scroll;
+        background-color: rgba(0, 0, 0, 0);
+        background-image: none;
+        background-position: 0% 0%;
+        background-repeat: repeat;
+        color: rgb(129, 131, 132);
+}
+
+.display-comment-text{
+        /* Font & Text */
+        font-family: "Noto Sans", Arial, sans-serif;
+        font-size: 14px;
+        font-style: normal;
+        font-variant: normal;
+        font-weight: 400;
+        letter-spacing: normal;
+        line-height: 21px;
+        text-decoration: none solid rgb(215, 218, 220);
+        text-align: start;
+        text-indent: 0px;
+        text-transform: none;
+        vertical-align: baseline;
+        white-space: normal;
+        word-spacing: 0px;
+    
+        /* Color & Background */
+        background-attachment: scroll;
+        background-color: rgba(0, 0, 0, 0);
+        background-image: none;
+        background-position: 0% 0%;
+        background-repeat: repeat;
+        color: rgb(215, 218, 220);
+    
+        /* Box */
+        height: 21px;
+        width: 640px;
+        border: 0px none rgb(215, 218, 220);
+        border-top: 0px none rgb(215, 218, 220);
+        border-right: 0px none rgb(215, 218, 220);
+        border-bottom: 0px none rgb(215, 218, 220);
+        border-left: 0px none rgb(215, 218, 220);
+        margin: 0px;
+        padding: 0px;
+        max-height: none;
+        min-height: 0px;
+        max-width: none;
+        min-width: 0px;
+    
+        /* Positioning */
+        position: static;
+        top: auto;
+        bottom: auto;
+        right: auto;
+        left: auto;
+        float: none;
+        display: block;
+        clear: none;
+        z-index: auto;
+    
+        /* List */
+        list-style-image: none;
+        list-style-type: disc;
+        list-style-position: outside;
+    
+        /* Table */
+        border-collapse: separate;
+        border-spacing: 0px 0px;
+        caption-side: top;
+        empty-cells: show;
+        table-layout: auto;
+    
+        /* Miscellaneous */
+        overflow: visible;
+        cursor: auto;
+        visibility: visible;
+    
+}
+
+

@@ -1,3 +1,9 @@
+@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+/**
+https://stackoverflow.com/questions/44163721/modal-dialog-is-opening-at-the-bottom-of-the-screen-and-not-behaving-properly
+*/
+
 /* You can add global styles to this file, and also import other style files */
 input.ng-invalid.ng-touched {
     border: 1px solid red;
@@ -43,4 +49,11 @@ input.ng-invalid.ng-touched {
     float: right;
     /** Distance btw login and sign-up **/
     margin-right: 5px;  
+}
+
+/**
+https://css-tricks.com/quick-css-trick-how-to-center-an-object-exactly-in-the-center/
+ */
+.custom-dialogconfig .mat-dialog-container{
+
 }

@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { CommentPayload } from 'src/app/comment/comment.payload';
 
 @Component({
   selector: 'app-comment-tile',
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CommentTileComponent implements OnInit {
 
-  constructor() { }
+
+  @Input() comments : CommentPayload[] | undefined
+  
+  constructor(private router: Router) {}
 
   ngOnInit(): void {
+    console.info("ngOnInit of CommentTileComponent");
   }
 
 }

@@ -10,7 +10,12 @@ import { Router } from '@angular/router';
 })
 export class PostTileComponent implements OnInit {
 
+
+  /**
+   * father : home.component.ts
+   */
   @Input() posts: PostModel[] | undefined;
+  
   faComments = faComments;
   constructor(private router: Router) {}
 

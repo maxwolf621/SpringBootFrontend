@@ -11,18 +11,58 @@
   margin-top: 5px;
 }
 
-.create-post-container {
-  margin-top: 10px;
-  --post-line-color: #ccc;
-  border: 1px solid #ccc;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  overflow: hidden;
-  background-color: rgba(255, 255, 255, 0.8);
-  color: #878A8C;
-  position: relative;
-  border-radius: 4px;
-  padding: 5px;
+.create-post-container{
+	/* Font & Text */
+	font-family: IBMPlexSans, Arial, sans-serif;
+	font-size: 16px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 400;
+	letter-spacing: normal;
+	line-height: 16px;
+	text-decoration: none solid rgb(0, 0, 0);
+	text-align: start;
+	text-indent: 0px;
+	text-transform: none;
+	vertical-align: baseline;
+	white-space: normal;
+	word-spacing: 0px;
+
+	/* Color & Background */
+	background-attachment: scroll;
+	background-color: rgb(26, 26, 27);
+	background-image: none;
+	background-position: 0% 0%;
+	background-repeat: repeat;
+	color: rgb(0, 0, 0);
+
+	/* Box */
+	height: 421px;
+	width: 740px;
+	border: 0px none rgb(0, 0, 0);
+	border-top: 0px none rgb(0, 0, 0);
+	border-right: 0px none rgb(0, 0, 0);
+	border-bottom: 0px none rgb(0, 0, 0);
+	border-left: 0px none rgb(0, 0, 0);
+	margin: 0px 0px 15px;
+	padding: 0px;
+	max-height: none;
+	min-height: 0px;
+	max-width: none;
+	min-width: 0px;
+
+	/* Positioning */
+	position: static;
+	top: auto;
+	bottom: auto;
+	right: auto;
+	left: auto;
+	float: none;
+	display: block;
+	clear: none;
+	z-index: auto;
+
+
 }
 
 .btnDiscard {
@@ -45,6 +85,147 @@
     color: #0079D3;
     background-color: transparent;
   }
+
+
+.post-title {
+	/* Font & Text */
+	font-family: IBMPlexSans, Arial, sans-serif;
+	font-size: 14px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 400;
+	letter-spacing: normal;
+	line-height: 21px;
+	text-decoration: none solid rgb(215, 218, 220);
+	text-align: start;
+	text-indent: 0px;
+	text-transform: none;
+	vertical-align: baseline;
+	white-space: pre-wrap;
+	word-spacing: 0px;
+
+	/* Color & Background */
+	background-attachment: scroll;
+	background-color: rgba(0, 0, 0, 0);
+	background-image: none;
+	background-position: 0% 0%;
+	background-repeat: repeat;
+	color: rgb(215, 218, 220);
+
+	/* Box */
+	height: 39px;
+	width: 822px;
+	border: 1px solid rgb(255, 0, 0);
+	border-top: 1px solid rgb(255, 0, 0);
+	border-right: 1px solid rgb(255, 0, 0);
+	border-bottom: 1px solid rgb(255, 0, 0);
+	border-left: 1px solid rgb(255, 0, 0);
+	margin: 0px;
+	padding: 8px 68px 8px 16px;
+	max-height: none;
+	min-height: 0px;
+	max-width: none;
+	min-width: 0px;
+
+	/* Positioning */
+	position: static;
+	top: auto;
+	bottom: auto;
+	right: auto;
+	left: auto;
+	float: none;
+	display: block;
+	clear: none;
+	z-index: auto;
+
+	/* List */
+	list-style-image: none;
+	list-style-type: disc;
+	list-style-position: outside;
+
+	/* Table */
+	border-collapse: separate;
+	border-spacing: 0px 0px;
+	caption-side: top;
+	empty-cells: show;
+	table-layout: auto;
+
+	/* Miscellaneous */
+	overflow: hidden;
+	cursor: text;
+	visibility: visible;
+
+	/* Effects */
+	transform: none;
+	transition: all 0s ease 0s;
+	outline: rgb(255, 0, 0) dashed 1px;
+	outline-offset: 0px;
+	box-sizing: border-box;
+	resize: none;
+	text-shadow: none;
+	text-overflow: clip;
+	word-wrap: break-word;
+	box-shadow: none;
+	border-top-left-radius: 4px;
+	border-top-right-radius: 4px;
+	border-bottom-left-radius: 4px;
+	border-bottom-right-radius: 4px;
+}
+
+
+.post-description {
+	/* Font & Text */
+	font-family: "Noto Sans", Arial, sans-serif;
+	font-size: 14px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 400;
+	letter-spacing: normal;
+	line-height: 21px;
+	text-decoration: none solid rgb(215, 218, 220);
+	text-align: start;
+	text-indent: 0px;
+	text-transform: none;
+	vertical-align: baseline;
+	white-space: pre-wrap;
+	word-spacing: 0px;
+
+	/* Color & Background */
+	background-attachment: scroll;
+	background-color: rgb(26, 26, 27);
+	background-image: none;
+	background-position: 0% 0%;
+	background-repeat: repeat;
+	color: rgb(215, 218, 220);
+
+	/* Box */
+	height: 122px;
+	width: 788px;
+	border: 0px none rgb(215, 218, 220);
+	border-top: 0px none rgb(215, 218, 220);
+	border-right: 0px none rgb(215, 218, 220);
+	border-bottom: 0px none rgb(215, 218, 220);
+	border-left: 0px none rgb(215, 218, 220);
+	margin: 0px;
+	padding: 8px 16px;
+	max-height: none;
+	min-height: 122px;
+	max-width: none;
+	min-width: 0px;
+
+	/* Positioning */
+	position: static;
+	top: auto;
+	bottom: auto;
+	right: auto;
+	left: auto;
+	float: none;
+	display: block;
+	clear: none;
+	z-index: auto;
+
+	
+}
 
 .create-post-heading {
   font-size: 18px;

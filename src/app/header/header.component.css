@@ -13,25 +13,6 @@ header{
     color :#f8f9fa
 }
 
-.login, .sign-up{    
-    background-color: transparent;
-    border-color: #0079D3;
-    color: #0079D3;
-    fill: #0079D3;
-    border: 1px solid;
-    border-radius: 4px;
-    box-sizing: border-box;
-    text-align: center;
-    letter-spacing: 1px;
-    text-decoration: none;
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: .5px;
-    line-height: 24px;
-    text-transform: uppercase;
-    padding: 3px 16px;
-    opacity: 1;  
-}
 
 .sign-up{
     background-color: #0079D3;
@@ -54,7 +35,7 @@ header{
     text-align: center;
     letter-spacing: 1px;
     text-decoration: none;
-    font-size: 12px;
+    font-size: 15px;
     font-weight: 700;
     letter-spacing: .5px;
     line-height: 24px;
@@ -62,7 +43,10 @@ header{
     padding: 3px 16px;
     opacity: 1;
     border: 0px;
-}
+    
+    float: right;
+     
+} 
 
 .userdetails:hover{
     border: 1px solid;
@@ -74,7 +58,8 @@ header{
     font-weight: 500;
     line-height: 18px;
     display: inline-block;
-    vertical-align: middle;
+    vertical-align: middle;  
+
 }
 
 .dropdown-item:hover{
@@ -83,12 +68,20 @@ header{
 
 .dropdown-menu{
     background-color: #f8f9fa;
+    right : 20%;
 }
 
 .account-icon{
     border-radius: 4px;
     float: left;
     margin-right: 5px;
-    max-height: 24px;
-    max-width: 24px;
+    max-height: 30px;
+    max-width: 30px;
 }
+
+.dropDownItems{
+    float: right;
+    margin-right: 5px;  
+}
+
+

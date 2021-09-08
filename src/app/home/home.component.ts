@@ -15,6 +15,9 @@ export class HomeComponent implements OnInit {
   constructor(private postService: PostService) {
   }
 
+  /**
+   * Fetch All Posts
+   */
   ngOnInit(): void {
     this.postService.getAllPost().subscribe(post=>{
       this.posts = post;

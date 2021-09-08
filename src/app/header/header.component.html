@@ -12,10 +12,21 @@
         </span>
       </a>
     </div>
+
     <div class="flex-grow-1 float-right">
-    <div>
-      <a routerLink="/login" class="float right login mr-2">Log In</a>
-      <a routerLink="/sign-up" class="float right sign-up mr-2">Sign up</a>
+      <div *ngIf="isLoggedIn" ngbDropdown class="float-right">
+        <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+            <button (click)="toUserProfile()" ngbDropdownItem>Profile</button>
+            <button (click)="logout()" ngbDropdownItem>Logout</button>
+        </div>
+        <button class="userdetails" id="dropdownBasic1" ngbDropdownToggle>
+            <img class="account-icon" src="https://chinadigitaltimes.net/space/images/1/10/%E4%B9%A0%E7%BB%B4%E5%B0%BC1.jpg">
+            <span id="username">{{username}}</span>
+        </button>
+    </div>  
+    <div *ngIf="!isLoggedIn">
+      <button mat-raised-button="primary" class="login" (click)="openDialog('login')">log In</button>
+      <button mat-raised-button="primary" class="sing-up" (click)="openDialog('signup')">Sign Up</button>
     </div>
     </div>
   </nav>

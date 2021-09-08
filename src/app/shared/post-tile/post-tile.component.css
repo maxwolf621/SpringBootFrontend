@@ -1,16 +1,23 @@
 .post{
     --post-line-color: #ccc;    
     border: 1px solid #ccc;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
     overflow: hidden;
     background-color: #242526;
     color: #878A8C;
     position: relative;
     border-radius: 4px;
     padding:5px;
+    /* new patch */
+    display: flex;
+    width: 80%;
+    height:200px;
+
 }
 
+.vote-component {
+    width: 10%;
+}
 
 .btnCommments{
     border-radius: 2px solid;
@@ -41,3 +48,8 @@
 .post-text{
     margin-top: 10px;
 }
+
+.col-md-11 {
+    width: 90%;
+}
+
