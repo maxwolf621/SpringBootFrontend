@@ -1,18 +1,3 @@
-.close-button{
-  float: right;
-  top:-24px;
-  right:-24px;
-}
-
-.close-icon {
-  transition: 1s ease-in-out;
-}
-
-.close-icon:hover {
-  transform: rotate(180deg);
-}
-
-
 .register-section{
     margin: 100px;
 }
@@ -34,18 +19,13 @@
     text-transform: uppercase;
     padding: 3px 16px;
     opacity: 1;
-    position: relative;
-    display: flex;
-    flex-flow: column;
-    justify-content: space-around;
-    align-items: stretch;
-  
-    width: 300px;
-    max-width: 100%;
-    text-align: center;
   }
   
   input.ng-invalid.ng-touched{
     border: 1px solid red;    
+<<<<<<< HEAD
 }
 
+=======
+}
+>>>>>>> parent of 54046d9 (modify Read.me)
