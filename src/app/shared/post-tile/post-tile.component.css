@@ -1,13 +1,21 @@
 .post{
     --post-line-color: #ccc;    
     border: 1px solid #ccc;
+<<<<<<< HEAD
     margin-bottom: 20px;
     overflow: hidden;
     background-color: #242526;
+=======
+    margin-top: 10px;
+    margin-bottom: 10px;
+    overflow: hidden;
+    background-color: rgba(255,255,255,0.8);
+>>>>>>> 16d04d84c7edae24a77f9e0157dea16273c2cad6
     color: #878A8C;
     position: relative;
     border-radius: 4px;
     padding:5px;
+<<<<<<< HEAD
     /* new patch */
     display: flex;
     width: 80%;
@@ -17,6 +25,8 @@
 
 .vote-component {
     width: 10%;
+=======
+>>>>>>> 16d04d84c7edae24a77f9e0157dea16273c2cad6
 }
 
 .btnCommments{
@@ -37,19 +47,30 @@
 }
 
 .posturl, .postname{    
+<<<<<<< HEAD
     color: #B0B3B8;
 }
 
 
 .sub-text{
+=======
+    color: black;
+}
+
+.subreddit-text{
+>>>>>>> 16d04d84c7edae24a77f9e0157dea16273c2cad6
     font-weight: bold;
 }
 
 .post-text{
     margin-top: 10px;
+<<<<<<< HEAD
 }
 
 .col-md-11 {
     width: 90%;
 }
 
+=======
+}
+>>>>>>> 16d04d84c7edae24a77f9e0157dea16273c2cad6

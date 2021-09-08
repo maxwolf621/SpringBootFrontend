@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <button mat-icon-button class="close-button" [mat-dialog-close]="true">
   <mat-icon class="close-icon" color="warn">X</mat-icon>
 </button>
@@ -56,8 +57,53 @@
               <div class="form-group">
                 <button mat-raised-button="primary" (click)="login()">Log In</button>
                   <span style="padding-left: 15px"> New? <a routerLink="'/sign-up'">SIGN UP</a></span>
+=======
+<div class="login-section">
+    <div class="row justify-content-center">
+      <div class="col-md-3"></div>
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-header" style="text-align: center">
+            <h4>Login</h4>
+          </div>
+          <div class="card-body">
+            <form [formGroup]="loginForm" (ngSubmit)="login()">
+              <div class="form-group row">
+                <label for="user_name" class="col-md-4 col-form-label text-md-right">Username</label>
+                <div class="col-md-6">
+                  <input type="text" id="username" class="form-control" [formControlName]="'username'" name="username"
+                    required autofocus>
+
+                </div>
+              </div>
+  
+              <div class="form-group row">
+                <label for="password" class="col-md-4 col-form-label text-md-right">Password</label>
+                <div class="col-md-6">
+                  <input type="password" id="password" class="form-control" [formControlName]="'password'" name="password"
+                    required>
+
+                </div>
+              </div>
+  
+              <span class="col-md-6 offset-md-4">
+                <button type="submit" class="login">
+                  Login
+                </button>
+                <span style="padding-left: 15px">New? <a routerLink="'/sign-up'">SIGN UP</a></span>
+              </span>
+              <div class="login-failed" *ngIf='this.isError'>
+                <p class="login-failed-text">Login Failed.</p>
+>>>>>>> 16d04d84c7edae24a77f9e0157dea16273c2cad6
               </div>
             </form>
           </div>
         </div>
+<<<<<<< HEAD
       </div>
+=======
+      </div>
+      <div class="col-md-3"></div>
+    </div>
+  </div>
+>>>>>>> 16d04d84c7edae24a77f9e0157dea16273c2cad6

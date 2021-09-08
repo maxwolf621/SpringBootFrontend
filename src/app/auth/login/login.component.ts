@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder,FormGroup, Validators } from '@angular/forms';
+import {  FormControl, AbstractControl, FormBuilder,FormGroup, Validators } from '@angular/forms';
 import { LoginRequestPayload} from './login-request.payload';
 
 import { AuthService } from '../shared/auth.service';
@@ -9,11 +9,6 @@ import { throwError } from 'rxjs';
 import { MatDialogRef } from '@angular/material/dialog'
 import { MatFormField, MatFormFieldControl, MatFormFieldModule } from '@angular/material/form-field';
 
-/**
- * Reference
- * https://www.bezkoder.com/angular-11-form-validation/
- * https://www.positronx.io/angular-7-reactive-forms-validation-tutorial/
- */
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -32,8 +27,7 @@ export class LoginComponent implements OnInit {
               private toastr: ToastrService,
               private formBuilder: FormBuilder,
               public matdialogRef : MatDialogRef<LoginComponent>
-              ){ 
-      
+              ){      
       this.loginRequestPayload ={
         username : '',
         password : ''

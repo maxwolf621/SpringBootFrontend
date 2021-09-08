@@ -1,4 +1,5 @@
 <div class="container">
+<<<<<<< HEAD
     <div class="row"><hr />
         <div class="col-md-9">
             <!-- view post tile -->
@@ -54,3 +55,59 @@
         </div>
     </div>
  </div>
+=======
+    <div class="row">
+      <hr />
+      <div class="col-md-9">
+        <div class="row post">
+          <div class="col-md-1">
+            <app-vote-button [post]="post"></app-vote-button>
+          </div>
+          <div class="col-md-11">
+            <span>
+              <!-- show sub text -->
+              <span class="subreddit-text"><a class="post-url" href="">{{post.subname}}</a></span>
+              <span> . Posted
+                <!-- when post is invoked -->
+                <span> {{post.createdDate}} </span>
+                <!-- post by who?-->
+                by              
+                <a class="username" href="">{{post.username}}</a>
+              </span>
+            </span>
+            <hr />
+            <a routerLink="post.url" class="post-title">{{post.postname}}</a>
+            <div>
+              <p class="post-text" [innerHtml]="post.description"></p>
+            </div>
+            <!-- To post a comment -->
+            <div class="post-comment">
+              <form [formGroup]="commentForm" (ngSubmit)="postComment()">
+                <div class="form-group">
+                  <textarea class="form-control" [formControlName]="'text'" placeholder="Your Thoughts?"></textarea>
+                </div>
+                <button type="submit" class="login float-right">Comment</button>
+              </form>
+            </div>
+            <div style="margin-top: 60px;" *ngFor="let comment of comments">
+              <div class="comment">
+                <div class="username">
+                  <a routerLink="/user/comment.username">{{comment.username}}</a>
+                </div>
+                <div>
+                  <p>{{comment.createdDate}}</p>
+                </div>
+                <b>{{comment.commentText}}</b>
+              </div>
+              <hr />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <app-side-bar></app-side-bar>
+        <app-sub-side-bar></app-sub-side-bar>
+      </div>
+    </div>
+  </div>
+>>>>>>> 16d04d84c7edae24a77f9e0157dea16273c2cad6
