@@ -11,7 +11,6 @@
   margin-top: 5px;
 }
 
-<<<<<<< HEAD
 .create-post-container{
 	/* Font & Text */
 	font-family: IBMPlexSans, Arial, sans-serif;
@@ -64,20 +63,6 @@
 	z-index: auto;
 
 
-=======
-.create-post-container {
-  margin-top: 10px;
-  --post-line-color: #ccc;
-  border: 1px solid #ccc;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  overflow: hidden;
-  background-color: rgba(255, 255, 255, 0.8);
-  color: #878A8C;
-  position: relative;
-  border-radius: 4px;
-  padding: 5px;
->>>>>>> 16d04d84c7edae24a77f9e0157dea16273c2cad6
 }
 
 .btnDiscard {
@@ -101,7 +86,6 @@
     background-color: transparent;
   }
 
-<<<<<<< HEAD
 
 .post-title {
 	/* Font & Text */
@@ -243,8 +227,6 @@
 	
 }
 
-=======
->>>>>>> 16d04d84c7edae24a77f9e0157dea16273c2cad6
 .create-post-heading {
   font-size: 18px;
   font-weight: 500;

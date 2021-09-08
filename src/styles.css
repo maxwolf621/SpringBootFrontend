@@ -27,7 +27,7 @@ input.ng-invalid.ng-touched {
 
 .login,
 .sign-up {
-    background-color: #0079D3;
+    background-color: #6c838f;
     border-color: #0079D3;
     color: aliceblue;
     fill: #0079D3;
@@ -47,8 +47,9 @@ input.ng-invalid.ng-touched {
     
     /** Position Start from Right Side**/
     float: right;
+
     /** Distance btw login and sign-up **/
-    margin-right: 5px;  
+    margin-right: 10px;  
 }
 
 /**
@@ -56,4 +57,18 @@ https://css-tricks.com/quick-css-trick-how-to-center-an-object-exactly-in-the-ce
  */
 .custom-dialogconfig .mat-dialog-container{
 
+}
+
+.close-button{
+    float: right;
+    top:-24px;
+    right:-24px;
+}
+  
+.close-icon {
+    transition: 1s ease-in-out;
+}
+  
+.close-icon:hover {
+    transform: rotate(180deg);
 }

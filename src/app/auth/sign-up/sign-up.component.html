@@ -1,4 +1,7 @@
-  
+<button mat-icon-button class="close-button" [mat-dialog-close]="true">
+  <mat-icon class="close-icon" color="warn">close</mat-icon>
+</button>
+<h2 mat-dialog-title>Sign Up</h2>
 <form [formGroup]="signupForm" fxLayout="column" fxLayoutAlign="space-around stretch" fxLayoutGap="5px" 
       (ngSubmit)="signup()">
   <!-- NAME -->
@@ -33,4 +36,9 @@
       A password is required
     </mat-error>
   </mat-form-field>
+  <div>
+  <button mat-stroked-button color="primary" type="submit" [disabled]="!signupForm.valid" class="btn">
+    SignUp
+  </button>
+  </div>
 </form>

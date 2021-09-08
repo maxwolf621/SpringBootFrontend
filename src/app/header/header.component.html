@@ -25,8 +25,8 @@
         </button>
     </div>  
     <div *ngIf="!isLoggedIn">
-      <button mat-raised-button="primary" class="login" (click)="openDialog('login')">log In</button>
-      <button mat-raised-button="primary" class="sing-up" (click)="openDialog('signup')">Sign Up</button>
+      <button mat-raised-button="primary" class="login" (click)="openDialog('login')"><mat-icon>login</mat-icon>Log In</button>
+      <button mat-raised-button="primary" class="sign-up" (click)="openDialog('signup')"><mat-icon>app_registration-up</mat-icon>Sign Up</button>
     </div>
     </div>
   </nav>
