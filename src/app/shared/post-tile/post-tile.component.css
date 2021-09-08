@@ -19,21 +19,10 @@
     width: 10%;
 }
 
-.btnCommments{
-    border-radius: 2px solid;
-    color: #878A8C;
-    opacity: 1;
-}
-
-.btnCommments:hover{
-    opacity: 0.65;
-    cursor: pointer;
-}
-
 .post-title{
     font-size: 28px;
     font-weight: bold;
-    opacity: 1;
+    opacity: 1; 
 }
 
 .posturl, .postname{    
@@ -53,3 +42,61 @@
     width: 90%;
 }
 
+
+.commments{
+    border-radius: 2px solid;
+    color: #878A8C;
+    opacity: 1;
+    text-align: center;
+    letter-spacing: 1px;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .5px;
+    line-height: 24px;
+    text-transform: uppercase;
+    padding: 3px 16px;
+    opacity: 1;
+}
+
+.commments:hover{
+    color:azure;
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+.share,
+.read,
+.mark 
+{
+    background-color: #192734;
+    border-color: #192734;
+    color: aliceblue;
+    fill: #0079D3;
+    border: 1px solid;
+    border-radius: 4px;
+    text-align: center;
+    letter-spacing: 1px;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .5px;
+    line-height: 24px;
+    text-transform: uppercase;
+    padding: 3px 16px;
+    opacity: 1;
+    box-sizing: border-box;
+    
+    /** Position Start from Right Side**/
+    float: right;
+    /** Distance btw login and sign-up **/
+    margin-right: 5px;  
+}
+
+.share:hover,
+.read:hover,
+.mark:hover{
+    color:#242526;
+    opacity: 0.8;
+    background-color: aquamarine;
+}

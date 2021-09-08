@@ -1,32 +1,26 @@
-<<<<<<< HEAD
-<div class="row tiles">
-  <div class="portal-outlets col-md-9">
-    <div class="tabs">
-      <button mat-button><mat-icon>autorenew</mat-icon>NEW</button>
-      <button mat-button><mat-icon>local_fire_department</mat-icon>HOT</button>
-    </div>
-    <div class="protal tab-content ">
-=======
-<div> </div>
 <div class="row">
-  <app-post-tile [posts]="posts"></app-post-tile>
-</div>
-<div class="row">
-    <div class="col-md-9">
-      <!-- display the each post tile-->
-      <app-post-tile [posts]="posts"></app-post-tile>
->>>>>>> parent of 54046d9 (modify Read.me)
-    </div>
-  </div>
+    <mat-tab-group class="col-md-9">
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <span class="new">
+            <mat-icon>autorenew</mat-icon>
+            NEW
+          </span>
+        </ng-template>
+        <app-post-tile [posts]="posts"></app-post-tile> 
+      </mat-tab>
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <span class="hot">
+            <mat-icon>local_fire_department</mat-icon>
+            HOT
+          </span>
+        </ng-template>
+      </mat-tab>
+    </mat-tab-group>
     <div class="col-md-3">
       <!-- Side Bar-->
       <app-side-bar></app-side-bar>
       <app-sub-side-bar></app-sub-side-bar>
     </div>
 </div>
-
-<!--
-<div class="col-md-9">
-  <app-post-tile [posts]="posts"></app-post-tile>
-</div>
--->

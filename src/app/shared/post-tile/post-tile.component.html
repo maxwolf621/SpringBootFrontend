@@ -24,10 +24,13 @@
         
         <hr />
         <mat-card-actions>
-            <button mat-button color="paimray"  class="btnCommments" > <fa-icon [icon]="faComments"></fa-icon>Comments({{post.commentCount}})</button>
-            <button mat-button color="paimray" class="login" (click)="goToPost(post.id)">Read</button>
+            <button mat-button color="paimray" class="commments" > 
+                <fa-icon [icon]="faComments"></fa-icon> Comments({{post.commentCount}})
+            </button>
+            <button mat-button color="paimray" class="share"><mat-icon>share</mat-icon>Share</button>
+            <button mat-button color="paimray" class="mark"><mat-icon>bookmark_border</mat-icon>mark</button>
+            <button mat-button color="paimray" class="read" (click)="goToPost(post.id)"><mat-icon>description</mat-icon>Read</button>
         </mat-card-actions>
-
     </div>    
 </mat-grid-tile>
 
