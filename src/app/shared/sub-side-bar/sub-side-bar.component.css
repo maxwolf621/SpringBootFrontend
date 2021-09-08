@@ -14,3 +14,11 @@
     background-color: #242526;
 }
   
+.sub-titles{
+    color: aliceblue;
+    font-weight: bold;
+}
+
+.sub-titles:hover{
+    opacity: 0.8;
+}

@@ -12,8 +12,8 @@
     background-color: #242526;
 }
 
-.ButtonCreatePost, 
-.ButtonCreateSub
+.postBTN, 
+.subBTN
 {
     background-color: #0079D3;
     border-color: #0079D3;
@@ -35,15 +35,20 @@
     height: 34px;
 }
 
-.ButtonCreateSub{
+.subBTN{
     margin-top: 5px;
-    color: #0079D3;
-    background-color: transparent
+}
+
+.subBTN:hover,
+.postBTN:hover{
+    background-color: rgb(161, 252, 222);
+    color:#242526;
+    opacity: 0.8;
 }
 
 .sidebar>ul>li{
     font-size: 16px;
     font-weight: 500;
     line-height: 20px;
-    color: #1c1c1c;
+    color: #0e65a7;
 }
