@@ -17,8 +17,10 @@ export class CreateSubComponent implements OnInit {
   constructor(private subService: SubService,
     private router: Router) { 
     this.sub = {
+      id:-1,
       subname: '', 
-      description: ''
+      description: '',
+      postsCount:-1
     };
   }
 

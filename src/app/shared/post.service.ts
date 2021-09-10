@@ -17,7 +17,15 @@ export class PostService {
    */
   constructor(private http:HttpClient) {
   }
-
+  
+  /**
+   * 
+   * @returns fsvorite posts 
+   */
+  getMyFavoritePosts() : Observable<PostModel[]>{
+    console.log("Get My Favorite Post");
+    return this.http.get<PostModel[]>(`${environment.apiBookMark}/getMyFavoritePosts`);
+  }
   /**
    * 
    * @returns Posts 

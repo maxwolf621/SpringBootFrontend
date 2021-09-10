@@ -23,4 +23,13 @@ export class SubService {
   createSub(NewSub: SubModel){
     return this.http.post<SubModel>(environment.apiSub, NewSub);
   }
+
+  /**
+   * 
+   * @returns get user's subscribtion
+   */
+  getSubscriptions(){
+    console.info("Get User's Subscriptions");
+    return this.http.get<SubModel[]>(`${environment.apiBookMark}/getMyFavoriteSubs`);
+  }
 }

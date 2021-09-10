@@ -20,7 +20,6 @@ export class ViewPostComponent implements OnInit {
   
   postId!: number ;
   post!: PostModel;
-
   /**
    * display comments
    */
@@ -82,18 +81,9 @@ export class ViewPostComponent implements OnInit {
     this.commentService.getAllCommentsForPost(this.postId).subscribe(comment => {
       console.info(comment);
       this.comments = comment;
+      return this.comments;
     }, error => {
       throwError(error);
     });
   }
-
-    // New features
-    ReportComment() {
-      console.info("1234");
-    }
-  
-    HideComment() {
-      console.info("54321");
-    }
-
 }

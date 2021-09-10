@@ -1,6 +1,18 @@
-.body{
-    background-color: #18191A;
-    background-size: auto;
+.sub-tile {
+    align-self: flex-start;
+    max-height: 300px;
     width: 100%;
-    min-height:100vh;
+    margin: 5px;
+    color:aliceblue;
+    background-color: #242527;
 }
+
+.sub-group > .sub-tile {
+    color : azure;
+}
+
+mat-card:focus {
+    background: aquamarine;
+    opacity: 1;
+    color:#242527;
+  }

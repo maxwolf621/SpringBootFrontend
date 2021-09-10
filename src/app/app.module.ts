@@ -71,6 +71,8 @@ import { SubSideBarComponent } from './shared/sub-side-bar/sub-side-bar.componen
 import { HomeComponent } from './home/home.component';
 import { CommentTileComponent } from './shared/comment-tile/comment-tile.component';
 import { UserProfileComponent } from './auth/user-profile/user-profile.component';
+import { CreateComponent } from './overlay/create/create.component';
+import { SubTileComponent } from './shared/sub-tile/sub-tile.component';
 
 
 @NgModule({
@@ -91,7 +93,9 @@ import { UserProfileComponent } from './auth/user-profile/user-profile.component
     SideBarComponent,
     VoteButtonComponent,
     CommentTileComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    CreateComponent,
+    SubTileComponent
   ],   
   imports: [
     ToastrModule.forRoot(),
@@ -153,7 +157,8 @@ import { UserProfileComponent } from './auth/user-profile/user-profile.component
     ScrollingModule,
     MatButtonModule,
     MatInputModule,
-    MatRippleModule
+    MatRippleModule,
+    OverlayModule
   ],
   exports:[
 

@@ -7,7 +7,6 @@
 .col-md-1 {
     width: 10%;
 }
-
 .upvote,.downvote {
     cursor: pointer;
     border-radius: 2px solid;   
