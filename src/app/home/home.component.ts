@@ -2,11 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { PostModel } from '../shared/post-model';
 import { PostService } from '../shared/post.service';
 
+
+import { PostTileComponent } from '../shared/post-tile/post-tile.component';
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
-})
+}) 
 export class HomeComponent implements OnInit {
 
   // To pass to post tile
@@ -22,5 +25,5 @@ export class HomeComponent implements OnInit {
     this.postService.getAllPost().subscribe(post=>{
       this.posts = post;
     });
-  }
+  }  
 }
