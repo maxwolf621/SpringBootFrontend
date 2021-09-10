@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <button mat-icon-button class="close-button" [mat-dialog-close]="true">
   <mat-icon class="close-icon" color="warn">X</mat-icon>
 </button>
@@ -7,103 +6,43 @@
 <div class="container">
   <div class="row custom-wrapper">
     <div class="col-md-12">
-            <!-- Form Group STARTS-->
-           <form [formGroup]="loginForm" (ngSubmit)="login()">
-            <div class="group-gap">
-
-
-                <!-- LABEL OF username -->
-                <label [ngClass]="{'error': isLoggedIn && myForm.username.errors}">
-                  Username</label>
-
-                <div class="mb-3">
-                  <!-- User input-->
-                  <input 
-                  type="text" 
-                  class="form-control" 
-                  formControlName="username" 
-                  name="username" required
-                  [ngClass]="{'error': isLoggedIn && myForm.username.errors}"
-                  />
-                  
-                  <!-- Error Blocks -->
-                  <div *ngIf="isLoggedIn && myForm.username.errors" class="alert alert-danger">
-                    <div *ngIf="myForm.username.errors.required">Username is required</div>
-                  </div>
-
-                </div>
-            
-              </div>
-                <!-- Lebel of Password-->
-                <label [ngClass]="{ 'error' : isLoggedIn && myForm.password.errors }">Password</label>
-                
-                <div class="md-3">
-
-                  <!-- User Input -->
-                  <input 
-                  type="password" 
-                  class="form-control" 
-                  formControlName="password" 
-                  name="password" required
-                  [ngClass]="{ 'error' : isLoggedIn && myForm.password.errors }"
-                  />
-
-                  <!-- Error Blocks-->
-                  <div *ngIf="isLoggedIn && myForm.password.errors" class="alert alert-danger">
-                    <div *ngIf="myForm.password.errors.required"> Password is Required </div>
-                  </div>
-                </div> 
-  
-              <div class="form-group">
-                <button mat-raised-button="primary" (click)="login()">Log In</button>
-                  <span style="padding-left: 15px"> New? <a routerLink="'/sign-up'">SIGN UP</a></span>
-=======
-<div class="login-section">
-    <div class="row justify-content-center">
-      <div class="col-md-3"></div>
-      <div class="col-md-6">
-        <div class="card">
-          <div class="card-header" style="text-align: center">
-            <h4>Login</h4>
-          </div>
-          <div class="card-body">
-            <form [formGroup]="loginForm" (ngSubmit)="login()">
-              <div class="form-group row">
-                <label for="user_name" class="col-md-4 col-form-label text-md-right">Username</label>
-                <div class="col-md-6">
-                  <input type="text" id="username" class="form-control" [formControlName]="'username'" name="username"
-                    required autofocus>
-
-                </div>
-              </div>
-  
-              <div class="form-group row">
-                <label for="password" class="col-md-4 col-form-label text-md-right">Password</label>
-                <div class="col-md-6">
-                  <input type="password" id="password" class="form-control" [formControlName]="'password'" name="password"
-                    required>
-
-                </div>
-              </div>
-  
-              <span class="col-md-6 offset-md-4">
-                <button type="submit" class="login">
-                  Login
-                </button>
-                <span style="padding-left: 15px">New? <a routerLink="'/sign-up'">SIGN UP</a></span>
-              </span>
-              <div class="login-failed" *ngIf='this.isError'>
-                <p class="login-failed-text">Login Failed.</p>
->>>>>>> 16d04d84c7edae24a77f9e0157dea16273c2cad6
-              </div>
-            </form>
+      <!-- Form Group STARTS-->
+      <form [formGroup]="loginForm" (ngSubmit)="login()">
+        <div class="group-gap">
+          <!-- LABEL OF username -->
+          <label [ngClass]="{'error': isLoggedIn && myForm.username.errors}">Username</label>
+          <div class="mb-3">
+            <!-- User input-->
+            <input 
+            type="text" 
+            class="form-control" 
+            formControlName="username" 
+            name="username" required
+            [ngClass]="{'error': isLoggedIn && myForm.username.errors}"/>
+            <!-- Error Blocks -->
+            <div *ngIf="isLoggedIn && myForm.username.errors" class="alert alert-danger">
+              <div *ngIf="myForm.username.errors.required">Username is required</div>
+            </div>
           </div>
         </div>
-<<<<<<< HEAD
-      </div>
-=======
-      </div>
-      <div class="col-md-3"></div>
-    </div>
+        <!-- Lebel of Password-->
+        <label [ngClass]="{ 'error' : isLoggedIn && myForm.password.errors }">Password</label>
+        <div class="md-3">
+          <!-- User Input -->
+          <input 
+          type="password" 
+          class="form-control" 
+          formControlName="password" 
+          name="password" required
+          [ngClass]="{ 'error' : isLoggedIn && myForm.password.errors }"/>
+          <div *ngIf="isLoggedIn && myForm.password.errors" class="alert alert-danger">
+            <div *ngIf="myForm.password.errors.required"> Password is Required </div>
+          </div>
+        </div> 
+        <div class="form-group">
+          <button mat-raised-button="primary" (click)="login()">Log In</button>
+          <span style="padding-left: 15px"> New? <a routerLink="'/sign-up'">SIGN UP</a></span>
+        </div>
+    </form>
   </div>
->>>>>>> 16d04d84c7edae24a77f9e0157dea16273c2cad6
+</div>

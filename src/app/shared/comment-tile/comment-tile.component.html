@@ -1,35 +1,6 @@
-<<<<<<< HEAD
-<div class="row comment" *ngFor="let comment of comments">
-<<<<<<< HEAD
-    <div class="col-md-11">
-      <!-- sub info-->
-      <span class="comment-details">
-        <span> comment by <a routerLink="/user/comment.username">{{comment.username}}</a></span>
-        <span> - {{comment.duration}}</span>
-        <span> at post <a class="username" routerLink="/view-post/{{comment.postId}}">{{comment.postId}}</a></span>
-      </span><hr />
-      <div class="comment-text">
-        {{comment.text}}
-      </div>
-    </div>    
-  </div
-=======
-  <div class="col-md-11">
-    <!-- sub info-->
-    <span class="comment-details">
-      <span> comment by <a routerLink="/user/comment.username">{{comment.username}}</a></span>
-      <span> - {{comment.duration}}</span>
-      <span> at post <a class="username" routerLink="/view-post/{{comment.postId}}">{{comment.postId}}</a></span>
-    </span><hr />
-    <div class="comment-text">
-      {{comment.text}}
-    </div>
-  </div>    
-</div>
-<<<<<<< HEAD
->>>>>>> d6a5b3f (Add angular dialog)
-=======
-=======
-<p>comment-tile works!</p>
->>>>>>> 16d04d84c7edae24a77f9e0157dea16273c2cad6
->>>>>>> 55f6d8d (resolve conlict)
+<mat-card *ngFor="let comment of comments"  class ="comment-cards">
+  
+  <mat-card-title>{{comment.duration}} at post </mat-card-title>  
+    <mat-divider inset></mat-divider>
+  <mat-card-content><p>{{comment.text}}</p></mat-card-content>
+</mat-card>
