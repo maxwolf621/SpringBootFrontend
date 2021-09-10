@@ -10,7 +10,7 @@ export const environment = {
   apiComment: 'http://localhost:8080/api/comment',
   apiVote   : 'http://localhost:8080/api/vote',
   apiBookMark:'http://localhost:8080/api/bookmark',
-  apiUserProfile:'http://localhost:8080/api/user'
+  apiUserProfile:'http://localhost:8080/api/user',
 };
 
 /*

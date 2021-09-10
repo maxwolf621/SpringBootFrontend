@@ -1,13 +1,6 @@
-<div class="row comment" *ngFor="let comment of comments">
-  <div class="col-md-11">
-    <!-- sub info-->
-    <span class="comment-details">
-      <span> comment by <a routerLink="/user/comment.username">{{comment.username}}</a></span>
-      <span> - {{comment.duration}}</span>
-      <span> at post <a class="username" routerLink="/view-post/{{comment.postId}}">{{comment.postId}}</a></span>
-    </span><hr />
-    <div class="comment-text">
-      {{comment.text}}
-    </div>
-  </div>    
-</div>
+<mat-card *ngFor="let comment of comments"  class ="comment-cards">
+  
+    <mat-card-title>{{comment.duration}} at post </mat-card-title>  
+      <mat-divider inset></mat-divider>
+    <mat-card-content><p>{{comment.text}}</p></mat-card-content>
+</mat-card>

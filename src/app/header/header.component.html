@@ -1,5 +1,8 @@
-<header>
-  <nav class="navbar fixed-top navbar-expand-lg navbar-light">
+<header class="toolbar">
+<nav class="navbar fixed-top navbar-expand-lg navbar-light">
+  <button mat-icon-button (click)="sideNav.toggle()">
+    <mat-icon>{{ sideNav.opened ? 'close' : 'menu' }}</mat-icon>
+  </button>
     <div class="flex-grow-1">
       <a aria-label="Home" class="logo" routerLink="/">
         <svg width="40" height="40"> <!-- how big of this svg-->
@@ -12,7 +15,6 @@
         </span>
       </a>
     </div>
-
     <div class="flex-grow-1 float-right">
       <div *ngIf="isLoggedIn" ngbDropdown class="float-right">
         <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
@@ -23,14 +25,23 @@
             <img class="account-icon" src="https://chinadigitaltimes.net/space/images/1/10/%E4%B9%A0%E7%BB%B4%E5%B0%BC1.jpg">
             <span id="username">{{username}}</span>
         </button>
-    </div>  
-    <div *ngIf="!isLoggedIn">
-      <button mat-raised-button="primary" class="login" (click)="openDialog('login')"><mat-icon>login</mat-icon>Log In</button>
-      <button mat-raised-button="primary" class="sign-up" (click)="openDialog('signup')"><mat-icon>app_registration-up</mat-icon>Sign Up</button>
-    </div>
+      </div>  
+      <div *ngIf="!isLoggedIn">
+        <button mat-raised-button="primary" class="login" (click)="openDialog('login')"><mat-icon>login</mat-icon>Log In</button>
+        <button mat-raised-button="primary" class="sign-up" (click)="openDialog('signup')"><mat-icon>app_registration-up</mat-icon>Sign Up</button>
+      </div>
     </div>
   </nav>
   <!-- https://angular.io/guide/router#router-outlet -->
   <router-outlet></router-outlet>
 </header>
 
+
+<mat-sidenav-container class="demo-app-container">
+  <mat-sidenav class="demo-app-sidenav" #sideNav mode="push" >
+    <div>asdfasdfsdf</div>
+    <div>
+      <button mat-raised-button color="warn" (click)="toggleSideNav(sideNav)">asdfasdfasdf</button>
+    </div>
+  </mat-sidenav>
+</mat-sidenav-container>

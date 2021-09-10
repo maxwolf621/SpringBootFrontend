@@ -1,9 +1,8 @@
 .post{
-    --post-line-color: #ccc;    
-    border: 1px solid #ccc;
+    --post-line-color:azure;    
+    border: 1px solid azure;
     margin-bottom: 20px;
     overflow: hidden;
-    background-color: #242526;
     color: #878A8C;
     position: relative;
     border-radius: 4px;
@@ -11,37 +10,27 @@
     /* new patch */
     display: flex;
     width: 80%;
-    height:200px;
+    height: 300px;
 
 }
 
 .vote-component {
     width: 10%;
 }
-
 .post-title{
     font-size: 28px;
     font-weight: bold;
     opacity: 1; 
 }
-
 .posturl, .postname{    
     color: #B0B3B8;
 }
-
-
 .sub-text{
     font-weight: bold;
 }
-
 .post-text{
     margin-top: 10px;
 }
-
-.col-md-11 {
-    width: 90%;
-}
-
 
 .commments{
     border-radius: 2px solid;

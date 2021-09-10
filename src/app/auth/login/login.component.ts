@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
   loginRequestPayload! : LoginRequestPayload;
   isLoggedIn:boolean = false;
-
+  readonly SUCCESS = "success";
   // dependency injection
   constructor(private authService: AuthService,
               private activatedRoute: ActivatedRoute,
@@ -50,14 +50,11 @@ export class LoginComponent implements OnInit {
       data => { 
         this.toastr.success('Login Successful');
         this.isLoggedIn = true;
-        console.info("login");  
-        this.router.navigateByUrl('');
-        
-        this.matdialogRef.close();
+        this.matdialogRef.close(this.SUCCESS);
 
     }, error => {
       this.isLoggedIn = false;
-      //alert('Login Fail Please Check Again')
+      this.toastr.error("Login Fail Please Check Again");
       throwError(error);
     });
   }

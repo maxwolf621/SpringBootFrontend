@@ -2,22 +2,20 @@
     <div class="row"><hr />
         <div class="col-md-9">
             <!-- view post tile -->
-            <div class="row post">
+            <div class="row post" *ngIf="post">
                 <!-- vote section -->
                 <div class="col-md-1">
                     <app-vote-button [post]="post"></app-vote-button>
                 </div>
                 <!-- post + comment + sub section-->
-                <div class="col-md-11">
+                <div class="col-md-11" >
                     <!-- sub and post info -->
                     <div class="sub-and-post-info">
                         <span><a class="post-url" href="">{{post.subname}}</a></span>
                         <span> - Posted by
                             <a *ngIf="post.username === null" class="username" href="">Anonymous</a>
                             <a *ngIf="post.username != null" class="username" href="">{{post.username}}</a>
-
                             <span> {{post.duration}} </span>
-
                         </span>
 
                     </div><hr />
@@ -32,7 +30,7 @@
                             <div class="form-group">
                                 <textarea class="form-control" [formControlName]="'text'" placeholder="Leave A Comment"></textarea>
                             </div>
-                            <button type="submit" class="login float-right">Comment</button>
+                            <button type="submit" class="login float-right"><mat-icon>comment</mat-icon>Comment</button>
                         </form>
                     </div>
                     <!-- br means under the Button `Comment`-->

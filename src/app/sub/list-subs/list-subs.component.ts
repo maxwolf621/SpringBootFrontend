@@ -22,4 +22,7 @@ export class ListSubsComponent implements OnInit {
     )
   }  
   
+  getSubLength(){
+    return this.subs.length;
+  }
 }

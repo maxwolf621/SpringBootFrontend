@@ -1,9 +1,11 @@
-header{
+.toolbar{
+    /**preventing overflowing */
     border-radius: 1px solid;
 }
 
+
 .navbar{
-  background-color: #242526;
+    background-color: #2D333B;
 }
 
 .web-name{        
