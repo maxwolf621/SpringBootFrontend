@@ -5,10 +5,12 @@
 export const environment = {
   production: false,
   apiAuth   : 'http://localhost:8080/api/auth',
-  apiPost   : 'http://localhost:8080/api/posts',
+  apiPost   : 'http://localhost:8080/api/post',
   apiSub    : 'http://localhost:8080/api/sub',
-  apiComment: 'http://localhost:8080/api/comments',
-  apiVote   : 'http://localhost:8080/api/votefor'
+  apiComment: 'http://localhost:8080/api/comment',
+  apiVote   : 'http://localhost:8080/api/vote',
+  apiBookMark:'http://localhost:8080/api/bookmark',
+  apiUserProfile:'http://localhost:8080/api/user',
 };
 
 /*

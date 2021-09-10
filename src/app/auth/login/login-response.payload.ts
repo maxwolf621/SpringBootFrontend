@@ -1,7 +1,7 @@
+
 export interface LoginResponse {
-    authenticationToken: string;
+    token: string;
     refreshToken: string;
-    // Token's expiration
     expiresAt: Date;
     username: string;
 }

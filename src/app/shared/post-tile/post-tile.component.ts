@@ -10,11 +10,17 @@ import { Router } from '@angular/router';
 })
 export class PostTileComponent implements OnInit {
 
-  @Input() posts!: PostModel[];
+
+  /**
+   * father : home.component.ts
+   */
+  @Input() posts: PostModel[] | undefined;
+  
   faComments = faComments;
-  constructor(private router: Router) { }
+  constructor(private router: Router) {}
 
   ngOnInit(): void {
+    console.info("ngOnInit of PostTileComponent");
   }
 
   goToPost(id: number): void {

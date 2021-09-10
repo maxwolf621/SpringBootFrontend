@@ -9,23 +9,57 @@ import { CreatePostPayload } from '../post/create-post/create-post.pyload';
   providedIn: 'root'
 })
 export class PostService {
+  
+  /**
+   * 
+   * Dependency Injection
+   * @param http Performs HTTP requests
+   */
   constructor(private http:HttpClient) {
   }
-
+  
+  /**
+   * 
+   * @returns fsvorite posts 
+   */
+  getMyFavoritePosts() : Observable<PostModel[]>{
+    console.log("Get My Favorite Post");
+    return this.http.get<PostModel[]>(`${environment.apiBookMark}/getMyFavoritePosts`);
+  }
+  /**
+   * 
+   * @returns Posts 
+   */
   getAllPost() : Observable<PostModel[]>{
-      console.log("Get All Posts From BackEnd")
+      console.log("Display All Posts");
       return this.http.get<PostModel[]>(`${environment.apiPost}`);
   }
   
+  /**
+   * 
+   * @param postPayload {@link post-}
+   * @returns DOT (post response) from backend
+   */
   createPost(postPayload: CreatePostPayload): Observable<any> {
       return this.http.post(`${environment.apiPost}`, postPayload);
   }
-
-  getPost(id: number): Observable<PostModel> {
-      return this.http.get<PostModel>(`${environment.apiPost}/` + id);
+  
+  /**
+   * 
+   * @param id looking for a certain post by post id
+   * @returns a certain post 
+   */
+  getPostById(id: number): Observable<PostModel> {
+      console.log("Get Post By Id");
+      return this.http.get<PostModel>(`${environment.apiPost}/getByPost/` + id);
   }
 
+  /**
+   * 
+   * @param name Looking for a certain post by username
+   * @returns a certain post
+   */
   getAllPostsByUser(name: string): Observable<PostModel[]> {
-    return this.http.get<PostModel[]>(`${environment.apiPost}/user/` + name);
+    return this.http.get<PostModel[]>(`${environment.apiPost}/getByUser/` + name);
   }
 }

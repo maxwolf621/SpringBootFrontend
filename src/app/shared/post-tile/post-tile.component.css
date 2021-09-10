@@ -1,41 +1,91 @@
 .post{
-    --post-line-color: #ccc;    
-    border: 1px solid #ccc;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    --post-line-color:azure;    
+    border: 1px solid azure;
+    margin-bottom: 20px;
     overflow: hidden;
-    background-color: rgba(255,255,255,0.8);
     color: #878A8C;
     position: relative;
     border-radius: 4px;
     padding:5px;
+    /* new patch */
+    display: flex;
+    width: 80%;
+    height: 300px;
+
 }
 
-.btnCommments{
-    border-radius: 2px solid;
-    color: #878A8C;
-    opacity: 1;
+.vote-component {
+    width: 10%;
 }
-
-.btnCommments:hover{
-    opacity: 0.65;
-    cursor: pointer;
-}
-
 .post-title{
     font-size: 28px;
     font-weight: bold;
+    opacity: 1; 
+}
+.posturl, .postname{    
+    color: #B0B3B8;
+}
+.sub-text{
+    font-weight: bold;
+}
+.post-text{
+    margin-top: 10px;
+}
+
+.commments{
+    border-radius: 2px solid;
+    color: #878A8C;
+    opacity: 1;
+    text-align: center;
+    letter-spacing: 1px;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .5px;
+    line-height: 24px;
+    text-transform: uppercase;
+    padding: 3px 16px;
     opacity: 1;
 }
 
-.posturl, .postname{    
-    color: black;
+.commments:hover{
+    color:azure;
+    cursor: pointer;
+    opacity: 0.8;
 }
 
-.subreddit-text{
-    font-weight: bold;
+.share,
+.read,
+.mark 
+{
+    background-color: #192734;
+    border-color: #192734;
+    color: aliceblue;
+    fill: #0079D3;
+    border: 1px solid;
+    border-radius: 4px;
+    text-align: center;
+    letter-spacing: 1px;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .5px;
+    line-height: 24px;
+    text-transform: uppercase;
+    padding: 3px 16px;
+    opacity: 1;
+    box-sizing: border-box;
+    
+    /** Position Start from Right Side**/
+    float: right;
+    /** Distance btw login and sign-up **/
+    margin-right: 5px;  
 }
 
-.post-text{
-    margin-top: 10px;
+.share:hover,
+.read:hover,
+.mark:hover{
+    color:#242526;
+    opacity: 0.8;
+    background-color: aquamarine;
 }

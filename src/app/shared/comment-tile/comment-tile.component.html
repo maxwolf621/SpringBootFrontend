@@ -1,1 +1,6 @@
-<p>comment-tile works!</p>
+<mat-card *ngFor="let comment of comments"  class ="comment-cards">
+  
+    <mat-card-title>{{comment.duration}} at post </mat-card-title>  
+      <mat-divider inset></mat-divider>
+    <mat-card-content><p>{{comment.text}}</p></mat-card-content>
+</mat-card>

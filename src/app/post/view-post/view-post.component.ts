@@ -18,54 +18,72 @@ import { PostService } from 'src/app/shared/post.service';
 })
 export class ViewPostComponent implements OnInit {
   
-  postId: number;
+  postId!: number ;
   post!: PostModel;
+  /**
+   * display comments
+   */
   comments!: CommentPayload[];
+  
+  /**
+   * To post　a comment
+   */
   commentForm: FormGroup;
   commentPayload: CommentPayload;
 
   constructor(private postService: PostService, private activateRoute: ActivatedRoute,
     private commentService: CommentService, private router: Router) {
-    this.postId = this.activateRoute.snapshot.params.id;
 
     this.commentForm = new FormGroup({
       text: new FormControl('', Validators.required)
     });
+
     this.commentPayload = {
-      commentText: '',
+      text: "",
       postId: this.postId
     };
   }
 
   ngOnInit(): void {
-    this.getPostById();
+    this.postId = this.activateRoute.snapshot.params.postId;
+
+    console.info("-----------get PostId " + this.postId);
+    this.getPostById(this.postId);
     this.getCommentsForThisPost();
   }
 
+  /**
+   * post the comment
+   */
   postComment() {
-    this.commentPayload.commentText = this.commentForm.get('text')!.value;
+    this.commentPayload.text = this.commentForm.get('text')!.value;
+    this.commentPayload.postId = this.postId;
     this.commentService.postComment(this.commentPayload).subscribe(data => {
-      this.commentForm.get('commentText')!.setValue('');
-      this.getCommentsForThisPost();
+      console.info(data);
     }, error => {
       throwError(error);
     })
   }
 
-  private getPostById() {
-    this.postService.getPost(this.postId).subscribe(post => {
+  
+  private getPostById(postId:number) {
+    this.postService.getPostById(postId).subscribe(post => {
       this.post = post;
     }, error => {
       throwError(error);
     });
   }
 
+  /**
+   * display comments of this post
+   */
   private getCommentsForThisPost() {
     this.commentService.getAllCommentsForPost(this.postId).subscribe(comment => {
+      console.info(comment);
       this.comments = comment;
+      return this.comments;
     }, error => {
       throwError(error);
     });
   }
-
 }

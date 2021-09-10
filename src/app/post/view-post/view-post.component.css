@@ -1,0 +1,172 @@
+  
+.sub-and-post-info {
+    font-family: 'IBMPlexSans', Helvetica, sans-serif;
+    display :inline;
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 12px;
+    letter-spacing: 0.5px;
+}
+
+.post-title {
+        /* Font & Text */
+        font-family: 'IBMPlexSans', Helvetica, sans-serif;
+        font-size: 18px;
+        font-style: normal;
+        font-variant: normal;
+        font-weight: 500;
+        letter-spacing: normal;
+        line-height: 22px;
+        text-decoration: none solid rgb(215, 218, 220);
+        text-align: start;
+        text-indent: 0px;
+        text-transform: none;
+        vertical-align: baseline;
+        white-space: normal;
+        word-spacing: 0px;
+
+        /* Color & Background */
+        background-attachment: scroll;
+        background-color: rgba(0, 0, 0, 0);
+        background-image: none;
+        background-position: 0% 0%;
+        background-repeat: repeat;
+        color: rgb(215, 218, 220);
+
+}
+
+.post-title:hover {
+  opacity: 0.6;
+}
+
+.username{
+    color: #e4e6eb;
+}
+
+.post-text{
+    /* Font & Text */
+    font-family: "Noto Sans", Arial, sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 400;
+    letter-spacing: normal;
+    line-height: 21px;
+    text-decoration: none solid rgb(215, 218, 220);
+    text-align: start;
+    text-indent: 0px;
+    text-transform: none;
+    white-space: normal;
+    word-spacing: 0px;
+
+    /* Color & Background */
+    background-attachment: scroll;
+    background-color: rgba(0, 0, 0, 0);
+    background-image: none;
+    background-position: 0% 0%;
+    background-repeat: repeat;
+    color: rgb(215, 218, 220);
+}
+
+.commentBAR{
+        /* Font & Text */
+        font-family: IBMPlexSans, Arial, sans-serif;
+        font-size: 16px;
+        font-style: normal;
+        font-variant: normal;
+        font-weight: 400;
+        letter-spacing: normal;
+        line-height: 16px;
+        text-decoration: none solid rgb(0, 0, 0);
+        text-align: start;
+        text-indent: 0px;
+        text-transform: none;
+        vertical-align: baseline;
+        white-space: normal;
+        word-spacing: 0px;
+}
+
+.post{
+    --post-line-color: #ccc;    
+    border: 1px solid #ccc;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    overflow: hidden;
+    background-color: #252627;
+    color: #878A8C;
+    position: relative;
+    border-radius: 4px;
+    padding:5px;
+
+}
+
+.display-commenter{
+	/* Font & Text */
+	font-family: IBMPlexSans, Arial, sans-serif;
+	font-size: 16px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 400;
+	letter-spacing: normal;
+	line-height: 16px;
+	text-decoration: none solid rgb(0, 0, 0);
+	text-align: start;
+	text-indent: 0px;
+	text-transform: none;
+	vertical-align: baseline;
+	white-space: normal;
+	word-spacing: 0px;
+
+	/* Color & Background */
+	background-attachment: scroll;
+	background-color: rgba(0, 0, 0, 0);
+	background-image: none;
+	background-position: 0% 0%;
+	background-repeat: repeat;
+	color: rgb(0, 0, 0);
+}
+
+.commentUser {
+	/* Color & Background */
+	background-attachment: scroll;
+	background-color: rgba(0, 0, 0, 0);
+	background-image: none;
+	background-position: 0% 0%;
+	background-repeat: repeat;
+	color: rgb(215, 218, 220);
+}
+
+.comment-duration{
+        /* Font & Text */
+        font-family: "Noto Sans", Arial, sans-serif;
+        font-size: 12px;
+        font-style: normal;
+        font-variant: normal;
+        font-weight: 400;
+        letter-spacing: normal;
+        line-height: 18px;
+        /* Color & Background */
+        background-attachment: scroll;
+        background-color: rgba(0, 0, 0, 0);
+        background-position: 0% 0%;
+        background-repeat: repeat;
+        color: rgb(129, 131, 132);    
+}
+
+.display-comment-text{
+        /* Font & Text */
+        font-family: "Noto Sans", Arial, sans-serif;
+        font-size: 14px;
+        font-style: normal;
+        font-variant: normal;
+        font-weight: 400;
+        letter-spacing: normal;
+        line-height: 21px;
+        text-align: start;
+        text-indent: 0px;
+        text-transform: none;
+        white-space: normal;
+        word-spacing: 0px;
+}
+
+

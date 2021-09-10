@@ -1,11 +1,9 @@
 <div class="sidebar">
-    
-    <img src="https://www.redditstatic.com/desktop2x/img/id-cards/home-banner@2x.png">
     <div style="text-align: center; font-size: 1em"></div>
     <div style="text-align: center">
-        <button class="ButtonCreatePost" (click)="CreatePost()">Create Post</button>
+        <button mat-raised-button="primary" class="postBTN" (click)="CreatePost()"><mat-icon>post_add</mat-icon>Create Post</button>
     </div>
     <div style="text-align: center">
-        <button class="ButtonCreateSub" (click)="CreateSub()">Create Subreddit</button>
+        <button mat-raised-button="primary" class="subBTN" (click)="CreateSub()"><mat-icon>post_add</mat-icon>Create Subreddit</button>
     </div>
 </div>

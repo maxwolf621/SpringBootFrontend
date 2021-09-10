@@ -1,53 +1,44 @@
-<div class="register-section">
-    <div class="row justify-content-center">
-      <div class="col-md-3"></div>
-      <div class="col-md-6">
-        <div class="card">
-          <div class="card-header" style="text-align: center">
-            <h4>Register</h4>
-          </div>
-          <div class="card-body">
-            <form [formGroup]="signupForm" (ngSubmit)="signup()">
-              <div class="form-group row">
-                <label for="email_address" class="col-md-4 col-form-label text-md-right">E-Mail</label>
-                <div class="col-md-6">
-                  <input type="text" [formControlName]="'email'" id="email_address" class="form-control" name="email-address" required>                
-                  <div *ngIf="email && email.invalid && (email.dirty || email.touched)" class="alert alert-danger">
-                        Email is required.
-                  </div>
-                </div>
-              </div>
-  
-              <div class="form-group row">
-                <label class="col-md-4 col-form-label text-md-right">User Name</label>
-                <div class="col-md-6">
-                  <input type="text" id="username" name="username" [formControlName]="'username'" class="form-control">
-                  <div *ngIf="username && username.invalid && (username.dirty || username.touched)" class="alert alert-danger">
-                    Username is required
-                </div>
-                </div>
-              </div>
-  
-              <div class="form-group row">
-                <label for="password" class="col-md-4 col-form-label text-md-right">Password</label>
-                <div class="col-md-6">
-                  <input type="password" [formControlName]="'password'" id="password" class="form-control" name="password">
-                  <div *ngIf="password && password.invalid && (password.dirty || password.touched)" class="alert alert-danger">
-                    Password is required 
-                </div>
-                </div>
-              </div>
-  
-              <span class="col-md-6 offset-md-4">
-                <button type="submit" class="sign-up">
-                  Sign Up
-                </button>
-                <span style="padding-left: 15px">Existing user? <a routerLink="/login">Log In</a></span>
-              </span>
-            </form>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3"></div>
-    </div>
+<button mat-icon-button class="close-button" [mat-dialog-close]="true">
+  <mat-icon class="close-icon" color="warn">close</mat-icon>
+</button>
+<h2 mat-dialog-title>Sign Up</h2>
+<form [formGroup]="signupForm" fxLayout="column" fxLayoutAlign="space-around stretch" fxLayoutGap="5px" 
+      (ngSubmit)="signup()">
+  <!-- NAME -->
+  <mat-form-field appearance="legacy" *ngIf="signupForm.contains('username')" @inflate>
+    <mat-label>Full name</mat-label>
+    <input matInput formControlName="username">
+    <mat-error *ngIf="signupForm.controls.username.errors?.required">
+      Please specify your name here
+    </mat-error>
+  </mat-form-field>
+
+   <!-- EMAIL -->
+   <mat-form-field appearance="legacy" *ngIf="signupForm.contains('email')" @inflate>
+    <mat-label>Email</mat-label>
+    <input matInput formControlName="email">
+    <mat-error *ngIf="signupForm.controls.email.errors?.required">
+      Please specify an email address
+    </mat-error>
+    <mat-error *ngIf="signupForm.controls.email.errors?.email">
+      Ooops! it looks like this is not a valid email
+    </mat-error>
+  </mat-form-field>
+
+  <!-- PASSWORD -->
+  <mat-form-field appearance="legacy" *ngIf="signupForm.contains('password')" @inflate>
+    <mat-label>Password</mat-label>
+    <input matInput [type]="hidePassword ? 'password' : 'text'" formControlName="password">
+    <mat-icon matSuffix (click)="hidePassword = !hidePassword">
+      {{ hidePassword ? 'visibility_off' : 'visibility'}}
+    </mat-icon>
+    <mat-error *ngIf="signupForm.controls.password.errors?.required">
+      A password is required
+    </mat-error>
+  </mat-form-field>
+  <div>
+  <button mat-stroked-button color="primary" type="submit" [disabled]="!signupForm.valid" class="btn">
+    SignUp
+  </button>
   </div>
+</form>

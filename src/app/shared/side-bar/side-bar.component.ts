@@ -11,6 +11,7 @@ export class SideBarComponent implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit(): void {
+    console.info("Side Bar Component is displayed successfully");
   }
   
   CreatePost() {

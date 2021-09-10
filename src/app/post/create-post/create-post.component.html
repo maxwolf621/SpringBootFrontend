@@ -4,29 +4,24 @@
       <div class="create-post-container col-md-9">
         <form class="post-form" [formGroup]="createPostForm" (ngSubmit)="createPost()">
           <div class="form-group">
-            <div class="create-post-heading">Create Post</div>
-            <hr />
-            <input type="text" [formControlName]="'postName'" class="form-control" style="margin-top: 5px"
-              placeholder="Title">
-  
-            <input type="text" class="form-control" [formControlName]="'url'" style="margin-top: 5px" placeholder="URL">
-  
+            <div class="create-post-heading">Create Post</div><hr />
+            <textarea [formControlName]="'postName'" id="post-title"
+              placeholder="Title"></textarea>
+            <textarea id="post-description" [formControlName]="'url'" placeholder="Description"></textarea>
             <select class="form-control" style="margin-top: 10px" [formControlName]="'subName'">
               <option value="" selected disabled>Select Sub</option>
               <option *ngFor="let sub of subs">
                 {{sub.subname}}
               </option>
             </select>
-  
-
             <span>
               <div style="margin-top: 5px" class="float-right">
                 <button (click)="discard()" class="btnDiscard">Discard</button>
                 <button class="btnCreatePost">Post</button>
               </div>
             </span>
-          </div>
-        </form>
-      </div>
+        </div>
+      </form>
     </div>
   </div>
+</div>

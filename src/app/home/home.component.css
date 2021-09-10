@@ -1,0 +1,40 @@
+.hot,
+.new{
+    color: whitesmoke;
+    fill: #0079D3;
+    text-align: center;
+    letter-spacing: 1px;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .5px;
+    line-height: 24px;
+    text-transform: uppercase;
+    padding: 0px 24px;
+    box-sizing: border-box;
+}
+
+.hot:hover
+{
+    color:red;
+}
+
+
+.new:hover{
+    color:#0079D3
+}
+
+.new:active,
+.hot:active{
+    color:powderblue;
+}
+
+/*
+.tiles {
+    padding-top: 100px;
+}
+*/
+
+.mat-tab-labels {
+    justify-content: center;
+}

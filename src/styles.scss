@@ -1,0 +1,99 @@
+//@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+
+// if https://github.com/vuejs/vue-cli/issues/682 (ommit .css if error occurs)
+@import '~normalize.css/normalize.css';
+@import './theme';
+
+//@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+//@import url('https://use.fontawesome.com/releases/v5.8.1/css/all.css');
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat-core(); 
+/**
+https://stackoverflow.com/questions/44163721/modal-dialog-is-opening-at-the-bottom-of-the-screen-and-not-behaving-properly
+*/
+
+@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+/**
+https://stackoverflow.com/questions/44163721/modal-dialog-is-opening-at-the-bottom-of-the-screen-and-not-behaving-properly
+*/
+
+/**
+https://css-tricks.com/quick-css-trick-how-to-center-an-object-exactly-in-the-center/
+ */
+.custom-dialogconfig .mat-dialog-container{
+
+}
+
+.close-button{
+    float: right;
+    top:-24px;
+    right:-24px;
+}
+  
+.close-icon {
+    transition: 1s ease-in-out;
+}
+  
+.close-icon:hover {
+    transform: rotate(180deg);
+}
+
+
+/* You can add global styles to this file, and also import other style files */
+input.ng-invalid.ng-touched {
+    border: 1px solid red;
+  }
+  
+html {
+    padding: 0px;
+    height: 100%;
+} 
+
+body {
+    margin-top:63px;
+    height: 100%;
+    background-color : #22272E ; /* #18191A;*/
+    color : #E4E6EB;
+}
+
+input.ng-invalid.ng-touched {
+    border: 1px solid red;
+}
+
+/**
+https://css-tricks.com/quick-css-trick-how-to-center-an-object-exactly-in-the-center/
+.custom-dialogconfig .mat-dialog-container{
+    
+}
+*/
+
+
+/*
+.login,
+.sign-up {
+    background-color: #6c838f;
+    border-color: #0079D3;
+    color: aliceblue;
+    fill: #0079D3;
+    border: 1px solid;
+    border-radius: 4px;
+    text-align: center;
+    letter-spacing: 1px;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .5px;
+    line-height: 24px;
+    text-transform: uppercase;
+    padding: 3px 16px;
+    opacity: 1;
+    box-sizing: border-box;
+    float: right;
+
+    margin-right: 10px;  
+}
+*/

@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import {  FormControl, AbstractControl, FormBuilder,FormGroup, Validators } from '@angular/forms';
 import { LoginRequestPayload} from './login-request.payload';
 
 import { AuthService } from '../shared/auth.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { throwError } from 'rxjs';
+import { MatDialogRef } from '@angular/material/dialog'
+import { MatFormField, MatFormFieldControl, MatFormFieldModule } from '@angular/material/form-field';
 
 @Component({
   selector: 'app-login',
@@ -16,47 +18,48 @@ export class LoginComponent implements OnInit {
 
   loginForm!: FormGroup;
   loginRequestPayload! : LoginRequestPayload;
-  isError!: boolean;
-  constructor(private authService: AuthService,private activatedRoute: ActivatedRoute,
-    private router: Router, private toastr: ToastrService) { 
+  isLoggedIn:boolean = false;
+  readonly SUCCESS = "success";
+  // dependency injection
+  constructor(private authService: AuthService,
+              private activatedRoute: ActivatedRoute,
+              private router: Router, 
+              private toastr: ToastrService,
+              private formBuilder: FormBuilder,
+              public matdialogRef : MatDialogRef<LoginComponent>
+              ){      
       this.loginRequestPayload ={
         username : '',
         password : ''
       }
     }
-
   ngOnInit(): void {
-    this.loginForm = new FormGroup({
-      username: new FormControl('', Validators.required),
-      password: new FormControl('', Validators.required)
-    });
+      this.loginForm = this.formBuilder.group({
+      username: ['', Validators.required],
+      password: ['', [Validators.required, Validators.minLength(1),Validators.maxLength(20)] ]
+      })
   }
 
-  // getters
-  get username(){ return this.loginForm.get('username');}
-  get password(){ return this.loginForm.get("Password");}
+  get myForm(){
+    return this.loginForm.controls;
+  }
 
   login(){
-    // pass vlues of the login form to payload
-    this.loginRequestPayload ={
-      username : this.loginForm.get('username')!.value,
-      password : this.loginForm.get('password')!.value
-    }
-    console.log(this.loginRequestPayload);
-   
-    this.authService.login(this.loginRequestPayload).subscribe(
+    // to backend
+    this.authService.login(this.loginForm.value).subscribe(
       data => { 
-        this.isError = false;
-        this.router.navigateByUrl('');
         this.toastr.success('Login Successful');
+        this.isLoggedIn = true;
+        this.matdialogRef.close(this.SUCCESS);
+
     }, error => {
-      this.isError = true;
+      this.isLoggedIn = false;
+      this.toastr.error("Login Fail Please Check Again");
       throwError(error);
     });
-
   }
 
-
-
-  
+  closeClick(){
+    this.matdialogRef.close();
+  }
 }

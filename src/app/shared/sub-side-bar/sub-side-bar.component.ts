@@ -13,9 +13,15 @@ import { SubService } from 'src/app/sub/sub.service';
 export class SubSideBarComponent implements OnInit {
 
   subs: SubModel[] = [];
+  
   displayTheAllSubs = false;
+
   constructor(private subService: SubService) {
-    subService.getAllSubs().subscribe((sub: any[]) =>{
+  }
+
+  ngOnInit( ): void {
+    this.subService.getAllSubs().subscribe((sub: any[]) =>{
+      // do not show all the subs in sub-side bar 
       if(sub.length > 3){
         this.subs = sub.splice(0, 3);
         this.displayTheAllSubs = true;
@@ -23,10 +29,7 @@ export class SubSideBarComponent implements OnInit {
       else{
         this.subs = sub;
       }
-    })
-   }
-
-  ngOnInit( ): void {
+    });
   }
 
 }
