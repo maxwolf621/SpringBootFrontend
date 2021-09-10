@@ -49,11 +49,11 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatTreeModule} from '@angular/material/tree';
 import {OverlayModule} from '@angular/cdk/overlay';
-
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { EditorModule } from '@tinymce/tinymce-angular';
-
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 /* Components */
 import { HeaderComponent } from './header/header.component';
@@ -72,9 +72,6 @@ import { HomeComponent } from './home/home.component';
 import { CommentTileComponent } from './shared/comment-tile/comment-tile.component';
 import { UserProfileComponent } from './auth/user-profile/user-profile.component';
 
-import { MatDialog, MatDialogModule } from '@angular/material/dialog';
-import { MatFormField, MatFormFieldControl, MatFormFieldModule } from '@angular/material/form-field';
-import { MatIcon} from '@angular/material/icon';
 
 @NgModule({
   declarations: [

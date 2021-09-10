@@ -1,9 +1,11 @@
-header{
+.toolbar{
+    /**preventing overflowing */
     border-radius: 1px solid;
 }
 
+
 .navbar{
-  background-color: #242526;
+    background-color: #2D333B;
 }
 
 .web-name{        
@@ -14,14 +16,37 @@ header{
 }
 
 
-.sign-up{
-    background-color: #0079D3;
-    border-color: #0079D3;
+.login,
+.sign-up {
+    background-color: #192734;
+    border-color: #192734;
     color: aliceblue;
+    fill: #0079D3;
+    border: 1px solid;
+    border-radius: 4px;
+    text-align: center;
+    letter-spacing: 1px;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .5px;
+    line-height: 24px;
+    text-transform: uppercase;
+    padding: 3px 16px;
+    opacity: 1;
+    box-sizing: border-box;
+    
+    /** Position Start from Right Side**/
+    float: right;
+    /** Distance btw login and sign-up **/
+    margin-right: 5px;  
 }
 
-.sign-up:hover{
-    opacity: 0.6;
+.sign-up:hover,
+.login:hover{
+    color:#242526;
+    opacity: 0.8;
+    background-color: aquamarine;
 }
 
 .userdetails{    
@@ -51,6 +76,8 @@ header{
 .userdetails:hover{
     border: 1px solid;
 }
+
+
 
 .dropdown-item{
     background-color: #f8f9fa;

@@ -31,14 +31,13 @@ html {
 body {
     margin-top:63px;
     height: 100%;
-    background-color: #18191A;
+    background-color : #2D333B ; /* #18191A;*/
     color : #E4E6EB;
 }
 
 input.ng-invalid.ng-touched {
     border: 1px solid red;
 }
-
 
 /**
 https://css-tricks.com/quick-css-trick-how-to-center-an-object-exactly-in-the-center/
