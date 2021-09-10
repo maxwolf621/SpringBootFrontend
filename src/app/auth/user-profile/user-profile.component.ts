@@ -4,7 +4,10 @@ import { ActivatedRoute } from '@angular/router';
 import { CommentService } from 'src/app/comment/comment.service';
 import { PostModel } from 'src/app/shared/post-model';
 import { CommentPayload } from 'src/app/comment/comment.payload';
+<<<<<<< HEAD
 import { throwIfEmpty } from 'rxjs/operators';
+=======
+>>>>>>> 16d04d84c7edae24a77f9e0157dea16273c2cad6
 
 @Component({
   selector: 'app-user-profile',
@@ -12,6 +15,7 @@ import { throwIfEmpty } from 'rxjs/operators';
   styleUrls: ['./user-profile.component.css']
 })
 export class UserProfileComponent implements OnInit {
+<<<<<<< HEAD
 
   username: string = "";
   
@@ -32,11 +36,18 @@ export class UserProfileComponent implements OnInit {
   /**
    * comment counts
    */
+=======
+  name: string;
+  posts!: PostModel[];
+  comments!: CommentPayload[];
+  postLength!: number;
+>>>>>>> 16d04d84c7edae24a77f9e0157dea16273c2cad6
   commentLength!: number;
 
   constructor(private route: ActivatedRoute, private postService: PostService,
     private commentService: CommentService) {
     // ref https://angular.io/api/router/ActivatedRouteSnapshot
+<<<<<<< HEAD
     this.username = this.route.snapshot.params.username;
 
     this.postService.getAllPostsByUser(this.username).subscribe(data => {
@@ -52,4 +63,21 @@ export class UserProfileComponent implements OnInit {
   }
 
   ngOnInit(): void {}
+=======
+    this.name = this.route.snapshot.params.name;
+
+    this.postService.getAllPostsByUser(this.name).subscribe(data => {
+      this.posts = data;
+      this.postLength = data.length;
+    });
+    this.commentService.getAllCommentsByUser(this.name).subscribe(data => {
+      this.comments = data;
+      this.commentLength = data.length;
+    });
+  }
+
+  ngOnInit(): void {
+  }
+
+>>>>>>> 16d04d84c7edae24a77f9e0157dea16273c2cad6
 }

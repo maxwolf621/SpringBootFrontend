@@ -6,12 +6,20 @@
           <div class="form-group">
             <div class="create-post-heading">Create Post</div>
             <hr />
+<<<<<<< HEAD
             
             <textarea [formControlName]="'postName'" id="post-title"
               placeholder="Title"></textarea>
   
             <textarea id="post-description" [formControlName]="'url'" placeholder="Description"></textarea>
 
+=======
+            <input type="text" [formControlName]="'postName'" class="form-control" style="margin-top: 5px"
+              placeholder="Title">
+  
+            <input type="text" class="form-control" [formControlName]="'url'" style="margin-top: 5px" placeholder="URL">
+  
+>>>>>>> 16d04d84c7edae24a77f9e0157dea16273c2cad6
             <select class="form-control" style="margin-top: 10px" [formControlName]="'subName'">
               <option value="" selected disabled>Select Sub</option>
               <option *ngFor="let sub of subs">
@@ -26,7 +34,10 @@
                 <button class="btnCreatePost">Post</button>
               </div>
             </span>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 16d04d84c7edae24a77f9e0157dea16273c2cad6
           </div>
         </form>
       </div>

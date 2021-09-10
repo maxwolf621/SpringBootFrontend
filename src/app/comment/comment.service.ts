@@ -18,7 +18,11 @@ export class CommentService {
     return this.http.get<CommentPayload[]>(`${environment.apiComment}/user/` + username);
   }
   postComment(commentPayload: CommentPayload): Observable<any> {
+<<<<<<< HEAD
     console.info("leave a comment : " + commentPayload);
     return this.http.post<any>(`${environment.apiComment}`, commentPayload);
+=======
+    return this.http.post<any>( environment.apiComment, commentPayload);
+>>>>>>> 16d04d84c7edae24a77f9e0157dea16273c2cad6
   }
 }
