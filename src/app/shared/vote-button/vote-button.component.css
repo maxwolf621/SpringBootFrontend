@@ -11,7 +11,7 @@
 
 .upvote,.downvote {
     cursor: pointer;
-    border-radius: 2px solid;        
+    border-radius: 2px solid;   
 }
 .upvote:hover {
     color: green;
@@ -23,4 +23,9 @@
 .votecount{
     font-weight: bold;    
     color : grey;
+    font-size: x-large;
+    right: 100cm;
+}
+.p-2{
+  vertical-align:auto 
 }
