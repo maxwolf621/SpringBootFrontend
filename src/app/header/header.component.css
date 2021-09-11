@@ -16,6 +16,7 @@
 }
 
 
+.dark-mode,
 .login,
 .sign-up {
     background-color: #192734;
@@ -94,7 +95,7 @@
 }
 
 .dropdown-menu{
-    background-color: #f8f9fa;
+    background-color: #2D333B;
     right : 20%;
 }
 
