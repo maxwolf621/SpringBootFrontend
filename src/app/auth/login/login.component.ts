@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {  FormControl, AbstractControl, FormBuilder,FormGroup, Validators } from '@angular/forms';
+import { FormControl, AbstractControl, FormBuilder,FormGroup, Validators } from '@angular/forms';
 import { LoginRequestPayload} from './login-request.payload';
 
 import { AuthService } from '../shared/auth.service';
@@ -7,7 +7,6 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { throwError } from 'rxjs';
 import { MatDialogRef } from '@angular/material/dialog'
-import { MatFormField, MatFormFieldControl, MatFormFieldModule } from '@angular/material/form-field';
 
 @Component({
   selector: 'app-login',
