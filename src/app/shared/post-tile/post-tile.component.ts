@@ -15,9 +15,14 @@ export class PostTileComponent implements OnInit {
    * father : home.component.ts
    */
   @Input() posts: PostModel[] | undefined;
+
+  thumbnail : string ="";
   
   faComments = faComments;
-  constructor(private router: Router) {}
+  constructor(private router: Router) {
+
+  }
+
 
   ngOnInit(): void {
     console.info("ngOnInit of PostTileComponent");
@@ -26,5 +31,4 @@ export class PostTileComponent implements OnInit {
   goToPost(id: number): void {
     this.router.navigateByUrl('/view-post/' + id);
   }
-
 }

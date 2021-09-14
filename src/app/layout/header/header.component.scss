@@ -1,28 +1,9 @@
-.toolbar{
-    /**preventing overflowing */
-    border-radius: 1px solid;
-}
-
-
-.navbar{
-    background-color: #2D333B;
-}
-
-.web-name{        
-    font-weight: 700;
-    height: 50px;
-    width: 50px;    
-    color :#f8f9fa
-}
-
-
-.dark-mode,
 .login,
 .sign-up {
-    background-color: #192734;
+    //background-color: #192734;
     border-color: #192734;
-    color: aliceblue;
-    fill: #0079D3;
+    //color: aliceblue;
+    //fill: #0079D3;
     border: 1px solid;
     border-radius: 4px;
     text-align: center;
@@ -36,11 +17,6 @@
     padding: 3px 16px;
     opacity: 1;
     box-sizing: border-box;
-    
-    /** Position Start from Right Side**/
-    float: right;
-    /** Distance btw login and sign-up **/
-    margin-right: 5px;  
 }
 
 .sign-up:hover,
@@ -68,17 +44,12 @@
     text-transform: uppercase;
     padding: 3px 16px;
     opacity: 1;
-    border: 0px;
-    
-    float: right;
-     
+    border: 0px;     
 } 
 
 .userdetails:hover{
     border: 1px solid;
 }
-
-
 
 .dropdown-item{
     background-color: #f8f9fa;
@@ -111,3 +82,73 @@
     float: right;
     margin-right: 5px;  
 }
+
+
+.toolbar-seprator {
+    flex: 1 1 auto;
+}
+
+/**
+
+mat-sidenav-container {
+    height: 100%;
+}
+
+mat-toolbar {
+    background: #2D333B;
+    color: white;
+}
+
+mat-sidenav {
+    margin: 16px;
+    width: 200px;
+    border-right: none;
+    background: #002b5c;
+    color: white;
+    border-radius: 10px;
+    padding: 16px;
+    text-align: center;
+}
+
+.content {
+    height: calc(100vh - 98px);
+    margin: 16px;
+    margin-left: 32px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 2rem;
+    color: azure;
+}
+
+mat-sidenav-container {
+    height: calc(100vh - 65px);
+}
+
+.menu-button {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    font-size: 1rem;
+
+    mat-icon {
+        margin-right: 8px;
+    }
+}
+
+.designation {
+    margin-top: 2px;
+    font-size: 0.7rem;
+    color: lightgrey;
+}
+
+mat-divider {
+    margin-top: 16px;
+    margin-bottom: 16px;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+**/

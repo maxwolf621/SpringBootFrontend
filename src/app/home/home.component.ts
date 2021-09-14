@@ -1,20 +1,19 @@
 import { Component, OnInit } from '@angular/core';
+import { PostService } from '../post/postservice/post.service';
 import { PostModel } from '../shared/post-model';
-import { PostService } from '../shared/post.service';
-
-
-import { PostTileComponent } from '../shared/post-tile/post-tile.component';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  styleUrls: ['./home.component.scss']
 }) 
 export class HomeComponent implements OnInit {
 
   // To pass to post tile
   posts: Array<PostModel> =[];
 
+  readonly linkpreviewProvider = "https://api.linkpreview.net/?key=44fd0848d4bb42f9fc43e09cae56f0b3&q=";
+  image: string = "";
   constructor(private postService: PostService) {
   }
 
@@ -24,6 +23,15 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.postService.getAllPost().subscribe(post=>{
       this.posts = post;
-    });
-  }  
+    }); 
+    
+    this.postService.getimagepreview(`https://api.linkpreview.net/?key=44fd0848d4bb42f9fc43e09cae56f0b3&q=https://google.com/`).subscribe(
+      thumbnail =>{ 
+        console.info("getimage" + thumbnail.image);
+        this.image = thumbnail.image
+      },
+      error =>{
+        console.warn("ERROR" + error);
+      });
+    }
 }

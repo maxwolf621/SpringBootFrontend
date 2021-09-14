@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { PostService } from 'src/app/shared/post.service';
 import { ActivatedRoute } from '@angular/router';
 import { CommentService } from 'src/app/comment/comment.service';
 import { PostModel } from 'src/app/shared/post-model';
 import { CommentPayload } from 'src/app/comment/comment.payload';
 import { throwIfEmpty } from 'rxjs/operators';
 import { throwError } from 'rxjs';
-import { SubService } from 'src/app/sub/sub.service';
+import { SubService } from 'src/app/sub/subservice/sub.service';
 import { SubModel } from 'src/app/sub/sub-model';
+import { PostService } from 'src/app/post/postservice/post.service';
 
 @Component({
   selector: 'app-user-profile',

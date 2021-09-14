@@ -5,7 +5,7 @@ import { throwError } from 'rxjs';
 import { CommentPayload } from 'src/app/comment/comment.payload';
 import { CommentService } from 'src/app/comment/comment.service';
 import { PostModel } from 'src/app/shared/post-model';
-import { PostService } from 'src/app/shared/post.service';
+import { PostService } from '../postservice/post.service';
 
 /* 
  * A post will have 

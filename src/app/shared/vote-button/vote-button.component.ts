@@ -4,11 +4,10 @@ import { faArrowUp, faArrowDown } from '@fortawesome/free-solid-svg-icons';
 import { VotePayload } from './vote-payload';
 import { VoteType } from './vote-type';
 import { VoteService } from '../vote.service';
-import { AuthService } from 'src/app/auth/shared/auth.service';
-import { PostService } from '../post.service';
+import { AuthService } from 'src/app/auth/authservice/auth.service';
 import { throwError } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
-import { ThisReceiver, ThrowStmt } from '@angular/compiler';
+import { PostService } from 'src/app/post/postservice/post.service';
 
 
 /**

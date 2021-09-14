@@ -1,0 +1,11 @@
+.float-menu {
+  position: fixed !important;
+  right: 10px;   /* distance form right */
+  bottom: 10px;  /*distance from bottom*/
+  z-index: 2;
+}
+.fab-menu-panel {
+}
+.fab-menu-panel .mat-nav-list {
+  padding-top: 0px;
+}

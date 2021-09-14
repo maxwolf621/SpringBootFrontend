@@ -1,41 +1,7 @@
+@import '~@angular/material/theming';
+
 // ? Importing `Work Sans` font for headings, you can change this if you want
 @import url("https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500&display=swap");
-
-
-/**
-  * Custom Theme
-  */ 
-
-//$theme: map_merge($theme, (background: $background));
-$test-primary: mat-palette($mat-red, 600, 400, 900);
-$test-accent: mat-palette($mat-blue-grey, 500, 200, 700);
-$test-warn: mat-palette($mat-blue);
-
-// Create the theme object (a Sass map containing all of the palettes).
-$test-theme: mat-dark-theme($test-primary, $test-accent, $test-warn);
-
-// Insert custom background color
-$test-background-color: #bd0303;
-
-$background: map-get($test-theme, background);
-
-$background: map_merge($background, (background: $test-background-color));
-
-$test-theme: map_merge($test-theme, (background: $background));
-
-
-/**
-  * Default theme
-  */
-$theming-material-components-primary: mat-palette($mat-indigo);
-$theming-material-components-accent: mat-palette($mat-pink, A200, A100, A400);
-$theming-material-components-warn: mat-palette($mat-red);
-$theming-material-components-theme: mat-dark-theme(
-  $theming-material-components-primary,
-  $theming-material-components-accent,
-  $theming-material-components-warn
-);
-
 
 /**
   * App Theme
@@ -43,35 +9,19 @@ $theming-material-components-theme: mat-dark-theme(
 $primary: mat-palette($mat-blue);
 $accent:  mat-palette($mat-amber, A200, A100, A400);
 $warn:    mat-palette($mat-red);
-$app-theme: mat-dark-theme($primary, $accent, $warn);
 
-/**
-  * Defines an additional mat-link class to decorate links diviating
-  * from the strict rules of material design for the sake of clarity
-  */
-.mat-link {
-    cursor: pointer;
-    color: mat-color($primary) !important;
-    text-decoration: underline;
-}
+$app-theme: mat-light-theme($primary, $accent, $warn);
 
 /** 
   * Dark Theme
   */
 $dark-primary: mat-palette($mat-blue-grey);
-$dark-accent: mat-palette($mat-amber, A200, A100, A400);
+$dark-accent: mat-palette($mat-pink, A200, A100, A400);
 $dark-warn: mat-palette($mat-deep-orange);
-$dark-theme: mat-dark-theme(
-  (
-    color: (
-      primary: $dark-primary,
-      accent: $dark-accent,
-      warn: $dark-warn,
-    ),
-  )
-);
+$dark-theme: mat-dark-theme($dark-primary,$dark-accent,$dark-warn);
 
 
+/**
 // Define a custom heading typography config
 $heading-font-family: "'Work Sans', sans-serif";
 $typography: mat-typography-config(
@@ -84,3 +34,4 @@ $typography: mat-typography-config(
 );
 // Override typography for all Angular Material, including mat-base-typography and all components.
 @include angular-material-typography($typography);
+**/

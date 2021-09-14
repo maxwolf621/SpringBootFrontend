@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { throwError } from 'rxjs';
 import { SubModel } from '../sub-model';
-import { SubService } from '../sub.service';
+import { SubService } from '../subservice/sub.service';
 @Component({
   selector: 'app-list-subs',
   templateUrl: './list-subs.component.html',

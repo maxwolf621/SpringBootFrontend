@@ -6,9 +6,9 @@
 import { Injectable } from '@angular/core';
 import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError, BehaviorSubject } from 'rxjs';
-import { AuthService } from './auth/shared/auth.service';
 import { catchError, switchMap } from 'rxjs/operators';
 import { LoginResponse } from './auth/login/login-response.payload';
+import { AuthService } from './auth/authservice/auth.service';
 
 /**
  * reference https://stackoverflow.com/questions/47400929/how-to-add-authorization-header-to-angular-http-request

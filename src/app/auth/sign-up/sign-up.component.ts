@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { AuthService } from '../shared/auth.service';
+import { AuthService } from '../authservice/auth.service';
 import { SignupRequestPayload } from './signup-request.payload';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { $providers } from './login-providers';
 
 @Component({
   selector: 'app-sign-up',
@@ -11,6 +12,9 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./sign-up.component.scss']
 })
 export class SignUpComponent implements OnInit {
+
+  
+  readonly providers = $providers;
 
   signupForm!: FormGroup;
   private signupRequestPayload!:SignupRequestPayload;

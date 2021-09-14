@@ -1,52 +1,37 @@
-
-// For more information: https://material.angular.io/guide/theming
-@import '~@angular/material/theming';
-
+//import our custom theme                
+@import "./theme.scss";     
 // Include the common styles for Angular Material. We include this here so that you only
 // have to load a single css file for Angular Material in your app.
 // Be sure that you only ever include this mixin once!
 @include mat-core();
 
-//@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
-//@import url('https://use.fontawesome.com/releases/v5.8.1/css/all.css');
-@import '~normalize.css/normalize.css';
-@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
-
+@import '~@angular/cdk/overlay-prebuilt.css';
 
 //@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
 //@import '~@angular/cdk/overlay-prebuilt.css';
 
-// import our custom theme                
-@import "./theme.scss";                   
-                                          
 // import custom component themes         
 @import "./custom-component-themes.scss";
-
 
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
-@include angular-material-theme($test-theme); 
-@include custom-components-theme($theming-material-components-theme); 
+//@include custom-components-theme($theming-material-components-theme); 
 
-// Include the dark color styles inside of a block with a CSS class. You can make this
-// CSS class whatever you want. In this example, any component inside of an element with
-// `.dark-theme` will be affected by this alternate dark theme instead of the default theme.
-.dark-theme {
-    @include angular-material-color($dark-theme);
-    @include angular-material-theme($dark-theme); 
+@include angular-material-theme($dark-theme);
 
-}
- 
+
 .app-theme{
-    @include angular-material-color($app-theme);
     @include angular-material-theme($app-theme);
 }
+.dark-theme {
+    @include angular-material-theme($dark-theme);
+}
+ 
 
-
-/**
+/*************************
   * Global variable
-  */ 
+  **************************/ 
 
 /* You can add global styles to this file, and also import other style files */
 .custom-dialogconfig .mat-dialog-container{
@@ -71,21 +56,15 @@
 /* You can add global styles to this file, and also import other style files */
 input.ng-invalid.ng-touched {
     border: 1px solid red;
-  }
+}
   
 html {
     height: 100%;
 } 
 
 body {
-    font-family: Roboto, "Helvetica Neue", sans-serif;
+    //font-family: Roboto, "Helvetica Neue", sans-serif;
     margin-top:63px;
     height: 100%;
-    color : #E4E6EB;
-    //background-color : #22272E ; /* #18191A;*/
-    
 }
 
-input.ng-invalid.ng-touched {
-    border: 1px solid red;
-}

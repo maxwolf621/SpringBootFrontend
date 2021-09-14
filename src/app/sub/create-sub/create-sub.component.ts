@@ -3,7 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { throwError } from 'rxjs';
 import { SubModel } from '../sub-model';
-import { SubService } from '../sub.service';
+import { SubService } from '../subservice/sub.service';
 
 @Component({
   selector: 'app-sub',

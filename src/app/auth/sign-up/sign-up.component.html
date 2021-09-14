@@ -2,7 +2,9 @@
   <mat-icon class="close-icon" color="warn">close</mat-icon>
 </button>
 <h2 mat-dialog-title>Sign Up</h2>
-<form [formGroup]="signupForm" fxLayout="column" fxLayoutAlign="space-around stretch" fxLayoutGap="5px" 
+
+
+<form [formGroup]="signupForm" fxLayout="column" fxLayoutAlign="space-around stretch" fxLayoutGap="10px" 
       (ngSubmit)="signup()">
   <!-- NAME -->
   <mat-form-field appearance="legacy" *ngIf="signupForm.contains('username')" @inflate>
@@ -42,3 +44,20 @@
   </button>
   </div>
 </form>
+
+
+<!-- SIGN-IN PROVIDERS -->
+<div fxLayout="column" fxLayoutAlign="center center">
+  <p class="mat-small">or sign-in with:</p>
+
+  <div fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap="10px">
+
+    <button mat-icon-button *ngFor="let p of providers">
+      <mat-icon class="providers"
+                [fontSet]="p.icon.split(':')[0]"
+                [fontIcon]="p.icon.split(':')[1]" 
+                [ngStyle]="{ color: p.color }">
+      </mat-icon>
+    </button>
+  </div>
+</div>

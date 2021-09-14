@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { throwError } from 'rxjs';
-import { PostService } from 'src/app/shared/post.service';
 import { SubModel } from 'src/app/sub/sub-model';
-import { SubService } from 'src/app/sub/sub.service';
-import { CreatePostPayload } from './create-post.pyload'
+import { SubService } from 'src/app/sub/subservice/sub.service';
+import { PostService } from '../postservice/post.service';
+import { CreatePostPayload } from './create-post.payload'
 
 @Component({
   selector: 'app-create-post',

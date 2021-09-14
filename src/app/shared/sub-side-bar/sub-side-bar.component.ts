@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SubModel } from 'src/app/sub/sub-model';
-import { SubService } from 'src/app/sub/sub.service';
+import { SubService } from 'src/app/sub/subservice/sub.service';
 
 
 

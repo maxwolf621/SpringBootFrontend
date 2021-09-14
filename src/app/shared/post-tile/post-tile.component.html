@@ -6,11 +6,12 @@
         <app-vote-button [post] = "post"></app-vote-button>
     </div>
 
+
     <!-- second son post and comment-->
     <div class="col-md-11">
         <span class="sub-info">
             <span class="sub-text"><a class="posturl font-semibold no-underline hover:underlin flex items-center" routerLink="">{{post.subname}}</a></span>
-            <span> Posted by <a class="username" routerLink="/user/{{post.username}}">{{post.username}}</a></span>
+            <span> Posted by <a class="username">{{post.username}}</a></span>
             <span> - {{post.duration}}</span>
         </span> <hr />
         
@@ -18,15 +19,14 @@
             <mat-card-title class="postname"> <a href="{{post.url}}">{{post.postname}}</a> </mat-card-title>
         </div>
         <mat-card-content >{{post.description.substring(0,100)}} ... </mat-card-content>
-        
         <hr />
         <mat-card-actions>
-            <button mat-button color="paimray" class="commments" > 
+            <button mat-button color="primary" class="commments" > 
                 <fa-icon [icon]="faComments"></fa-icon> Comments({{post.commentCount}})
             </button>
-            <button mat-button color="paimray" class="share"><mat-icon>share</mat-icon>Share</button>
-            <button mat-button color="paimray" class="mark"><mat-icon>bookmark_border</mat-icon>mark</button>
-            <button mat-button color="paimray" class="read" (click)="goToPost(post.id)"><mat-icon>description</mat-icon>Read</button>
+            <button mat-button color="primary" class="share"><mat-icon>share</mat-icon>Share</button>
+            <button mat-button color="primary" class="mark"><mat-icon>bookmark_border</mat-icon>mark</button>
+            <button mat-button color="accent" class="read" (click)="goToPost(post.id)"><mat-icon>description</mat-icon>Read</button>
         </mat-card-actions>
     </div>    
 </mat-grid-tile>

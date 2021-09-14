@@ -1,9 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { PostModel } from './post-model';
-import { environment } from '../../environments/environment';
-import { CreatePostPayload } from '../post/create-post/create-post.pyload';
+import { PostModel } from 'src/app/shared/post-model';
+import { environment } from 'src/environments/environment';
+import { CreatePostPayload } from '../create-post/create-post.payload';
 
 @Injectable({
   providedIn: 'root'
@@ -18,9 +18,16 @@ export class PostService {
   constructor(private http:HttpClient) {
   }
   
+
+  getimagepreview(url : string): Observable<any>{
+    console.log("get this post's image if it exists");
+    return this.http.get<any>(url);
+  }
+
+
   /**
    * 
-   * @returns fsvorite posts 
+   * @returns favorite posts 
    */
   getMyFavoritePosts() : Observable<PostModel[]>{
     console.log("Get My Favorite Post");
