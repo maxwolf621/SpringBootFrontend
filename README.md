@@ -38,6 +38,10 @@ FYI
 [dialog](https://medium.com/wizdm-genesys/authenticating-users-with-a-pop-up-dialog-in-angular-7e91c2ff0dc4)
 
 [expansion panel](https://www.freakyjolly.com/angular-material-expansion-panel-accordion-in-angular-project-using-material/)  
+
+### Router
+
+[Child Router](https://indepth.dev/posts/1235/how-to-reuse-common-layouts-in-angular-using-router-2)
 ### Database design 
 [Database Design for comments](https://stackoverflow.com/questions/8112831/implementing-comments-and-likes-in-database)  
 [Database Design for facebook](https://medium.com/@rithwikkukunuri30/database-design-for-facebook-4f52b55ebe94)  
