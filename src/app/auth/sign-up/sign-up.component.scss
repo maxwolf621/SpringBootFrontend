@@ -1,19 +1,4 @@
-:host {
-  position: relative;
-  display: flex;
-  flex-flow: column;
-  justify-content: space-around;
-  align-items: stretch;
+.mat-input-invalid .mat-input-placeholder {
 
-  width: 200px;
-  max-width: 100%;
-  text-align: center;
-
-  .btn {
-    margin-top: 10px;
-    min-height: 48px;
-  }
-  .providers {
-    font-size: 1.5em;
-  }
+    color: red;
 }

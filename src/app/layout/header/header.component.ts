@@ -86,6 +86,7 @@ export class HeaderComponent implements OnInit {
   }
 
   toUserProfile(){
+    console.info("to user profile " + this.username)
     this.router.navigateByUrl('/user-profile/' + this.username);
   }
 
@@ -94,10 +95,11 @@ export class HeaderComponent implements OnInit {
     window.location.reload();
   }
 
-  openDialog(action: String){
+  openDialog(action: string){
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose  = false;
     dialogConfig.height = "500px";
+    dialogConfig.width = "500px";
     
     switch(action){
       case "login": 

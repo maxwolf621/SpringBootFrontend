@@ -1,27 +1,71 @@
-<div class="container">
-    <div class="row">
-      <hr />
-      <div class="create-post-container col-md-9">
-        <form class="post-form" [formGroup]="createPostForm" (ngSubmit)="createPost()">
-          <div class="form-group">
-            <div class="create-post-heading">Create Post</div><hr />
-            <textarea [formControlName]="'postName'" id="post-title"
-              placeholder="Title"></textarea>
-            <textarea id="post-description" [formControlName]="'url'" placeholder="Description"></textarea>
-            <select class="form-control" style="margin-top: 10px" [formControlName]="'subName'">
-              <option value="" selected disabled>Select Sub</option>
-              <option *ngFor="let sub of subs">
-                {{sub.subname}}
-              </option>
-            </select>
-            <span>
-              <div style="margin-top: 5px" class="float-right">
-                <button (click)="discard()" class="btnDiscard">Discard</button>
-                <button class="btnCreatePost">Post</button>
-              </div>
-            </span>
-        </div>
-      </form>
-    </div>
+<button mat-icon-button class="close-button" [mat-dialog-close]="true">
+  <mat-icon class="close-icon" color="warn">close</mat-icon>
+</button>
+
+<h2 mat-dialog-title>Create Post</h2>
+<form class="post-form" [formGroup]="createPostForm" (ngSubmit)="createPost()" fxLayout="column" fxLayoutAlign="space-evenly none" >
+  <div
+        fxLayout="column"
+        fxLayout.lt-md="column"
+        fxLayoutGap="10px"
+        fxLayoutGap.lt-md="0px"
+  >
+    <mat-form-field >
+      <textarea name="title" 
+                matInput 
+                placeholder="Title" 
+                formControlName="postName" 
+                matTooltip="Title of your post" 
+                matTooltipPosition="below"  
+                matTooltipShowDelay="500" 
+                matTooltipHideDelay="500"
+                required ></textarea>
+    </mat-form-field>
+  
+    <mat-form-field>
+      <textarea name="url" matInput placeholder="URL" formControlName="url" matTooltip="The source for this post" required></textarea>
+      <mat-hint>Share a link?</mat-hint>
+    </mat-form-field>
+  
+    <mat-form-field appearance="fill">
+      <textarea name="description" matInput placeholder="Write down your thoughts" formControlName="description" required></textarea>
+    </mat-form-field>
+
+    <mat-form-field class="mat-chip-form">
+      <mat-chip-list #chipList>
+        <mat-chip 
+          *ngFor="let tag of selectedTags" 
+          #tagsInput
+          [selectable]="selectable" 
+          [removable]="removable" 
+          (removed)="removeTag(tag)">
+          {{tag}}
+          <mat-icon matChipRemove>cancel</mat-icon>
+        </mat-chip>
+        <input placeholder="Add some new tags ... " 
+        [matChipInputFor]="chipList" 
+        [matChipInputAddOnBlur]="true" 
+        [matAutocomplete]="auto"
+        formControlName="tagCtrl"
+        [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+        (matChipInputTokenEnd)="addTag($event)"/>
+      </mat-chip-list>
+      <mat-autocomplete #auto="matAutocomplete" 
+                        (optionSelected)="selected($event)">
+        <mat-option *ngFor="let filterTag of filteredTags | async" [value]="filterTag">
+          {{filterTag}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-select formControlName="subName" placeholder="Post in which Sub">
+        <mat-option *ngFor="let sub of subs" >{{ sub.subname }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <button mat-stroked-button color="warn" type="submit" [disabled]="!createPostForm.valid">
+      <mat-icon>send</mat-icon>post
+    </button>
   </div>
-</div>
+</form>

@@ -54,7 +54,9 @@ export class UserProfileComponent implements OnInit {
     private commentService: CommentService,
     private subService : SubService) {
     // ref https://angular.io/api/router/ActivatedRouteSnapshot
+
     this.username = this.route.snapshot.params.username;
+    console.info("get username fro url " + this.username);
 
     this.postService.getAllPostsByUser(this.username).subscribe(data => {
       this.posts = data;

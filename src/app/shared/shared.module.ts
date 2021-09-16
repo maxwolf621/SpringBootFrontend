@@ -7,10 +7,8 @@ import { SideBarComponent } from './side-bar/side-bar.component';
 import { SubSideBarComponent } from './sub-side-bar/sub-side-bar.component';
 import { SubTileComponent } from './sub-tile/sub-tile.component';
 import { VoteButtonComponent } from './vote-button/vote-button.component';
-import { MatIconModule } from '@angular/material/icon';
-import { MatCardModule } from '@angular/material/card';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { MatGridListModule } from '@angular/material/grid-list';
+import { MaterialpackagesModule } from '../materialpackages/materialpackages.module';
 
 @NgModule({
   declarations: [
@@ -23,11 +21,8 @@ import { MatGridListModule } from '@angular/material/grid-list';
   ],
   imports: [
     CommonModule,
-    MatDividerModule,
-    MatIconModule,
-    MatCardModule,
     FontAwesomeModule,
-    MatGridListModule
+    MaterialpackagesModule
   ],
   exports:[
     CommentTileComponent,

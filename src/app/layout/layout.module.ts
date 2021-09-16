@@ -12,13 +12,14 @@ import { OverlayComponent } from './overlay/overlay.component';
 import { HeaderComponent } from './header/header.component';
 import { LoginComponent } from '../auth/login/login.component';
 import { SignUpComponent } from '../auth/sign-up/sign-up.component';
-import { SidebarComponent } from './sidebar/sidebar.component';
+import { MainComponent } from './main/main.component';
+import { CreatePostComponent } from '../post/create-post/create-post.component';
 
 @NgModule({
   declarations: [
     HeaderComponent,
     OverlayComponent,
-    SidebarComponent
+    MainComponent
   ],
   imports:[
     CommonModule,
@@ -30,11 +31,12 @@ import { SidebarComponent } from './sidebar/sidebar.component';
   exports: [
     HeaderComponent,
     OverlayComponent,
-    SidebarComponent
+    MainComponent
   ],
   entryComponents:[
     LoginComponent,
     SignUpComponent,
+    CreatePostComponent
   ]
 })
 export class LayoutModule { }

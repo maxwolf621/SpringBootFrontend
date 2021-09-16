@@ -11,12 +11,15 @@ export class AuthGuard implements CanActivate {
   constructor(private authService: AuthService,
               private router : Router){}
   canActivate(
-    route: ActivatedRouteSnapshot,
+    next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     
     const IsThisUserAuthenticated = this.authService.isLoggedIn();
-    if(!IsThisUserAuthenticated){
-      this.router.navigateByUrl('/login');
+    const username = this.authService.getUserName();
+    const isUserValid = next.queryParams.username === username;
+    if(!IsThisUserAuthenticated && !isUserValid){
+      alert("You are not allow to enter this page");
+      this.router.navigateByUrl('/');
     }
     return true;
   }

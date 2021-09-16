@@ -26,7 +26,7 @@ export class AuthService {
   }
 
   /**
-   * @constructor for authentication (login, sigup)
+   * @constructor for authentication (login, sign up)
    * @param http : interact with backend
    * @param localStorage : to store our jwt
    */
@@ -38,7 +38,7 @@ export class AuthService {
 
   /**
    * @description login with username and password and 
-   * and store(refrersh) the jwt in localsotrage
+   * and store(refresh) the jwt in localsotrage
    */
   login(loginRequestPayload: LoginRequestPayload): Observable<boolean> {
     return this.http.post<LoginResponse>(`${environment.apiAuth}/login`, loginRequestPayload).pipe(map(data =>{
@@ -51,7 +51,7 @@ export class AuthService {
   }
 
   /**
-   * @description Refresh the token (to update localstorage)
+   * @description Refresh the token (to update local Storage)
    */
   refreshToken() {
     return this.http.post<LoginResponse>(`${environment.apiAuth}/refresh/token`,this.refreshTokenPayload)
@@ -68,7 +68,7 @@ export class AuthService {
    * @description CLEAR USER'S TOKEN AND REFRESH TOKEN FOR LOGOUT
    */
   logout(){
-    this.http.post('http://localhost:8080/api/auth/logout', this.refreshTokenPayload,
+    this.http.post('', this.refreshTokenPayload,
       { responseType: 'text' })
       // clearing backend
       .subscribe(data => {

@@ -7,6 +7,9 @@ import { CreatePostComponent } from './create-post/create-post.component';
 import { SharedModule } from '../shared/shared.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
+import { MaterialpackagesModule } from '../materialpackages/materialpackages.module';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 
 
 @NgModule({
@@ -16,10 +19,13 @@ import { MatIconModule } from '@angular/material/icon';
   ],
   imports: [
     CommonModule,
+    FlexLayoutModule,
+    MaterialpackagesModule,
     PostRoutingModule,
     SharedModule,
     ReactiveFormsModule,
-    MatIconModule
+    MatIconModule,
+    MatAutocompleteModule
   ]
 })
 export class PostModule { }

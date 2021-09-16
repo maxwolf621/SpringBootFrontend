@@ -11,7 +11,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { LoginComponent } from './login/login.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
-
+import { FlexLayoutModule } from '@angular/flex-layout';
 @NgModule({
   declarations: [
     SignUpComponent,
@@ -20,6 +20,7 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
   ],
   imports: [
     CommonModule,
+    FlexLayoutModule,
     MaterialpackagesModule,
     ReactiveFormsModule,
     FontAwesomeModule,

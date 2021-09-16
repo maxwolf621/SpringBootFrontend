@@ -1,0 +1,54 @@
+.fixed-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    width: 100%  !important;
+}
+
+mat-sidenav-contnent,
+mat-sidenav{
+    height:100%;
+}
+
+
+md-sidenav.md-locked-open, 
+md-sidenav.md-closed.md-locked-open-add-active {
+    min-width: 200px !important;
+    max-width: 400px !important;    
+        width: 85vw !important;
+} 
+
+md-sidenav{
+    width:100px;
+}
+
+main{    
+    height:100%;
+    padding : 5%;
+    overflow: auto;
+    position: top;
+    bottom:0;
+    left:0;
+    right:0;
+    margin: 10px;
+}
+
+/**
+.web-name{        
+    font-weight: 700;
+    height: 60px;
+    width: 50px;    
+    color :#c51f5e
+}
+**/
+
+
+
+.bottomStick{
+    /*border-top:1px solid green;border-bottom:1px solid green;*/position:absolute; bottom:0
+}
+
+.bottomRelative{
+    position:relative;
+}

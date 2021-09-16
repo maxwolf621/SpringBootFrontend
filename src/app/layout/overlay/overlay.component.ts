@@ -1,5 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild,  } from '@angular/core';
 import { Overlay, OverlayRef } from '@angular/cdk/overlay';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { CreatePostComponent } from 'src/app/post/create-post/create-post.component';
 
 @Component({
   selector: 'app-overlay',
@@ -15,10 +17,17 @@ export class OverlayComponent implements OnInit {
 
   overlayRef!: OverlayRef;
 
-  constructor(private overlay: Overlay) {}
+  constructor(private overlay: Overlay,
+    private matDialog: MatDialog) {}
 
   ngOnInit() {
     console.info("trigger on" + this.trigger);
     console.info("is open?" + this.isOpen);
+  }
+
+  openDialog(){
+    this.matDialog.open(CreatePostComponent,{
+      width: '500px'
+    });
   }
 }

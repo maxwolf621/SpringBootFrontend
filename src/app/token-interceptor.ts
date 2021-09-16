@@ -24,6 +24,7 @@ export class TokenInterceptor implements HttpInterceptor {
 
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
+        // get token from Local Storage
         let jwt = this.authService.getToken();
         // fetch the jwt from backend
         if (jwt) {

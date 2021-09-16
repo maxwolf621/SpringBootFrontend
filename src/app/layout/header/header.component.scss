@@ -51,24 +51,6 @@
     border: 1px solid;
 }
 
-.dropdown-item{
-    background-color: #f8f9fa;
-    font-size: 14px;
-    font-weight: 500;
-    line-height: 18px;
-    display: inline-block;
-    vertical-align: middle;  
-
-}
-
-.dropdown-item:hover{
-    background-color: #0079D3;
-}
-
-.dropdown-menu{
-    background-color: #2D333B;
-    right : 20%;
-}
 
 .account-icon{
     border-radius: 4px;
@@ -77,12 +59,6 @@
     max-height: 30px;
     max-width: 30px;
 }
-
-.dropDownItems{
-    float: right;
-    margin-right: 5px;  
-}
-
 
 .toolbar-seprator {
     flex: 1 1 auto;
@@ -144,11 +120,6 @@ mat-sidenav-container {
     font-size: 0.7rem;
     color: lightgrey;
 }
-
-mat-divider {
-    margin-top: 16px;
-    margin-bottom: 16px;
-    background-color: rgba(255, 255, 255, 0.5);
-}
-
 **/
+
+

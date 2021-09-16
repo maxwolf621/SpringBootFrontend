@@ -11,6 +11,9 @@ export const environment = {
   apiVote   : 'http://localhost:8080/api/vote',
   apiBookMark:'http://localhost:8080/api/bookmark',
   apiUserProfile:'http://localhost:8080/api/user',
+  apiOauth2Login:'http://localhost:8080/oauth2/authorization',
+  apiLogout : 'http://localhost:8080/api/auth/logout',
+  apiTest :'https://'
 };
 
 /*

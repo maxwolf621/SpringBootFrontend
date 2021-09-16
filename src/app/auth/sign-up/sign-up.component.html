@@ -2,62 +2,67 @@
   <mat-icon class="close-icon" color="warn">close</mat-icon>
 </button>
 <h2 mat-dialog-title>Sign Up</h2>
+<form flexLayout="column" [formGroup]="signupForm" (ngSubmit)="signup()">
+  <div 
+  fxLayout="column"
+  fxLayout.lt-md="column"
+  fxLayoutGap="20px"
+  fxLayoutGap.lt-md="0px"
+  >
+    <!-- NAME -->
+    <mat-form-field appearance="legacy" *ngIf="signupForm.contains('username')" @inflate>
+      <mat-label>Full name</mat-label>
+      <input matInput formControlName="username">
+      <mat-error *ngIf="signupForm.controls.username.errors?.required">
+        Please specify your name here
+      </mat-error>
+    </mat-form-field>
 
+    <!-- EMAIL -->
+    <mat-form-field *ngIf="signupForm.contains('email')" @inflate>
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="email">
+      <mat-error *ngIf="signupForm.controls.email.errors?.required">
+        Please specify an email address
+      </mat-error>
+      <mat-error *ngIf="signupForm.controls.email.errors?.email">
+        Oops! it looks like this is not a valid email
+      </mat-error>
+    </mat-form-field>
 
-<form [formGroup]="signupForm" fxLayout="column" fxLayoutAlign="space-around stretch" fxLayoutGap="10px" 
-      (ngSubmit)="signup()">
-  <!-- NAME -->
-  <mat-form-field appearance="legacy" *ngIf="signupForm.contains('username')" @inflate>
-    <mat-label>Full name</mat-label>
-    <input matInput formControlName="username">
-    <mat-error *ngIf="signupForm.controls.username.errors?.required">
-      Please specify your name here
-    </mat-error>
-  </mat-form-field>
+    <!-- PASSWORD -->
+    <mat-form-field *ngIf="signupForm.contains('password')" @inflate>
+      <mat-label>Password</mat-label>
+      <input matInput [type]="hidePassword ? 'password' : 'text'" formControlName="password">
+      <mat-icon matSuffix (click)="hidePassword = !hidePassword">
+        {{ hidePassword ? 'visibility_off' : 'visibility'}}
+      </mat-icon>
+      <mat-error *ngIf="signupForm.controls.password.errors?.required">
+        A password is required
+      </mat-error>
+    </mat-form-field>
+  </div> 
+</form>
 
-   <!-- EMAIL -->
-   <mat-form-field appearance="legacy" *ngIf="signupForm.contains('email')" @inflate>
-    <mat-label>Email</mat-label>
-    <input matInput formControlName="email">
-    <mat-error *ngIf="signupForm.controls.email.errors?.required">
-      Please specify an email address
-    </mat-error>
-    <mat-error *ngIf="signupForm.controls.email.errors?.email">
-      Ooops! it looks like this is not a valid email
-    </mat-error>
-  </mat-form-field>
-
-  <!-- PASSWORD -->
-  <mat-form-field appearance="legacy" *ngIf="signupForm.contains('password')" @inflate>
-    <mat-label>Password</mat-label>
-    <input matInput [type]="hidePassword ? 'password' : 'text'" formControlName="password">
-    <mat-icon matSuffix (click)="hidePassword = !hidePassword">
-      {{ hidePassword ? 'visibility_off' : 'visibility'}}
-    </mat-icon>
-    <mat-error *ngIf="signupForm.controls.password.errors?.required">
-      A password is required
-    </mat-error>
-  </mat-form-field>
-  <div>
+<div>
   <button mat-stroked-button color="primary" type="submit" [disabled]="!signupForm.valid" class="btn">
     SignUp
   </button>
-  </div>
-</form>
+</div>
 
 
 <!-- SIGN-IN PROVIDERS -->
 <div fxLayout="column" fxLayoutAlign="center center">
-  <p class="mat-small">or sign-in with:</p>
+  <p class="mat-small">Sign In With</p>
 
   <div fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap="10px">
 
     <button mat-icon-button *ngFor="let p of providers">
-      <mat-icon class="providers"
+      <a href={{p.url}}><mat-icon class="providers"
                 [fontSet]="p.icon.split(':')[0]"
                 [fontIcon]="p.icon.split(':')[1]" 
-                [ngStyle]="{ color: p.color }">
-      </mat-icon>
+                [ngStyle]="{ color: p.color }">   
+      </mat-icon></a>
     </button>
   </div>
 </div>

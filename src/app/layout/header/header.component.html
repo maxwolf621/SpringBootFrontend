@@ -1,28 +1,27 @@
 <mat-toolbar>
 
+
   <span class="toolbar-seprator"></span>
-    <div fxLayout="row" fxLayoutAlign="end start">
+
       <mat-icon>brightness_5</mat-icon>
       <mat-slide-toggle [formControl]="toggleControl" class="mr-8"></mat-slide-toggle>
       <mat-icon  [style.color]="'black'">dark_mode</mat-icon>
       
-      <div *ngIf="isLoggedIn" ngbDropdown class="float-right">
-        <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-            <button (click)="toUserProfile()" ngbDropdownItem>Profile</button>
-            <button (click)="logout()" ngbDropdownItem>Logout</button>
-        </div>
-        <button class="userdetails" id="dropdownBasic1" ngbDropdownToggle>
-            <img class="account-icon" src="https://chinadigitaltimes.net/space/images/1/10/%E4%B9%A0%E7%BB%B4%E5%B0%BC1.jpg">
-            <span id="username">{{username}}</span>
+      <div *ngIf="isLoggedIn; else guest">
+        <button mat-icon-button [matMenuTriggerFor]="userMenu" #menuTrigger="matMenuTrigger">
+          <mat-icon>message</mat-icon>
         </button>
+        <mat-menu #userMenu="matMenu">
+          <button mat-menu-item  (click)="toUserProfile()"><mat-icon>manage_accounts</mat-icon>Profile</button>
+          <button mat-menu-item  (click)="logout()"><mat-icon>logout</mat-icon>Log Out</button>
+        </mat-menu> 
       </div>  
-      
-      <div *ngIf="!isLoggedIn">
+
+      <ng-template #guest>
         <button mat-raised-button="primary" class="login" (click)="openDialog('login')"><mat-icon>login</mat-icon>Log In</button>
         <button mat-raised-button="primary" class="sign-up" (click)="openDialog('signup')"><mat-icon>app_registration-up</mat-icon>Sign Up</button>
-      </div>
-    
-    </div>
+      </ng-template>    
+
 </mat-toolbar>
 
 
