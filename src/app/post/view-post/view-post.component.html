@@ -27,7 +27,7 @@
                     </div>
 
                     <form [formGroup]="commentForm" (ngSubmit)="postComment()">
-                        <mat-form-field MatFormFieldAppearance  >
+                        <mat-form-field [style.width.%]="100" MatFormFieldAppearance  >
                             <textarea name="leave-comment" 
                                       matInput 
                                       placeholder="Write down your thought?" 
