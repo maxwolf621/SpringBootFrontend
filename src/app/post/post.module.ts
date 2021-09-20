@@ -15,17 +15,17 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
 @NgModule({
   declarations: [
     ViewPostComponent,
-    CreatePostComponent
+    CreatePostComponent,
   ],
   imports: [
     CommonModule,
     FlexLayoutModule,
     MaterialpackagesModule,
     PostRoutingModule,
-    SharedModule,
     ReactiveFormsModule,
     MatIconModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    SharedModule
   ]
 })
 export class PostModule { }

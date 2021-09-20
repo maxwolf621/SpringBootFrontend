@@ -3,52 +3,48 @@
         <div class="col-md-9">
             <!-- view post tile -->
             <div class="row post" *ngIf="post">
+                
                 <!-- vote section -->
                 <div class="col-md-1">
                     <app-vote-button [post]="post"></app-vote-button>
                 </div>
+                
                 <!-- post + comment + sub section-->
                 <div class="col-md-11" >
+                
                     <!-- sub and post info -->
-                    <div class="sub-and-post-info">
+                    <div class="subname-username">
                         <span><a class="post-url" href="">{{post.subname}}</a></span>
-                        <span> - Posted by
-                            <a *ngIf="post.username === null" class="username" href="">Anonymous</a>
-                            <a *ngIf="post.username != null" class="username" href="">{{post.username}}</a>
-                            <span> {{post.duration}} </span>
-                        </span>
-
+                        <span> - Posted by </span>
+                        <a *ngIf="post.username === null" class="username" href="">Anonymous</a>
+                        <a *ngIf="post.username != null" class="username" href="">{{post.username}}</a>
+                        <span> {{post.duration}} </span>
                     </div><hr />
 
-                    <a routerLink="post.url" class="post-title">{{post.postname}}</a>
+                    <a routerLink="post.url" class="post-name">{{post.postname}}</a>
                     <div>
                         <p class="post-text" [innerHtml]="post.description"></p>
                     </div>
-                    <!--Leave A Comment-->
-                    <div class="leave-comment">
-                        <form [formGroup]="commentForm" (ngSubmit)="postComment()">
-                            <div class="form-group">
-                                <textarea class="form-control" [formControlName]="'text'" placeholder="Leave A Comment"></textarea>
-                            </div>
-                            <button type="submit" class="login float-right"><mat-icon>comment</mat-icon>Comment</button>
-                        </form>
-                    </div>
-                    <!-- br means under the Button `Comment`-->
+
+                    <form [formGroup]="commentForm" (ngSubmit)="postComment()">
+                        <mat-form-field MatFormFieldAppearance  >
+                            <textarea name="leave-comment" 
+                                      matInput 
+                                      placeholder="Write down your thought?" 
+                                      formControlName="text" 
+                                      required></textarea>
+                                      <button mat-icon-button matSuffix type="submit" color="warn"><mat-icon>comment</mat-icon></button>
+
+                        </mat-form-field>
+                    </form>
                     <br>
-                    <!-- Display the post -->
-                    <div  id=commentBAR style="margin-top: 60px;" *ngFor="let comment of comments">
-                        <div class="display-commenter">
-                            <a class="commentUser">{{comment.username}}</a>
-                            <span class="comment-duration"> - {{comment.duration}}  </span>
-                        </div>
-                        <p class="display-comment-text">{{comment.text}}</p>
-                    </div><hr />   
+
+                    <app-comment-tile [comments] ="comments"></app-comment-tile>
+                
                 </div>
             </div>
         </div>
-        <div class="col-md-3">
-            <app-side-bar></app-side-bar>
-            <app-sub-side-bar></app-sub-side-bar>
-        </div>
     </div>
  </div>
+
+

@@ -18,8 +18,9 @@ import { PostService } from '../postservice/post.service';
 })
 export class ViewPostComponent implements OnInit {
   
-  postId!: number ;
+  postId!: number;
   post!: PostModel;
+
   /**
    * display comments
    */
@@ -29,26 +30,28 @@ export class ViewPostComponent implements OnInit {
    * To post　a comment
    */
   commentForm: FormGroup;
-  commentPayload: CommentPayload;
+  commentPayload!: CommentPayload;
 
-  constructor(private postService: PostService, private activateRoute: ActivatedRoute,
-    private commentService: CommentService, private router: Router) {
+  constructor(private postService: PostService, 
+              private activateRoute: ActivatedRoute,
+              private commentService: CommentService, 
+              private router: Router) {
 
     this.commentForm = new FormGroup({
       text: new FormControl('', Validators.required)
     });
-
-    this.commentPayload = {
-      text: "",
-      postId: this.postId
-    };
   }
 
   ngOnInit(): void {
-    this.postId = this.activateRoute.snapshot.params.postId;
+
+    this.postId = this.activateRoute.snapshot.params.id;
 
     console.info("-----------get PostId " + this.postId);
+    
+    // load the post content 
     this.getPostById(this.postId);
+
+    // get comment via the post
     this.getCommentsForThisPost();
   }
 

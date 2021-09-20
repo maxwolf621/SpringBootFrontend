@@ -1,11 +1,198 @@
+/*
 .comment-cards{
-    border: 1px solid azure;
-    margin-bottom: 20px;
+    margin-bottom: 16px;
     background-color: #22272E;
     color: hsl(180, 77%, 40%);
     border-radius: 4px;
     padding:5px;
-    /* new patch */
+    //new patch 
     position:relative;
     width: 80%;
+    left: 17px;
 }
+
+.mat-card{
+  box-shadow: none;
+  overflow: hidden;
+}
+.mat-card-subtitle {
+    margin-bottom: 0;
+}
+.comment-box {
+   padding-left: 57px;
+   background-color: #22272E;
+}
+
+.comment-header {
+    display: flex;
+    align-items: center;
+}
+.border-box {
+    width: 1px;
+    position: absolute;
+    height: 100%;
+    top: 40px;
+    left: 21px;
+    background: #fff;
+}
+
+
+
+.example-header-image {
+    background-image: url('src\assets\github-cat.jpg');
+    background-size: cover;
+}
+.mat-card-avatar {
+    width: 35px;
+    height: 35px;
+}
+
+*/
+
+
+/* 
+    Body, button, comment-thread, and utilities
+
+    Notes:
+        - This section sets some basic styles. You can ignore this part and 
+        go directly to the comment styles.
+*/
+
+* {
+    box-sizing: border-box;
+}
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    line-height: 1.4;
+    color: rgba(0, 0, 0, 0.85);
+    background-color: #f9f9f9;
+
+}
+button {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    font-size: 14px;
+    padding: 4px 8px;
+    color: rgba(0, 0, 0, 0.85);
+    background-color: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+}
+button:hover,
+button:focus,
+button:active {
+    cursor: pointer;
+    background-color: #ecf0f1;
+}
+
+.m-0 {
+    margin: 0;
+}
+.sr-only {
+    position: absolute;
+    left: -10000px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+/* Comment */
+
+.comment {
+    position: relative;
+    margin: 20px auto;
+}
+.comment-heading {
+    display: flex;
+    align-items: center;
+    height: 50px;
+    font-size: 14px;
+}
+.comment-voting {
+    width: 20px;
+    height: 32px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+}
+.comment-voting button {
+    display: block;
+    width: 100%;
+    height: 50%;
+    padding: 0;
+    border: 0;
+    font-size: 10px;
+}
+.comment-info {
+    color: rgba(0, 0, 0, 0.5);
+   
+}
+.comment-author {
+    color: rgba(0, 0, 0, 0.85);
+    font-weight: bold;
+    text-decoration: none;
+}
+.comment-author:hover {
+    text-decoration: underline;
+}
+.replies {
+    margin-left: 20px;
+}
+
+/* Adjustments for the comment border links */
+
+.comment-border-link {
+    display: block;
+    position: absolute;
+    top: 43px;
+    left: 13px;
+    width: 4px;
+    height: calc(100% - 50px);
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+
+    background-color: #fff;
+    background-clip: padding-box;
+}
+.comment-border-link:hover {
+   
+    background-color: red;
+}
+.comment-body {
+    padding: 0 20px;
+    padding-left: 50px;
+}
+.replies {
+    margin-left: 28px;
+}
+
+
+
+.cat-img {
+    width: 35px;
+    height: 35px;
+}
+
+.mat-icon-button{
+    background-color: transparent;
+    padding: 0;
+    border: none;
+}
+.mat-icon-button:hover {
+    background-color: transparent;
+    opacity: 0.5;
+}
+.mat-icon-button:focus {
+    background-color: transparent;
+}
+.comment-txt {
+    color:azure;
+    padding-left: 15px;
+}
+
+.mat-form-field {
+    margin-left: 50px;
+    padding-right: 20%;
+}
+

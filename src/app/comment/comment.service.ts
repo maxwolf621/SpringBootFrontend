@@ -14,9 +14,11 @@ export class CommentService {
   getAllCommentsForPost(postId: number): Observable<CommentPayload[]> {
     return this.http.get<CommentPayload[]>(`${environment.apiComment}/post/` + postId);
   }
+
   getAllCommentsByUser(username: string) {
     return this.http.get<CommentPayload[]>(`${environment.apiComment}/user/` + username);
   }
+  
   postComment(commentPayload: CommentPayload): Observable<any> {
     console.info("leave a comment : " + commentPayload);
     return this.http.post<any>(`${environment.apiComment}`, commentPayload);

@@ -8,7 +8,7 @@ import { Component, OnInit,HostListener } from '@angular/core';
 export class MainComponent implements OnInit {
 
   events: string[] = [];
-  opened!: boolean;
+  opened : boolean = false;
   
   appropriateClass:string = '';
   
@@ -29,4 +29,7 @@ export class MainComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  open(){
+    console.info("opened :" + this.opened);
+  }
 }

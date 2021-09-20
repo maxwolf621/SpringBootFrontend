@@ -3,5 +3,6 @@ export interface CommentPayload {
         text: string;
         username?:string;
         duration?: string;
-}
+        childComments: Array<CommentPayload>;
+}       
 

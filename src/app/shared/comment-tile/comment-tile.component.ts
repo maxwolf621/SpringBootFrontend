@@ -10,12 +10,18 @@ import { CommentPayload } from 'src/app/comment/comment.payload';
 export class CommentTileComponent implements OnInit {
 
 
-  @Input() comments : CommentPayload[] | undefined
+  @Input() comments !: CommentPayload[] 
+
+  isOpened : boolean = false;
   
   constructor(private router: Router) {}
 
   ngOnInit(): void {
-    console.info("ngOnInit of CommentTileComponent");
+    console.info("opened? :" + this.isOpened);
+  }
+
+  open(){
+    this.isOpened = !this.isOpened;
   }
 
 }

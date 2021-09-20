@@ -21,9 +21,9 @@ import { FlexLayoutModule } from '@angular/flex-layout';
   imports: [
     CommonModule,
     FlexLayoutModule,
-    MaterialpackagesModule,
     ReactiveFormsModule,
     FontAwesomeModule,
+    MaterialpackagesModule,
     SharedModule,
   ],
   exports:[

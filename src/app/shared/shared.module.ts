@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatDividerModule } from '@angular/material/divider';
 import { CommentTileComponent } from './comment-tile/comment-tile.component';
 import { PostTileComponent } from './post-tile/post-tile.component';
 import { SideBarComponent } from './side-bar/side-bar.component';
@@ -21,8 +20,8 @@ import { MaterialpackagesModule } from '../materialpackages/materialpackages.mod
   ],
   imports: [
     CommonModule,
+    MaterialpackagesModule,
     FontAwesomeModule,
-    MaterialpackagesModule
   ],
   exports:[
     CommentTileComponent,
