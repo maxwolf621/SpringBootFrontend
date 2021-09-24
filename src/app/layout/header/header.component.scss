@@ -1,9 +1,20 @@
+.mat-toolbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2; /* Can Not be Overlapped by mat-drawer*/
+    width: 100%  !important;
+}
+
+img{
+    position:relative;
+    bottom : 0.25cm;
+    left : 0.5cm;
+}
+
 .login,
 .sign-up {
-    //background-color: #192734;
     border-color: #192734;
-    //color: aliceblue;
-    //fill: #0079D3;
     border: 1px solid;
     border-radius: 4px;
     text-align: center;
@@ -26,6 +37,13 @@
     background-color: aquamarine;
 }
 
+
+.toolbar-seprator {
+    flex: 1 1 auto;
+}
+
+/** 
+
 .userdetails{    
     background-color: transparent;
     border-color: #0079D3;
@@ -46,7 +64,6 @@
     opacity: 1;
     border: 0px;     
 } 
-
 .userdetails:hover{
     border: 1px solid;
 }
@@ -59,12 +76,6 @@
     max-height: 30px;
     max-width: 30px;
 }
-
-.toolbar-seprator {
-    flex: 1 1 auto;
-}
-
-/**
 
 mat-sidenav-container {
     height: 100%;

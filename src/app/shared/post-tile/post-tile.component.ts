@@ -12,7 +12,7 @@ export class PostTileComponent implements OnInit {
 
 
   /**
-   * father : home.component.ts
+   * base : home.component.ts
    */
   @Input() posts: PostModel[] | undefined;
 

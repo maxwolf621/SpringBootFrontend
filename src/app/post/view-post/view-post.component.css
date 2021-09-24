@@ -1,4 +1,3 @@
-  
 .subname-postname {
     display :inline;
     font-size: 15px;
@@ -9,15 +8,12 @@
 
 .postname {
         background-attachment: scroll;
-        background-color: rgba(0, 0, 0, 0);
         background-image: none;
         background-position: 0% 0%;
         background-repeat: repeat;
-        color: rgb(215, 218, 220);
 }
 
 .username{
-    color: #e4e6eb;
 }
 
 .post-text{
@@ -31,34 +27,17 @@
     line-height: 21px;
     text-decoration: none solid rgb(215, 218, 220);
     text-align: start;
-
-    /* Color & Background */
-    background-color: rgba(0, 0, 0, 0);
-    color: rgb(215, 218, 220);
 }
 
-.post{
-    --post-line-color: #ccc;    
-    border: 1px solid #ccc;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    overflow: hidden;
-    background-color: #252627;
-    color: #878A8C;
-    position: relative;
-    border-radius: 4px;
-    padding:5px;
 
-}
 
 .commenter {
 	/* Color & Background */
 	background-attachment: scroll;
-	background-color: rgba(0, 0, 0, 0);
+	/*background-color: rgba(0, 0, 0, 0);*/
 	background-image: none;
 	background-position: 0% 0%;
 	background-repeat: repeat;
-	color: rgb(215, 218, 220);
 }
 
 .display-comment-text{
@@ -79,8 +58,9 @@
 
 
 .mat-focused .mat-form-field-label {
-    /*change color of label*/
-    color: azure !important;
+    /*change color of label
+        color: azure !important;
+    */
 }
   
  mat-form-field-underline {

@@ -3,8 +3,6 @@
     max-height: 300px;
     width: 100%;
     margin: 5px;
-    color:aliceblue;
-    background-color: #242527;
 }
 
 .sub-group > .sub-tile {
@@ -12,7 +10,8 @@
 }
 
 mat-card:focus {
-    background: aquamarine;
+    background: rgb(131, 178, 207);
     opacity: 1;
     color:#242527;
-  }
+}
+

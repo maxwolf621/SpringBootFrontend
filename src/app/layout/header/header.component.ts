@@ -10,6 +10,13 @@ import { LoginComponent } from 'src/app/auth/login/login.component';
 import { SignUpComponent } from 'src/app/auth/sign-up/sign-up.component';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { delay } from 'rxjs/operators';
+import { ThemePalette } from '@angular/material/core';
+
+
+interface User{
+  username : string,
+  photo:string
+}
 
 @Component({
   selector: 'app-header',
@@ -23,9 +30,26 @@ export class HeaderComponent implements OnInit {
    * the name of the host element property which value we want to assign in the directive.
    */
   @HostBinding('class') className = '';
+  
   toggleControl = new FormControl(false);
+  
   @ViewChild(MatSidenav)
   sidenav!:MatSidenav;
+
+  isDrawerOpened : boolean = false;
+
+
+  @Output() 
+  drawerToggleEvent = new EventEmitter<boolean>();
+
+  public drawerOnToggle(){
+    this.isDrawerOpened = !this.isDrawerOpened;
+
+    // emit the value to base component
+    this.drawerToggleEvent.emit(this.isDrawerOpened);
+  }
+
+
 
   //@Output 
   //sidenavToggle = new EventEmitter();
@@ -37,10 +61,19 @@ export class HeaderComponent implements OnInit {
   */
 
   isLoggedIn:boolean = false;
-  faUser = faUser;
-  username : string = "";
-  photo:string ="";
   
+  faUser = faUser;
+  
+  user : User = {
+    username : '',
+    photo : ''
+  };
+  
+  // Theme Switcher
+  readonly DARKMODE = 'dark-theme';
+  color: ThemePalette = "accent";
+
+  // dialog for login/signup
   private dialogRef !: MatDialogRef<any>;
 
   constructor(private router: Router,
@@ -50,22 +83,24 @@ export class HeaderComponent implements OnInit {
     private observer: BreakpointObserver) { }
 
   ngOnInit(): void {
+
+    this.user = {
+      username : this.authService.getUserName(),
+      photo :　''
+    }
+
     this.isLoggedIn = this.authService.isLoggedIn();
-    this.username = this.authService.getUserName();
-
     this.toggleControl.valueChanges.subscribe((darkMode) => {
-      /**
-       * true => turn on darkMode
-       */
-      console.info(darkMode);
+      console.info("turn on dark mode : " + darkMode);
 
-      const darkClassName = 'dark-theme';
-      this.className = darkMode ? darkClassName : '';
-      
+      const darkClassName = "dark-theme";
+
       if (darkMode) {
         this.overlay.getContainerElement().classList.add(darkClassName);
+        document.body.classList.add(darkClassName);
       } else {
         this.overlay.getContainerElement().classList.remove(darkClassName);
+        document.body.classList.remove(darkClassName);
       }
     });
   }
@@ -85,9 +120,16 @@ export class HeaderComponent implements OnInit {
       });
   }
 
+  toggleSideNav(sideNav: MatSidenav) {
+    sideNav.toggle().then((result: any) => {
+      console.log(result);
+      console.log(`Status：${result.type}`);
+    });
+  }
+
   toUserProfile(){
-    console.info("to user profile " + this.username)
-    this.router.navigateByUrl('/user-profile/' + this.username);
+    console.info("to user profile " + this.user.username)
+    this.router.navigateByUrl('/user-profile/' + this.user.username);
   }
 
   logout(){
@@ -110,6 +152,7 @@ export class HeaderComponent implements OnInit {
         this.dialogRef = this.matDialog.open(SignUpComponent, dialogConfig);
       break;
     }
+
     this.dialogRef.afterClosed().subscribe(result=>{
       if(result === 'success'){
         this.router.navigateByUrl('');
@@ -117,15 +160,7 @@ export class HeaderComponent implements OnInit {
       }
     })
   }
+}
 
-  toggleSideNav(sideNav: MatSidenav) {
-    sideNav.toggle().then((result: any) => {
-      console.log(result);
-      console.log(`Status：${result.type}`);
-    });
-  }
-}
-function ngAfterViewInit() {
-  throw new Error('Function not implemented.');
-}
+
 

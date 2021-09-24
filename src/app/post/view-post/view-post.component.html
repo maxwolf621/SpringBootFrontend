@@ -1,6 +1,6 @@
 <div class="container">
     <div class="row"><hr />
-        <div class="col-md-9">
+        <div class="col-md-12">
             <!-- view post tile -->
             <div class="row post" *ngIf="post">
                 
@@ -11,7 +11,6 @@
                 
                 <!-- post + comment + sub section-->
                 <div class="col-md-11" >
-                
                     <!-- sub and post info -->
                     <div class="subname-username">
                         <span><a class="post-url" href="">{{post.subname}}</a></span>
@@ -19,27 +18,38 @@
                         <a *ngIf="post.username === null" class="username" href="">Anonymous</a>
                         <a *ngIf="post.username != null" class="username" href="">{{post.username}}</a>
                         <span> {{post.duration}} </span>
+                        <mat-chip-list>
+                            <mat-chip selected="true"  *ngFor="let tag of post.tagnames"  color="primary" > {{tag}} </mat-chip>
+                        </mat-chip-list>
                     </div><hr />
+
 
                     <a routerLink="post.url" class="post-name">{{post.postname}}</a>
                     <div>
                         <p class="post-text" [innerHtml]="post.description"></p>
                     </div>
 
-                    <form [formGroup]="commentForm" (ngSubmit)="postComment()">
-                        <mat-form-field [style.width.%]="100" MatFormFieldAppearance  >
-                            <textarea name="leave-comment" 
-                                      matInput 
-                                      placeholder="Write down your thought?" 
-                                      formControlName="text" 
-                                      required></textarea>
-                                      <button mat-icon-button matSuffix type="submit" color="warn"><mat-icon>comment</mat-icon></button>
 
+                    <!-- 
+                        mat-form-field
+                        https://stackoverflow.com/questions/49880001/angular-mat-form-field-how-to-set-width100 
+                    -->
+                    <form [formGroup]="commentForm" (ngSubmit)="postComment()">
+                        <mat-form-field [style.width.%]="100" appearance = "outline"  >
+                            <textarea matInput 
+                                    cdkTextareaAutosize
+                                    name="leave-comment"  
+                                    placeholder="Write down your thought?" 
+                                    formControlName="text" 
+                                    ></textarea>
+                                    <button matSuffix mat-icon-button color="primary" type="submit" [disabled]="!commentForm.valid">
+                                        <mat-icon>comment</mat-icon>
+                                    </button>
                         </mat-form-field>
                     </form>
                     <br>
 
-                    <app-comment-tile [comments] ="comments"></app-comment-tile>
+                    <app-comment-tile [comments] ="comments" [postId]="postId"></app-comment-tile>
                 
                 </div>
             </div>

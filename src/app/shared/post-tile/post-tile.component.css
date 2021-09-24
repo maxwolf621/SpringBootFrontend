@@ -89,3 +89,10 @@
     opacity: 0.8;
     background-color: aquamarine;
 }
+
+
+mat-chip {
+    padding: 3px 6px !important;
+    border-radius: 5px;
+    background: #faf887;
+}

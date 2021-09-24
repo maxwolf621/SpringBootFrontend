@@ -3,6 +3,8 @@
 </button>
 
 <h2 mat-dialog-title>Create Post</h2>
+
+<!-- form -->
 <form class="post-form" [formGroup]="createPostForm" (ngSubmit)="createPost()" fxLayout="column" fxLayoutAlign="space-evenly none" >
   <div
         fxLayout="column"
@@ -10,11 +12,13 @@
         fxLayoutGap="10px"
         fxLayoutGap.lt-md="0px"
   >
+
+    <!-- title of the post-->
     <mat-form-field >
       <textarea name="title" 
                 matInput 
                 placeholder="Title" 
-                formControlName="postName" 
+                formControlName="postname" 
                 matTooltip="Title of your post" 
                 matTooltipPosition="below"  
                 matTooltipShowDelay="500" 
@@ -22,33 +26,36 @@
                 required ></textarea>
     </mat-form-field>
   
+    <!-- shared link -->
     <mat-form-field>
       <textarea name="url" matInput placeholder="URL" formControlName="url" matTooltip="The source for this post" required></textarea>
       <mat-hint>Share a link?</mat-hint>
     </mat-form-field>
   
+    <!-- post's description -->
     <mat-form-field appearance="fill">
       <textarea name="description" matInput placeholder="Write down your thoughts" formControlName="description" required></textarea>
     </mat-form-field>
 
+    <!-- tag -->
     <mat-form-field class="mat-chip-form">
       <mat-chip-list #chipList>
         <mat-chip 
           *ngFor="let tag of selectedTags" 
-          #tagsInput
           [selectable]="selectable" 
           [removable]="removable" 
           (removed)="removeTag(tag)">
           {{tag}}
           <mat-icon matChipRemove>cancel</mat-icon>
         </mat-chip>
-        <input placeholder="Add some new tags ... " 
-        [matChipInputFor]="chipList" 
-        [matChipInputAddOnBlur]="true" 
-        [matAutocomplete]="auto"
-        formControlName="tagCtrl"
-        [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-        (matChipInputTokenEnd)="addTag($event)"/>
+        <input 
+          placeholder="Add some new tags ... " 
+          #tagsInput
+          [matAutocomplete]="auto"
+          [formControl]="tagCtrl"
+          [matChipInputFor]="chipList" 
+          [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+          (matChipInputTokenEnd)="addTag($event)">
       </mat-chip-list>
       <mat-autocomplete #auto="matAutocomplete" 
                         (optionSelected)="selected($event)">
@@ -58,14 +65,20 @@
       </mat-autocomplete>
     </mat-form-field>
 
+    <!-- select for subs -->
     <mat-form-field>
-      <mat-select formControlName="subName" placeholder="Post in which Sub">
-        <mat-option *ngFor="let sub of subs" >{{ sub.subname }}</mat-option>
+      <mat-select formControlName="subname" placeholder="Post in which Sub">
+        <!-- 
+          assign [value]=sub.subname to our formControlName="subname" 
+        -->
+        <mat-option *ngFor="let sub of subs" [value]="sub.subname">{{ sub.subname }}</mat-option>
       </mat-select>
     </mat-form-field>
 
+    <!-- button to create the post-->
     <button mat-stroked-button color="warn" type="submit" [disabled]="!createPostForm.valid">
       <mat-icon>send</mat-icon>post
     </button>
+
   </div>
 </form>

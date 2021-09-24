@@ -1,49 +1,38 @@
 <div class="comment-thread" *ngFor="let comment of comments">
    <!-- Comment 1 start -->
-   <div class="comment">
-    <a href="#" class="comment-border-link">
-        <span class="sr-only">Jump to comment-1</span>
-    </a>
-    <div class="comment-heading">
+   <div class="comment" id="{{comment.commentId}}" >
+     <a href="/view-post/{{postId}}#{{comment.commentId}}" class="comment-border-link"></a>
+     <div class="comment-heading">
         <div class="comment-info">
-         <img class="cat-img" mat-card-avatar src="assets/github-cat.jpg" alt="cat" />
-         <span class="comment-txt">{{comment.username}} - {{comment.duration}} </span>
+         <img class="cat-img" mat-card-avatar src="assets/github-cat.jpg"  alt="cat" />
+         <span class="comment-info">{{comment.username}} - {{comment.duration}} </span>
         </div>
-    </div>
-
-    
-    <div class="comment-body">
-      <p> {{comment.text}}</p>
-      <button  mat-icon-button (click)="open()">
-        <mat-icon>reply</mat-icon>
-      </button>
-    </div>
-
-    <form *ngIf="isOpened" class="reply-form " >
-      <mat-form-field [style.width.%]="100" >
-        <textarea name="leave-comment" 
-                  matInput 
-                  placeholder="Write down your thought?" 
-                  formControlName="text" 
-                  required></textarea>
-        <button mat-icon-button matSuffix color="accent"><mat-icon>comment</mat-icon></button>
-      </mat-form-field>
-
-
-
-      </form>
-
-
-
-
-
-    <div class="replies">
-      <app-comment-tile *ngIf="comment.childComments" [comments]="comment.childComments"></app-comment-tile>
+      </div>
+      
+      <div class="comment-body">
+        <p> {{comment.text}}</p>
+        <button  mat-icon-button (click)="toggle()">
+          <mat-icon>reply</mat-icon>
+        </button>
+      </div>
+      <form [formGroup]="commentForm"  
+          *ngIf="isOpened" 
+          (ngSubmit)="postComment(comment.commentId)" >
+          <mat-form-field  [style.width.%]="100" appearance="outline">
+            <textarea matInput 
+            cdkTextareaAutosize
+            placeholder="Reply ..." 
+            formControlName="text"
+            required></textarea>
+            <button mat-icon-button matSuffix color="accent" type="submit"><mat-icon>comment</mat-icon></button>
+          </mat-form-field>
+        </form>
+        <div class="replies">
+          <app-comment-tile *ngIf="comment.childComments" [comments]="comment.childComments" [postId]="comment.postId"></app-comment-tile>
+        </div>
     </div>
 </div>
 <!--
-
-
 <mat-card *ngFor="let comment of comments"  class ="comment-cards">
   <div class="border-box"></div>
   <mat-card-header class="comment-header">

@@ -12,14 +12,18 @@ import { LoginComponent } from './login/login.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { Oauth2Component } from './oauth2/oauth2.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 @NgModule({
   declarations: [
     SignUpComponent,
     LoginComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    Oauth2Component
   ],
   imports: [
     CommonModule,
+    BrowserAnimationsModule,
     FlexLayoutModule,
     ReactiveFormsModule,
     FontAwesomeModule,

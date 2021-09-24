@@ -1,77 +1,54 @@
-<mat-drawer-container class="h-screen w-screen" >
-    
+<app-header class="fixed-header" (drawerToggleEvent)=setDrawerState($event)></app-header>
+
+<mat-drawer-container autosize>
     <!-- side bar's list-->
-    <mat-drawer class="shadow border-0"  mode="side" opened>
-        <!-- logo and web name -->
-        <button mat-mini-fab color="accent" (click)="opened =!opened">
-            <img alt="logo" src="assets/angular-logo-wave.png">
-        </button>
-        
-        <mat-nav-list *ngIf = "this.opened===false  ; else anotherList">
-            
-            <a mat-list-item>
-                <button mat-icon-button>
-                    <mat-icon color="grey" [routerLink]="''">home</mat-icon>
+    <mat-drawer class="shadow drawer"  mode="side" opened>
+            <mat-nav-list *ngIf = "!isDrawerOpened  ; else anotherList">    
+              <a mat-list-item>
+                <button mat-stroked-button>
+                  <mat-icon color="grey">home</mat-icon>
                 </button>
-            </a>
-            <a mat-list-item>
-                <button mat-icon-button>
+              </a>
+              <a mat-list-item>
+                <button mat-stroked-button>
                     <mat-icon>subscriptions</mat-icon>
                 </button>
-            </a>
-            
-        </mat-nav-list>
-        
-        <ng-template #anotherList>
-                <mat-nav-list>
-                <a mat-list-item>
-                    <button mat-icon-button>
-                        <mat-icon color="grey" [routerLink]="''">home</mat-icon>
-                        <mat-drawer-content>fasdf</mat-drawer-content>
-                    </button>
-                </a>
+              </a>
+                <!-- This is where the bottom items reside.-->
+                <div [ngClass]='appropriateClass'> 
+                    <a mat-list-item>
+                        <button mat-stroked-button>
+                            <mat-icon>person</mat-icon>
+                        </button>
+                    </a>
+                </div>
             </mat-nav-list>
-        </ng-template>
+        
+            <ng-template #anotherList>
+                <mat-nav-list> 
+                    <a mat-list-item> 
+                        <button mat-icon-button>
+                            <mat-icon color="grey">home</mat-icon>
+                        </button>
+                        <span>HOME</span>
+                    </a>
 
+                    <a mat-list-item> 
+                        <button mat-icon-button>
+                            <mat-icon>subscriptions</mat-icon>
+                        </button>
+                        <span>SUBS</span>  
+                      </a>
 
+                </mat-nav-list>
+            </ng-template>
 
-        <mat-nav-list>
-            <!-- This is where the bottom items reside.-->
-            <div [ngClass]='appropriateClass'> 
-                <a mat-list-item>
-                    <button mat-icon-button>
-                        <mat-icon>person</mat-icon>
-                    </button>
-                </a>
-            </div>
-        </mat-nav-list>
     </mat-drawer>
 
-    <!-- show the header and router-outlet-->
     <mat-drawer-content>
-
-        <!-- #navigation stretch the fixed sidebar-->
-        <mat-drawer-container>
-            
-            <!--
-            <mat-sidenav 
-            #navigation 
-            class="shadow border-0 slide"  
-            fixedInViewport
-            mode="side"  
-            opened>>
-            </mat-sidenav>
-            -->
-
-            <mat-drawer-content class="page-wrap">
-                <app-header class="fixed-header" ></app-header>
-                <main>
-                    <router-outlet></router-outlet>
-                </main>
-            </mat-drawer-content>
-
-        </mat-drawer-container>
-
+        <main>
+            <router-outlet></router-outlet>
+        </main>
     </mat-drawer-content>
 
 </mat-drawer-container>

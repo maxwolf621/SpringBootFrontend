@@ -5,9 +5,7 @@ import { SubRoutingModule } from './sub-routing.module';
 import { CreateSubComponent } from './create-sub/create-sub.component';
 import { ListSubsComponent } from './list-subs/list-subs.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { MatGridListModule } from '@angular/material/grid-list';
-import { MatCardModule } from '@angular/material/card';
-import { MatIconModule } from '@angular/material/icon';
+import { MaterialpackagesModule } from '../materialpackages/materialpackages.module';
 
 
 @NgModule({
@@ -19,9 +17,7 @@ import { MatIconModule } from '@angular/material/icon';
     CommonModule,
     SubRoutingModule,
     ReactiveFormsModule,
-    MatGridListModule,
-    MatCardModule,
-    MatIconModule
+    MaterialpackagesModule
   ]
 })
 export class SubModule { }

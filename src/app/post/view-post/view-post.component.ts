@@ -21,46 +21,51 @@ export class ViewPostComponent implements OnInit {
   postId!: number;
   post!: PostModel;
 
-  /**
-   * display comments
-   */
-  comments!: CommentPayload[];
+  comments!: CommentPayload[]; //display comments for this post
   
-  /**
-   * To post　a comment
-   */
-  commentForm: FormGroup;
-  commentPayload!: CommentPayload;
+  commentPayload!: CommentPayload; //leave comment for this post
+
+  commentForm!: FormGroup; // comment form
 
   constructor(private postService: PostService, 
               private activateRoute: ActivatedRoute,
               private commentService: CommentService, 
-              private router: Router) {
-
-    this.commentForm = new FormGroup({
-      text: new FormControl('', Validators.required)
-    });
+              private router: Router) { 
   }
 
   ngOnInit(): void {
-
     this.postId = this.activateRoute.snapshot.params.id;
 
-    console.info("-----------get PostId " + this.postId);
-    
     // load the post content 
     this.getPostById(this.postId);
 
     // get comment via the post
     this.getCommentsForThisPost();
+
+    // initialize the form
+    this.commentForm = new FormGroup({
+      text : new FormControl('')
+    })
+
+    this.commentPayload = {
+      postId: this.postId,
+      text: ''
+    }
   }
 
   /**
    * post the comment
    */
   postComment() {
+
     this.commentPayload.text = this.commentForm.get('text')!.value;
     this.commentPayload.postId = this.postId;
+
+    console.info("comment :" + this.commentPayload.text +
+                 "post id :" + this.commentPayload.postId);
+
+    //window.location.reload();
+
     this.commentService.postComment(this.commentPayload).subscribe(data => {
       console.info(data);
     }, error => {
@@ -84,7 +89,7 @@ export class ViewPostComponent implements OnInit {
     this.commentService.getAllCommentsForPost(this.postId).subscribe(comment => {
       console.info(comment);
       this.comments = comment;
-      return this.comments;
+      console.info("this comments"+ this.comments);
     }, error => {
       throwError(error);
     });

@@ -1,7 +1,7 @@
-// src/custom-component-themes.scss
-
-// import custom components themes
-
+@import "./scsslayout/sidenav.component.scss-theme.scss";
+@import "./scsslayout/dialog.component.scss-theme.scss";
 // you only have to add additional components here (instead of in every theme class)
 @mixin custom-components-theme($theme) {
+    @include sidenav-component-theme($theme);
+    @include dialog-component-theme($theme);
 }

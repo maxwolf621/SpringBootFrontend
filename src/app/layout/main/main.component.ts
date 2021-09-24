@@ -8,10 +8,18 @@ import { Component, OnInit,HostListener } from '@angular/core';
 export class MainComponent implements OnInit {
 
   events: string[] = [];
-  opened : boolean = false;
+
+  isDrawerOpened : boolean = false;
   
   appropriateClass:string = '';
   
+  constructor(){
+    this.getScreenHeight();
+  }
+
+  ngOnInit(): void {
+  }
+
   @HostListener('window:resize', ['$event'])
   getScreenHeight(){
     console.info(window.innerHeight);
@@ -22,14 +30,8 @@ export class MainComponent implements OnInit {
       this.appropriateClass = 'bottomStick';
     }
   }
-  constructor(){
-    this.getScreenHeight();
-  }
 
-  ngOnInit(): void {
-  }
-
-  open(){
-    console.info("opened :" + this.opened);
+  setDrawerState(isOpened : boolean){
+    this.isDrawerOpened = isOpened;
   }
 }

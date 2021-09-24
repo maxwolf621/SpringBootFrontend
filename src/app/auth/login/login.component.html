@@ -2,49 +2,56 @@
   <mat-icon class="close-icon" color="warn">close</mat-icon>
 </button>
 
-<h1 mat-dialog-title>Login</h1>
+<h2 mat-dialog-title>Login</h2>
+
 <div class="container">
-  <div class="row custom-wrapper">
-    <div class="col-md-12">
-      <!-- Form Group STARTS-->
-      <form [formGroup]="loginForm" (ngSubmit)="login()">
-        <div class="group-gap">
-          <!-- LABEL OF username -->
-          <label [ngClass]="{'error': isLoggedIn && myForm.username.errors}">Username</label>
-          <div class="mb-3">
-            <!-- User input-->
-            <input 
-            type="text" 
-            class="form-control" 
-            formControlName="username" 
-            name="username" required
-            [ngClass]="{'error': isLoggedIn && myForm.username.errors}"/>
-            <!-- Error Blocks -->
-            <div *ngIf="isLoggedIn && myForm.username.errors" class="alert alert-danger">
-              <div *ngIf="myForm.username.errors.required">Username is required</div>
-            </div>
-          </div>
-        </div>
-        <!-- Lebel of Password-->
-        <label [ngClass]="{ 'error' : isLoggedIn && myForm.password.errors }">Password</label>
-        <div class="md-3">
-          <!-- User Input -->
-          <input 
-          type="password" 
-          class="form-control" 
-          formControlName="password" 
-          name="password" required
-          [ngClass]="{ 'error' : isLoggedIn && myForm.password.errors }"/>
-          <div *ngIf="isLoggedIn && myForm.password.errors" class="alert alert-danger">
-            <div *ngIf="myForm.password.errors.required"> Password is Required </div>
-          </div>
-        </div> 
-        <div class="form-group">
-          <button mat-raised-button="primary" (click)="login()">Log In</button>
-          <span style="padding-left: 15px"> New? <a routerLink="'/sign-up'">SIGN UP</a></span>
-        </div>
-    </form>
-  </div>
+  <form [formGroup]="loginForm" (ngSubmit)="login()">
+    <div 
+    fxLayout="column"
+    fxLayout.lt-md="column"
+    fxLayoutGap="20px"
+    fxLayoutGap.lt-md="0px">
+    <!-- name -->
+    <mat-form-field>
+      <input 
+      matInput             
+      placeholder="Enter Your Name"
+      formControlName="username" 
+      name="username" 
+      required
+      />
+      <mat-error *ngIf=" isLoggedIn && loginFormControl.username.errors">
+        Username is Required
+      </mat-error>
+    </mat-form-field>
+
+    <!-- password-->
+    <mat-form-field appearance='legacy'>
+      <input 
+      matInput             
+      placeholder="Enter Your Password"
+      formControlName="password" 
+      name="password" 
+      required
+      />
+      <button mat-icon-button matSuffix (click)="hidePassword = !hidePassword" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidePassword">
+        <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+      <mat-error *ngIf=" isLoggedIn && loginFormControl.password.errors">
+        Password is Required
+      </mat-error>
+    </mat-form-field>
+    <div dir="rtl" fxLayoutGap="20px">
+      <button matSuffix 
+      mat-stroked-button 
+      color="primary" 
+      type="submit" 
+      [disabled]="!loginFormControl.valid">
+      Log In
+      </button>
+    </div>
+    </div>
+  </form>
 </div>
 
 

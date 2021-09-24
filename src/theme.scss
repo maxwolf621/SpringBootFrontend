@@ -1,28 +1,38 @@
-@import '~@angular/material/theming';
 
 // ? Importing `Work Sans` font for headings, you can change this if you want
 @import url("https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500&display=swap");
 
+
 /**
-  * App Theme
+  * mat-palette( color , brightness , foreground , background)
   */
-$primary: mat-palette($mat-blue);
-$accent:  mat-palette($mat-amber, A200, A100, A400);
-$warn:    mat-palette($mat-red);
 
-$app-theme: mat-light-theme($primary, $accent, $warn);
 
-/** 
-  * Dark Theme
-  */
+// dark-theme
 $dark-primary: mat-palette($mat-blue-grey);
-$dark-accent: mat-palette($mat-pink, A200, A100, A400);
+$dark-accent:  mat-palette($mat-amber, A200, A100, A400);
 $dark-warn: mat-palette($mat-deep-orange);
-$dark-theme: mat-dark-theme($dark-primary,$dark-accent,$dark-warn);
+$dark-theme: (
+  primary: $dark-primary,
+  accent: $dark-accent,
+  warn: $dark-warn,
+  foreground: $mat-dark-theme-foreground,
+  background: $mat-dark-theme-background,
+);
+
+// light-theme
+$light-primary: mat-palette($mat-blue);
+$light-accent: mat-palette($mat-pink, A200, A100, A400);
+$light-warn:    mat-palette($mat-pink);
+$light-theme: (
+  primary: $light-primary,
+  accent: $light-accent,
+  warn: $light-warn,
+  foreground: $mat-light-theme-foreground,
+  background: $mat-light-theme-background,
+);
 
 
-/**
-// Define a custom heading typography config
 $heading-font-family: "'Work Sans', sans-serif";
 $typography: mat-typography-config(
   $display-4: mat-typography-level(112px, $font-family: $heading-font-family),
@@ -32,6 +42,3 @@ $typography: mat-typography-config(
   $headline: mat-typography-level(24px, $font-family: $heading-font-family),
   $title: mat-typography-level(20px, $font-family: $heading-font-family),
 );
-// Override typography for all Angular Material, including mat-base-typography and all components.
-@include angular-material-typography($typography);
-**/

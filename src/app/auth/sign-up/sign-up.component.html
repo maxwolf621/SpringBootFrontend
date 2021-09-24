@@ -10,12 +10,9 @@
   fxLayoutGap.lt-md="0px"
   >
     <!-- NAME -->
-    <mat-form-field appearance="legacy" *ngIf="signupForm.contains('username')" @inflate>
+    <mat-form-field appearance="legacy" *ngIf="signupForm.contains('username')" >
       <mat-label>Full name</mat-label>
       <input matInput formControlName="username">
-      <mat-error *ngIf="signupForm.controls.username.errors?.required">
-        Please specify your name here
-      </mat-error>
     </mat-form-field>
 
     <!-- EMAIL -->
@@ -41,28 +38,25 @@
         A password is required
       </mat-error>
     </mat-form-field>
+    <div dir="rtl" fxLayoutGap="20px">
+      <button matSuffix mat-stroked-button color="primary" type="submit" [disabled]="!signupForm.valid" class="btn">
+        SignUp
+      </button>
+    </div>
   </div> 
 </form>
-
-<div>
-  <button mat-stroked-button color="primary" type="submit" [disabled]="!signupForm.valid" class="btn">
-    SignUp
-  </button>
-</div>
 
 
 <!-- SIGN-IN PROVIDERS -->
 <div fxLayout="column" fxLayoutAlign="center center">
   <p class="mat-small">Sign In With</p>
-
   <div fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap="10px">
-
-    <button mat-icon-button *ngFor="let p of providers">
-      <a href={{p.url}}><mat-icon class="providers"
-                [fontSet]="p.icon.split(':')[0]"
+    <button mat-icon-button *ngFor="let p of providers" (click)="signupWith(p.url)">
+    <mat-icon class="providers"
+                [fontSet]="p.icon.split(':')[0]"  
                 [fontIcon]="p.icon.split(':')[1]" 
                 [ngStyle]="{ color: p.color }">   
-      </mat-icon></a>
+      </mat-icon>
     </button>
   </div>
 </div>

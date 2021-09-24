@@ -10,7 +10,12 @@ import { CreatePostPayload } from './create-post.payload'
 import { ENTER, COMMA } from '@angular/cdk/keycodes';
 import { MatDialogRef } from '@angular/material/dialog';
 import { map,startWith,tap } from 'rxjs/operators';
-import {MatAutocompleteSelectedEvent} from '@angular/material/autocomplete';
+import {MatAutocomplete, MatAutocompleteSelectedEvent} from '@angular/material/autocomplete';
+
+interface PostTag{ // payload to our post controller backend
+  postRequest: CreatePostPayload;
+  tagNames : Array<string>;
+}
 
 @Component({
   selector: 'app-create-post',
@@ -19,40 +24,54 @@ import {MatAutocompleteSelectedEvent} from '@angular/material/autocomplete';
 })
 export class CreatePostComponent implements OnInit {
 
-  createPostForm!: FormGroup;
-  postPayload!: CreatePostPayload;
+  createPostForm!: FormGroup;      // form to be filled from frontend
+  postPayload!: CreatePostPayload; // payload to backed
 
   // create-post belongs which sub
   subs : SubModel[] = [];
 
+  // keep listening to filter the desire keyword for use 
   tagCtrl = new FormControl();
 
   // filtered Tag for autoComplete()
   filteredTags !: Observable<string[]>
 
   // tags that user selected (tags for this post)
-  selectedTags : Array<string> = ['post'];
+  selectedTags : Array<string> = [];
   
   // tags that database stored
-  allTags = ['Feel Weird', 'Es gibt keine dummen Fragen', 'Changes', 'Space'];
+  allTags : Array<string> = [];
   
-  separatorKeysCodes = [ENTER, COMMA];
+  separatorKeysCodes : number[] = [ENTER, COMMA];
 
   removable = true;
   selectable = true;
 
+  postTag !: PostTag;
+
   @ViewChild('tagsInput') tagsInput!: ElementRef<HTMLInputElement>;
+  @ViewChild('auto') matAutocomplete!: MatAutocomplete;
 
 
   constructor(private postService: PostService, 
               private router:Router,
               private subService: SubService,
               private matDialogRef: MatDialogRef<CreatePostComponent>) {
+      
+      this.postService.getTags().subscribe(
+        (tagnames) =>{
+          this.allTags = tagnames;
+        }, error =>{
+          throwError(error);
+        }
+      );
+      
       this.filteredTags = this.tagCtrl.valueChanges.pipe(
         tap(data => console.info("data " + data)),
-        startWith(''),
+        startWith(null),
         map((tag : string | null) => tag ? this._filter(tag)  : this.allTags.slice()),
       )
+
   }
 
   /**
@@ -60,37 +79,56 @@ export class CreatePostComponent implements OnInit {
    * get the subs 
    */
   ngOnInit(): void {
+
+    // initialize form (data for frontend)
     this.createPostForm = new FormGroup({
-      postName: new FormControl('',Validators.required),
-      subName : new FormControl(null),
+      postname: new FormControl('',Validators.required),
+      subname : new FormControl(''),
       url     : new FormControl(''),
       description: new FormControl('',Validators.required),
     });
-    //initialize 
+
+    //initialize payload (data for backend )
     this.postPayload = {
-      postName: '',
-      subName: '',
+      postname: '',
+      subname: '',
       url: '',
-      description:''
+      description:'',
     }
+
+    // get all subs
     this.subService.getAllSubs().subscribe((sub) =>{
       this.subs = sub;
     }, error =>{
       throwError(error);
     });
+
   }
 
   /**
    * by clicking the button to create a new post
    */
   createPost() {
-    this.postPayload.postName = this.createPostForm.get('postName')!.value;
-    this.postPayload.subName = this.createPostForm.get('subName')!.value;
+    this.postPayload.postname = this.createPostForm.get('postname')!.value;
+    this.postPayload.subname = this.createPostForm.get('subname')!.value;
     this.postPayload.url = this.createPostForm.get('url')!.value;
     this.postPayload.description = this.createPostForm.get('description')!.value;
 
-    this.postService.createPost(this.postPayload).subscribe((data) => {
-      this.router.navigateByUrl('/');
+    console.info("post name: " + this.postPayload.postname + 
+                 "\n description: " + this.postPayload.description + 
+                 "\n url "+ this.postPayload.url + 
+                 "\n sub name " + this.postPayload.subname);
+
+    this.postTag = {
+      postRequest : this.postPayload , 
+      tagNames : this.selectedTags
+    }
+
+
+    this.postService.createPost(this.postTag).subscribe((data) => {
+      
+      window.location.reload();
+    
     }, error => {
       console.warn("Error");
       throwError(error);
@@ -106,42 +144,56 @@ export class CreatePostComponent implements OnInit {
    */
   removeTag(tagname:string){
 
-    this.selectedTags = this.selectedTags.filter(tag => tag !== tagname);
-    /**
-     *    
+    //this.selectedTags = this.selectedTags.filter(tag => tag !== tagname);
+   
     // find the 
-    const index = this.tags.indexOf(tagname);
+    const index = this.selectedTags.indexOf(tagname);
     // found it => delete it 
     if (index >= 0) {
-      this.tags.splice(index, 1);
+      this.selectedTags.splice(index, 1);
     }
-     */
   }
 
   /**
-   * add new tag to selectedTags[]
+   * add new tag to selectedTags[] via user-input
    * @param $event tag the user inputs
    */
   addTag($event: MatChipInputEvent) {
-    console.info("Tag Event" + $event);
+    console.info("Tag Event" + $event.value);
     
-    if (($event.value || '').trim()) {
-      const value = $event.value.trim();
+    const input = $event.input;
+    const value = $event.value;
 
+    if ((value || '').trim()) {
       // if duplicate tagname in the array
       if (this.selectedTags.indexOf(value) === -1) {
         this.selectedTags.push(value);
       }
     }
 
-    $event.input.value = '';
+    if(input){
+      input.value = ''
+    }
+
     this.tagCtrl.setValue(null);
   }
 
+  
+  /**
+   * Select value from selected-bar
+   */
   selected($event:MatAutocompleteSelectedEvent):void{
-    // add the event `option` from DOM in selectedTags[]
-    this.selectedTags.push($event.option.viewValue);
+    
+    // check the duplicate if it exists in filter tag
+    let index = this.selectedTags.indexOf($event.option.viewValue);
+    if(index === -1){
+      this.selectedTags.push($event.option.viewValue);
+    }
+    console.info("tagCtrl now :" +  this.tagCtrl.value);
+
+    // choose value from selected-list not the value you type 
     this.tagsInput.nativeElement.value = '';
+
     this.tagCtrl.setValue(null);
   }
   /**

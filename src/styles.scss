@@ -1,61 +1,40 @@
-//import our custom theme                
-@import "./theme.scss";     
+@import '~@angular/material/theming';
+
 // Include the common styles for Angular Material. We include this here so that you only
 // have to load a single css file for Angular Material in your app.
 // Be sure that you only ever include this mixin once!
 @include mat-core();
 
-@import '~@angular/cdk/overlay-prebuilt.css';
+//import our custom theme                
+@import "./theme.scss";     
 
+
+@import '~@angular/cdk/overlay-prebuilt.css';
 //@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
-//@import '~@angular/cdk/overlay-prebuilt.css';
 
 // import custom component themes         
 @import "./custom-component-themes.scss";
 
-// Include theme styles for core and each component used in your app.
-// Alternatively, you can import and @include the theme mixins for each component
-// that you are using.
-//@include custom-components-theme($theming-material-components-theme); 
 
-@include angular-material-theme($dark-theme);
+// Override typography for all Global variable Angular Material, including mat-base-typography and all components.
+@include angular-material-typography($typography);
+
+// default theme 
+@include angular-material-theme($light-theme);
 
 
-.app-theme{
-    @include angular-material-theme($app-theme);
-}
+// switch to dark theme
 .dark-theme {
     @include angular-material-theme($dark-theme);
+    @include custom-components-theme($dark-theme); 
 }
  
-
-/*************************
-  * Global variable
-  **************************/ 
-
-/* You can add global styles to this file, and also import other style files */
+// You can add global styles to this file, and also import other style files 
 .custom-dialogconfig .mat-dialog-container{
-
 }
-
-.close-button{
-    float: right;
-    top:-24px;
-    right:-24px;
-}
-  
-.close-icon {
-    transition: 1s ease-in-out;
-}
-  
-.close-icon:hover {
-    transform: rotate(180deg);
-}
-
 
 /* You can add global styles to this file, and also import other style files */
 input.ng-invalid.ng-touched {
-    border: 1px solid red;
 }
   
 html {
@@ -63,7 +42,7 @@ html {
 } 
 
 body {
-    //font-family: Roboto, "Helvetica Neue", sans-serif;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
     margin-top:63px;
     height: 100%;
 }

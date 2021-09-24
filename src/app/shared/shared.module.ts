@@ -8,6 +8,7 @@ import { SubTileComponent } from './sub-tile/sub-tile.component';
 import { VoteButtonComponent } from './vote-button/vote-button.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MaterialpackagesModule } from '../materialpackages/materialpackages.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { MaterialpackagesModule } from '../materialpackages/materialpackages.mod
     CommonModule,
     MaterialpackagesModule,
     FontAwesomeModule,
+    ReactiveFormsModule
   ],
   exports:[
     CommentTileComponent,

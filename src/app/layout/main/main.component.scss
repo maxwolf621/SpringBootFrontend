@@ -1,35 +1,5 @@
-.fixed-header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 2;
-    width: 100%  !important;
-}
-
-mat-drawer,
-mat-sidenav{
-    height:100%;
-    flex: 1 1 auto;
-}
-
-
-/*
-md-sidenav.md-locked-open, 
-md-sidenav.md-closed.md-locked-open-add-active {
-    min-width: 200px !important;
-    max-width: 400px !important;    
-        width: 85vw !important;
-}
-*/
-
-md-drawer,
-md-sidenav{
-    width:100px;
-    z-index:999;
-}
 
 main{    
-    height:100vh;
     padding : 5%;
     overflow: auto;
     position: top;
@@ -39,22 +9,16 @@ main{
     margin: 10px;
 }
 
-
-/**
-.web-name{        
-    font-weight: 700;
-    height: 60px;
-    width: 50px;    
-    color :#c51f5e
-}
-**/
-
-
-
 .bottomStick{
-    /*border-top:1px solid green;border-bottom:1px solid green;*/position:absolute; bottom:0
+    position:absolute; 
+    bottom:0;
 }
 
 .bottomRelative{
     position:relative;
+}
+
+
+.drawer{
+    height:100%;
 }

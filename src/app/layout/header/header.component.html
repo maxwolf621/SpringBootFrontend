@@ -1,12 +1,22 @@
-<mat-toolbar>
-
-
+<mat-toolbar class="fixed-header">
+  
+  <button  fxLayout="row" fxLayoutAlign="space-evenly start" mat-mini-fab color="accent" (click)="drawerOnToggle()">
+    <img id="cat-logo" alt="logo" src="assets/angular-logo-wave.png">
+  </button>
+  
+  <!-- push the button to right-end -->
   <span class="toolbar-seprator"></span>
 
+      <!-- theme switcher -->
       <mat-icon>brightness_5</mat-icon>
-      <mat-slide-toggle [formControl]="toggleControl" class="mr-8"></mat-slide-toggle>
+        <mat-slide-toggle 
+          [color]="color"
+          [formControl]="toggleControl" 
+          class="mr-8">
+        </mat-slide-toggle>
       <mat-icon  [style.color]="'black'">dark_mode</mat-icon>
       
+      <!-- logged In User -->
       <div *ngIf="isLoggedIn; else guest">
         <button mat-icon-button [matMenuTriggerFor]="userMenu" #menuTrigger="matMenuTrigger">
           <mat-icon>message</mat-icon>
@@ -17,6 +27,7 @@
         </mat-menu> 
       </div>  
 
+      <!-- Guest  -->
       <ng-template #guest>
         <button mat-raised-button="primary" class="login" (click)="openDialog('login')"><mat-icon>login</mat-icon>Log In</button>
         <button mat-raised-button="primary" class="sign-up" (click)="openDialog('signup')"><mat-icon>app_registration-up</mat-icon>Sign Up</button>

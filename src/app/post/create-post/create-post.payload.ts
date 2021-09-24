@@ -1,6 +1,6 @@
 export interface CreatePostPayload {
-    postName: string;
-    subName: string;
+    postname: string;
+    subname: string;
     url: string;
     description: string;
 }

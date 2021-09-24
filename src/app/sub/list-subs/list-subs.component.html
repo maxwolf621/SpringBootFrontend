@@ -1,14 +1,16 @@
-
-<mat-grid-list cols="3" rowHeight="100px" >
-  <mat-grid-tile *ngFor="let sub of subs; let index = index" rowspan="2">
+<mat-grid-list cols="2" rowHeight="250px" >
+  <mat-grid-tile *ngFor="let sub of subs; let index = index" rowspan="1">
     <mat-card class="sub-tile" [tabindex]=index>
-      <mat-card-header class="card-group">
+      <mat-card-title-group>
+        <img mat-card-lg-image src="https://picsum.photos/200/?random=10" />
         <mat-card-title>  {{sub.subname}} </mat-card-title>
-        <mat-card-subtitle class="sub-subtile"> {{sub.postsCount}} </mat-card-subtitle>
-      </mat-card-header>
+        <mat-card-subtitle> Post : {{sub.postsCount}} </mat-card-subtitle>
+      </mat-card-title-group>
       <mat-card-content>{{sub.description}}</mat-card-content>
       <mat-card-actions>
+        <button mat-icon-button color="accent"><mat-icon>open_in_browser</mat-icon></button>
       </mat-card-actions>
     </mat-card>
   </mat-grid-tile>
 </mat-grid-list>
+

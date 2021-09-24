@@ -44,11 +44,11 @@ export class PostService {
   
   /**
    * 
-   * @param postPayload {@link post-}
+   * @param postTag payload that contained with PostPayload and Tag names
    * @returns DOT (post response) from backend
    */
-  createPost(postPayload: CreatePostPayload): Observable<any> {
-      return this.http.post(`${environment.apiPost}`, postPayload);
+  createPost(postTag : any): Observable<any> {
+      return this.http.post(`${environment.apiPost}`, postTag);
   }
   
   /**
@@ -68,5 +68,9 @@ export class PostService {
    */
   getAllPostsByUser(name: string): Observable<PostModel[]> {
     return this.http.get<PostModel[]>(`${environment.apiPost}/getByUser/` + name);
+  }
+
+  getTags():Observable<Array<string>>{
+    return this.http.get<Array<string>>(`${environment.apiTag}/getalltags`);
   }
 }

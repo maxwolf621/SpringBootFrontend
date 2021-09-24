@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder,FormGroup, Validators } from '@angular/forms';
-import { LoginRequestPayload} from './login-request.payload';
 import { AuthService } from '../authservice/auth.service';
-import { Router, ActivatedRoute } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { throwError } from 'rxjs';
 import { MatDialogRef } from '@angular/material/dialog'
+import { AuthDTO } from '../auth-dto';
 
 @Component({
   selector: 'app-login',
@@ -15,43 +15,52 @@ import { MatDialogRef } from '@angular/material/dialog'
 export class LoginComponent implements OnInit {
 
   loginForm!: FormGroup;
-  loginRequestPayload! : LoginRequestPayload;
+  loginRequestPayload! : AuthDTO;
+  
   isLoggedIn:boolean = false;
+  
+  hidePassword : boolean = true ;
+
   readonly SUCCESS = "success";
-  // dependency injection
+
   constructor(private authService: AuthService,
               private activatedRoute: ActivatedRoute,
-              private router: Router, 
               private toastr: ToastrService,
               private formBuilder: FormBuilder,
               public matdialogRef : MatDialogRef<LoginComponent>
-              ){      
+              )
+  {      
+      
+      // initialize the payload
       this.loginRequestPayload ={
         username : '',
         password : ''
       }
-    }
+  }
+
   ngOnInit(): void {
+    
+      // initialize the form
       this.loginForm = this.formBuilder.group({
       username: ['', Validators.required],
       password: ['', [Validators.required, Validators.minLength(1),Validators.maxLength(20)] ]
       })
   }
 
-  get myForm(){
+  get loginFormControl(){
     return this.loginForm.controls;
   }
 
   login(){
     // to backend
     this.authService.login(this.loginForm.value).subscribe(
-      data => { 
-        this.toastr.success('Login Successful');
+      data => {         
         this.isLoggedIn = true;
         this.matdialogRef.close(this.SUCCESS);
 
     }, error => {
       this.isLoggedIn = false;
+
       this.toastr.error("Login Fail Please Check Again");
       throwError(error);
     });

@@ -13,4 +13,5 @@ export interface PostModel {
     commentCount: number;
     upVote: boolean;
     downVote: boolean;
+    tagnames?: Array<string>
 }
