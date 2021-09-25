@@ -6,6 +6,7 @@ import { CreateSubComponent } from './create-sub/create-sub.component';
 import { ListSubsComponent } from './list-subs/list-subs.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MaterialpackagesModule } from '../materialpackages/materialpackages.module';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 
 @NgModule({
@@ -15,6 +16,7 @@ import { MaterialpackagesModule } from '../materialpackages/materialpackages.mod
   ],
   imports: [
     CommonModule,
+    FlexLayoutModule,
     SubRoutingModule,
     ReactiveFormsModule,
     MaterialpackagesModule

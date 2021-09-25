@@ -10,7 +10,7 @@ import { SubModel } from 'src/app/sub/sub-model';
 export class SubTileComponent implements OnInit {
 
   @Input()
-  mySubs !: SubModel[];
+  favSubs !: SubModel[];
 
   constructor(private router : Router) {}
 

@@ -9,6 +9,7 @@ import { VoteButtonComponent } from './vote-button/vote-button.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MaterialpackagesModule } from '../materialpackages/materialpackages.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { ReactiveFormsModule } from '@angular/forms';
   ],
   imports: [
     CommonModule,
+    FlexLayoutModule,
     MaterialpackagesModule,
     FontAwesomeModule,
     ReactiveFormsModule

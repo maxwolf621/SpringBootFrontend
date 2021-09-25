@@ -1,7 +1,7 @@
 <!--base -->
 <mat-grid-tile class="post" *ngFor="let post of posts" >
-    <!--children -->    
     
+    <!--children -->    
     <div class="vote-component">
         <app-vote-button [post] = "post"></app-vote-button>
     </div>
@@ -13,7 +13,7 @@
             <span> - {{post.duration}}</span>
             <mat-card-subtitle>
             <mat-chip-list >
-                <mat-chip selected="true" color="primary" *ngFor="let tag of post.tagnames" > {{tag}} </mat-chip>
+                <mat-chip *ngFor="let tag of post.tagnames" > {{tag}} </mat-chip>
             </mat-chip-list>
             </mat-card-subtitle>
         </span> <hr />
@@ -24,7 +24,8 @@
         </div>
         <mat-card-content >{{post.description.substring(0,100)}} ... </mat-card-content>
         <hr />
-        <mat-card-actions>
+        
+        <mat-card-actions algin="end">
             <button mat-button class="commments" > 
                 <fa-icon [icon]="faComments"></fa-icon> Comments({{post.commentCount}})
             </button>
@@ -32,6 +33,7 @@
             <button mat-button class="mark"><mat-icon>bookmark_border</mat-icon>mark</button>
             <button mat-button class="read" (click)="goToPost(post.id)"><mat-icon>description</mat-icon>Read</button>
         </mat-card-actions>
+    
     </div>    
 </mat-grid-tile>
 

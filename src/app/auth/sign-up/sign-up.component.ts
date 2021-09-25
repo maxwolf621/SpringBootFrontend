@@ -60,7 +60,7 @@ export class SignUpComponent implements OnInit {
   }
 
   signupWith(url: string){
-    console.info("sdfsgf");
+    console.info("");
     this.authService._signOrLoginWithOAuth2(url);
   }
 

@@ -49,15 +49,6 @@
 
 */
 
-
-/* 
-    Body, button, comment-thread, and utilities
-
-    Notes:
-        - This section sets some basic styles. You can ignore this part and 
-        go directly to the comment styles.
-*/
-
 .m-0 {
     margin: 0;
 }
@@ -93,13 +84,13 @@
     display: block;
     position: absolute;
     top: 43px;
-    left: 13px;
+    left: 29px;
     width: 4px;
     height: calc(100% - 50px);
     border-left: 4px solid transparent;
     border-right: 4px solid transparent;
-
-    background-color: #fff;
+    
+    background-color: rgb(182, 225, 233);
     background-clip: padding-box;
 }
 .comment-border-link:hover {
@@ -108,7 +99,7 @@
 
 .comment-body {
     padding: 0 20px;
-    padding-left: 50px;
+    padding-left: 70px;
 }
 .replies {
     margin-left: 28px;
@@ -120,7 +111,6 @@
 }
 
 .comment-info {
-    color:azure;
     padding-left: 15px;
 }
 

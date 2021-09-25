@@ -54,10 +54,9 @@ export class LoginComponent implements OnInit {
   login(){
     // to backend
     this.authService.login(this.loginForm.value).subscribe(
-      data => {         
+      () => {         
         this.isLoggedIn = true;
         this.matdialogRef.close(this.SUCCESS);
-
     }, error => {
       this.isLoggedIn = false;
 

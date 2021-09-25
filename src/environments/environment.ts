@@ -13,11 +13,11 @@ export const environment = {
   apiComment: 'http://localhost:8080/api/comment',
   apiVote   : 'http://localhost:8080/api/vote',
   apiBookMark:'http://localhost:8080/api/bookmark',
-  apiUserProfile:'http://localhost:8080/api/user',
+  apiUserProfile:'http://localhost:8080/api/userprofile',
   apiOauth2Login:'http://localhost:8080/oauth2/authorization',
   apiLogout : 'http://localhost:8080/api/auth/logout',
   apiTag: 'http://localhost:8080/api/tag',
-  apiOAuth2RedirectUri:'http://locahost:4200/oauth2/'
+  apiOAuth2RedirectUri:'http://locahost:4200/oauth2/',
 };
 
 /*

@@ -1,17 +1,20 @@
 .post{
     --post-line-color:azure;    
-    border: 1px solid azure;
+    border: 1px solid;
     margin-bottom: 20px;
     overflow: hidden;
-    color: #878A8C;
     position: relative;
     border-radius: 4px;
-    padding:5px;
+    padding: 5px;
+
     /* new patch */
     display: flex;
-    width: 80%;
+    width: 100%;
     height: 300px;
+}
 
+.col-md-11{
+    padding: 0 10px;
 }
 
 .vote-component {

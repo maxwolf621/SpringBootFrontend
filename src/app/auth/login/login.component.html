@@ -29,13 +29,14 @@
     <mat-form-field appearance='legacy'>
       <input 
       matInput             
+      [type]="hidePassword ? 'password' : 'text'" 
       placeholder="Enter Your Password"
       formControlName="password" 
       name="password" 
       required
       />
       <button mat-icon-button matSuffix (click)="hidePassword = !hidePassword" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidePassword">
-        <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+        <mat-icon> {{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
       </button>
       <mat-error *ngIf=" isLoggedIn && loginFormControl.password.errors">
         Password is Required
@@ -46,7 +47,7 @@
       mat-stroked-button 
       color="primary" 
       type="submit" 
-      [disabled]="!loginFormControl.valid">
+      [disabled]="!loginForm.valid">
       Log In
       </button>
     </div>

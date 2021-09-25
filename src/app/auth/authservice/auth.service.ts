@@ -1,6 +1,5 @@
 import { EventEmitter, Injectable, Output } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
-
 import { HttpClient } from '@angular/common/http';
 import { LoginResponse } from '../login/login-response.payload';
 import { map, tap } from 'rxjs/operators';
@@ -8,6 +7,7 @@ import { LocalStorageService } from 'ngx-webstorage';
 import { environment } from 'src/environments/environment';
 import { AuthDTO } from '../auth-dto';
 import { ActivatedRoute, Router } from '@angular/router';
+import { User } from '../user';
 
 
 interface OAuth2QueryParameter{
@@ -23,6 +23,8 @@ export class AuthService {
 
   @Output() loggedIn: EventEmitter<boolean> = new EventEmitter();
   @Output() username: EventEmitter<string>  = new EventEmitter();
+
+  user !: User;
   
   refreshTokenPayload = {
     refreshToken: this.getRefreshToken(),
@@ -139,6 +141,14 @@ export class AuthService {
         console.warn("Error" + error);
       }
     )
+  }
+
+  getUserInformation(){
+    return this.http.get<User>(`${environment.apiUserProfile}/account`);
+  }
+
+  updateUserInformation(user : User){
+    return this.http.post<User>(`${environment.apiUserProfile}/updateAccount`, user );
   }
 
 }

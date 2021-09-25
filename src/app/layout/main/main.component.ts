@@ -1,4 +1,8 @@
 import { Component, OnInit,HostListener } from '@angular/core';
+import { AuthService } from 'src/app/auth/authservice/auth.service';
+import { User } from 'src/app/auth/user';
+import { SubModel } from 'src/app/sub/sub-model';
+import { SubService } from 'src/app/sub/subservice/sub.service';
 
 @Component({
   selector: 'app-main',
@@ -13,12 +17,32 @@ export class MainComponent implements OnInit {
   
   appropriateClass:string = '';
   
-  constructor(){
+  user : User ={
+    isLoggedIn : false
+  }
+
+  subs !: SubModel[];
+
+  constructor(private authService : AuthService,
+              private subService : SubService)
+  {
     this.getScreenHeight();
+    this.subService.getSubscriptions().subscribe(
+      (favSubs) => {
+        this.subs = favSubs;
+      }, (error) =>{
+        console.info(error);
+      }
+    )
   }
 
   ngOnInit(): void {
+    this.user ={
+      isLoggedIn : this.authService.isLoggedIn()
+    }
+    
   }
+
 
   @HostListener('window:resize', ['$event'])
   getScreenHeight(){

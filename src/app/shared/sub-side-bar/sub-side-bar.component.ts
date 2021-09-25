@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { SubModel } from 'src/app/sub/sub-model';
 import { SubService } from 'src/app/sub/subservice/sub.service';
 
@@ -16,20 +17,24 @@ export class SubSideBarComponent implements OnInit {
   
   displayTheAllSubs = false;
 
-  constructor(private subService: SubService) {
+  constructor(private subService: SubService,
+    private router:Router) {
   }
 
   ngOnInit( ): void {
-    this.subService.getAllSubs().subscribe((sub: any[]) =>{
+    this.subService.getAllSubs().subscribe((subs: any[]) =>{
       // do not show all the subs in sub-side bar 
-      if(sub.length > 3){
-        this.subs = sub.splice(0, 3);
+      if(subs.length > 3){
+        this.subs = subs.splice(0, 3);
         this.displayTheAllSubs = true;
       }
       else{
-        this.subs = sub;
+        this.subs = subs;
       }
     });
   }
 
+  listAll(){
+    this.router.navigateByUrl('/list-sub');
+  }
 }

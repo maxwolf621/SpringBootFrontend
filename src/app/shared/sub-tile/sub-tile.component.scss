@@ -1,11 +1,10 @@
-.sub-cards{
-    border: 1px solid azure;
+.mat-grid-tile > .figure{
+}
+
+.box {
+    width: 99%;
     margin-bottom: 20px;
-    background-color: #22272E;
-    color: hsl(180, 77%, 40%);
-    border-radius: 4px;
-    padding:5px;
-    /* new patch */
-    position:relative;
-    width: 80%;
+}
+.inner {
+    top: 10px;
 }

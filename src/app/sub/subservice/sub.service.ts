@@ -25,8 +25,7 @@ export class SubService {
   }
 
   /**
-   * 
-   * @returns get user's subscribtion
+   * @returns get user's subscription
    */
   getSubscriptions(){
     console.info("Get User's Subscriptions");

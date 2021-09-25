@@ -1,13 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { CommentService } from 'src/app/comment/comment.service';
-import { PostModel } from 'src/app/shared/post-model';
-import { CommentPayload } from 'src/app/comment/comment.payload';
-import { throwIfEmpty } from 'rxjs/operators';
+import { User } from '../user';
+import { AuthService } from '../authservice/auth.service';
 import { throwError } from 'rxjs';
-import { SubService } from 'src/app/sub/subservice/sub.service';
-import { SubModel } from 'src/app/sub/sub-model';
-import { PostService } from 'src/app/post/postservice/post.service';
 
 @Component({
   selector: 'app-user-profile',
@@ -16,83 +11,39 @@ import { PostService } from 'src/app/post/postservice/post.service';
 })
 export class UserProfileComponent implements OnInit {
 
-  username: string = "";
-  
-  /**
-   * posts you have been posted
-   */
-  posts!: PostModel[];
-
-  /**
-   * Your favorite posts
-   */
-  myFavPosts !: PostModel[];
-  
-
-  /**
-   * subscriptions
-   */
-  mySubs !: SubModel[];
-
-  /**
-   * comment you have been commented
-   */
-  comments!: CommentPayload[];
-  
-  /**
-   * post count
-   */
-  postLength!: number;
-  
-  /**
-   * comment counts
-   */
-  commentLength!: number;
+  user !: User;
 
   constructor(private route: ActivatedRoute, 
-    private postService: PostService,
-    private commentService: CommentService,
-    private subService : SubService) {
-    // ref https://angular.io/api/router/ActivatedRouteSnapshot
-
-    this.username = this.route.snapshot.params.username;
-    console.info("get username fro url " + this.username);
-
-    this.postService.getAllPostsByUser(this.username).subscribe(data => {
-      this.posts = data;
-      this.postLength = data.length;
-
-    });
-
-    this.postService.getMyFavoritePosts().subscribe(
-      favpost =>{
-          this.myFavPosts = favpost;
-        }, error =>{
-          console.error(" Error for getting favorite posts");
-          throwError(error);
-        }
+              private authService : AuthService) 
+  {
+      this.user = {
+        username : "",
+        avatar : "",
+        mail : "",
+        aboutMe : ""
+      }
+  }
+  
+  ngOnInit(): void{
+    this.authService.getUserInformation().subscribe(
+      (user) =>{
+        this.user = user;
+        console.info("Fetch User Information Successfully")
+      },
+      (error) =>{
+        console.warn("Error :" + error);
+      }
     )
+  }
 
-    this.subService.getSubscriptions().subscribe(
-      sub =>{
-        console.info("get subs");
-        this.mySubs = sub;
-      }, error =>{
-        console.error("Error for trying to fetch subscriptions");
+  update() {
+    this.authService.updateUserInformation(this.user).subscribe(
+      (result)=>{
+        console.info("Successfully" + result);
+      },
+      (error) =>{
         throwError(error);
       }
     )
-   
-    this.commentService.getAllCommentsByUser(this.username).subscribe(data => {
-      this.comments = data;
-      this.commentLength = data.length;
-    });
-  }
-
-  ngOnInit(): void{}
-  
-  findPostname(id:number): string|undefined{
-    let p = this.posts.find(post => post.id === id);
-    return p?.postname;
   }
 }

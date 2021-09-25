@@ -11,12 +11,10 @@ import { SignUpComponent } from 'src/app/auth/sign-up/sign-up.component';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { delay } from 'rxjs/operators';
 import { ThemePalette } from '@angular/material/core';
+import { User } from 'src/app/auth/user';
 
 
-interface User{
-  username : string,
-  photo:string
-}
+
 
 @Component({
   selector: 'app-header',
@@ -37,7 +35,6 @@ export class HeaderComponent implements OnInit {
   sidenav!:MatSidenav;
 
   isDrawerOpened : boolean = false;
-
 
   @Output() 
   drawerToggleEvent = new EventEmitter<boolean>();
@@ -60,13 +57,14 @@ export class HeaderComponent implements OnInit {
   }
   */
 
-  isLoggedIn:boolean = false;
+
   
   faUser = faUser;
   
   user : User = {
     username : '',
-    photo : ''
+    avatar : '',
+    isLoggedIn: false
   };
   
   // Theme Switcher
@@ -86,10 +84,11 @@ export class HeaderComponent implements OnInit {
 
     this.user = {
       username : this.authService.getUserName(),
-      photo :　''
+      avatar :　'',
+      isLoggedIn : this.authService.isLoggedIn()
     }
 
-    this.isLoggedIn = this.authService.isLoggedIn();
+    // theme switcher
     this.toggleControl.valueChanges.subscribe((darkMode) => {
       console.info("turn on dark mode : " + darkMode);
 
@@ -106,6 +105,7 @@ export class HeaderComponent implements OnInit {
   }
 
   ngAfterViewInit() {
+    /*
     this.observer
       .observe(['(max-width: 800px)'])
       .pipe(delay(1))
@@ -118,18 +118,23 @@ export class HeaderComponent implements OnInit {
           this.sidenav.open();
         }
       });
+      */
   }
 
+  /* for sideNav 
   toggleSideNav(sideNav: MatSidenav) {
     sideNav.toggle().then((result: any) => {
       console.log(result);
       console.log(`Status：${result.type}`);
     });
   }
+  */
 
-  toUserProfile(){
-    console.info("to user profile " + this.user.username)
-    this.router.navigateByUrl('/user-profile/' + this.user.username);
+  /**
+   * check loggedIn user activities
+   */
+  toUserActivity(){
+    this.router.navigateByUrl('/user-activity/' + this.user.username);
   }
 
   logout(){
@@ -137,6 +142,7 @@ export class HeaderComponent implements OnInit {
     window.location.reload();
   }
 
+  // dialog for login and signup
   openDialog(action: string){
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose  = false;
@@ -155,7 +161,6 @@ export class HeaderComponent implements OnInit {
 
     this.dialogRef.afterClosed().subscribe(result=>{
       if(result === 'success'){
-        this.router.navigateByUrl('');
         window.location.reload();
       }
     })

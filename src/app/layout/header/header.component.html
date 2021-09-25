@@ -17,12 +17,12 @@
       <mat-icon  [style.color]="'black'">dark_mode</mat-icon>
       
       <!-- logged In User -->
-      <div *ngIf="isLoggedIn; else guest">
+      <div *ngIf="user.isLoggedIn; else guest">
         <button mat-icon-button [matMenuTriggerFor]="userMenu" #menuTrigger="matMenuTrigger">
           <mat-icon>message</mat-icon>
         </button>
         <mat-menu #userMenu="matMenu">
-          <button mat-menu-item  (click)="toUserProfile()"><mat-icon>manage_accounts</mat-icon>Profile</button>
+          <button mat-menu-item  (click)="toUserActivity()"><mat-icon>manage_accounts</mat-icon>Profile</button>
           <button mat-menu-item  (click)="logout()"><mat-icon>logout</mat-icon>Log Out</button>
         </mat-menu> 
       </div>  

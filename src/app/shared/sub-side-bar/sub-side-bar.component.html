@@ -1,14 +1,18 @@
-<div class="sidebar-view-sub">
-    <div class="sub-titles">Subs</div>
-    <hr />
+<mat-card class="sub-sidebar">
+    <h2>Browser All Subs</h2>
+    <mat-divider></mat-divider>
+    
+    
     <!-- show few subs if subs < 3-->
-    <span *ngFor="let sub of subs">
-        <span class="subreddit-text"><a href="/view-sub/{{sub.id}}">{{sub.subname}}</a></span>
+    <span class="sub-title" *ngFor="let sub of subs" >
+        <span><a href="/view-sub/{{sub.id}}">{{sub.subname}}</a></span>
         <hr />
     </span>
+        
+
     <!-- To view all the subs if displayTheAllSubs is true-->
     <div style="text-align: center" *ngIf="displayTheAllSubs">
         <!-- Router to list-sub component-->
-        <a style="font-weight: bold" routerLink="/list-subs"><mat-icon>view_list</mat-icon>View All Subs</a>
+        <button mat-raised-button (click)="listAll()">List All</button>
     </div>
-</div>
+</mat-card>
