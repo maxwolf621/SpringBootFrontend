@@ -29,21 +29,18 @@
     @include custom-components-theme($dark-theme); 
 }
  
-// You can add global styles to this file, and also import other style files 
-.custom-dialogconfig .mat-dialog-container{
-}
 
 /* You can add global styles to this file, and also import other style files */
 input.ng-invalid.ng-touched {
 }
-  
+
+
+
 html {
-    height: 100%;
 } 
 
 body {
     font-family: Roboto, "Helvetica Neue", sans-serif;
     margin-top:63px;
-    height: 100%;
 }
 

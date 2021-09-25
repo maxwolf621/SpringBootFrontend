@@ -1,5 +1,4 @@
 <app-header class="fixed-header" (drawerToggleEvent)=setDrawerState($event)></app-header>
-
 <mat-drawer-container autosize>
     <!-- side bar's list-->
     <mat-drawer class="shadow drawer"  mode="side" opened>
@@ -21,30 +20,45 @@
             <ng-template #anotherList>
                 <mat-nav-list> 
 
-                    <a [routerLink]="''"  mat-list-item> 
-                        <button mat-icon-button>
-                            <mat-icon color="grey">home</mat-icon>
-                        </button>
-                        <span>HOME</span>
-                    </a>
-                    
-                    <mat-divider></mat-divider>
-                    
-                    <ng-container *ngIf="subs">
-                        <h2 matSubheader>Subscriptions</h2>
-                            <a mat-list-item *ngFor="let sub of subs"> 
-                                    <p>{{sub.subname}}</p>
-                            </a>
-                    </ng-container>
 
-                    <!-- This is where the bottom items reside.-->
-                    <div [ngClass]='appropriateClass'> 
-                        <a mat-list-item>
-                            <button mat-stroked-button>
-                                <mat-icon>person</mat-icon>
+                        <a [routerLink]="''"  mat-list-item> 
+                            <button mat-icon-button>
+                                <mat-icon color="grey">home</mat-icon>
                             </button>
+                            <span>HOME</span>
                         </a>
-                    </div>
+    
+                        <!--
+                        <a [routerLink]="'/user-activity/'" mat-list-item>
+                            <button mat-icon-button>
+                                <mat-icon color="grey">profile</mat-icon>
+                            </button>
+                            <span>User-profile</span>
+                        </a>
+                        -->
+                        
+                        <mat-divider></mat-divider>
+                        
+                        <ng-container *ngIf="subs">
+                            <h2 matSubheader>Subscriptions</h2>
+                                <a mat-list-item *ngFor="let sub of subs"> 
+                                        <p>{{sub.subname}}</p>
+                                </a>
+                        </ng-container>
+    
+
+  
+
+                      <!-- This is where the bottom items reside.-->
+                      <div [ngClass]='appropriateClass'> 
+                        <a mat-list-item>
+                                <button mat-stroked-button>
+                                    <mat-icon>person</mat-icon>
+                                </button>
+                        </a>
+                     </div>
+                    
+
                 </mat-nav-list>
             </ng-template>
 

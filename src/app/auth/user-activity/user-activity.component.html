@@ -1,5 +1,5 @@
 <div class="row">
-<mat-tab-group class="col-md-8">
+<mat-tab-group class="col-md-8" dynamicHeight>
   <br>
   <mat-tab>
     <ng-template mat-tab-label >
@@ -26,7 +26,7 @@
         Marked Posts
       </span>
     </ng-template>
-    <app-post-tile [posts]="myFavPosts"></app-post-tile>   
+    <app-post-tile [posts]="myFavPosts"></app-post-tile> 
   </mat-tab>
   
   <mat-tab>  

@@ -19,6 +19,9 @@ main{
 }
 
 
-.drawer{
-    height:100%;
+mat-drawer-container {
+    position: absolute;
+    top:64px;
+    width: 100%;
+    bottom: 0;
 }
