@@ -1,14 +1,13 @@
-.sub-tile {
+mat-card {
     align-self: flex-start;
-    max-height: 300px;
     width: 100%;
-    margin: 5px;
+
+    border: 1px solid rgb(223, 203, 203);
 }
 
 
 mat-card:focus {
     background: rgb(131, 178, 207);
-    opacity: 1;
     color:#242527;
 }
 
@@ -16,3 +15,6 @@ mat-card-actions{
     padding: 0;
 }
 
+img{
+    left : 30px;
+}

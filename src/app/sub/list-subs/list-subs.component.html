@@ -1,6 +1,6 @@
-<mat-grid-list cols="2" rowHeight="250px" >
-  <mat-grid-tile *ngFor="let sub of subs; let index = index" rowspan="1">
-
+<mat-grid-list cols="2" rowHeight="250px" gutterSize="20">
+  
+  <mat-grid-tile *ngFor="let sub of subs; let index = index">
     <mat-card class="sub-tile" [tabindex]=index>
 
       <mat-card-title-group>
@@ -11,11 +11,12 @@
     
       <mat-card-content>{{sub.description}}</mat-card-content>
     
-      <mat-card-actions>
-        <button mat-raised-button color="accent"><mat-icon>open_in_browser</mat-icon></button>
+      <mat-card-actions align="end">
+        <button mat-raised-button color="warn"><mat-icon>open_in_browser</mat-icon></button>
       </mat-card-actions>
     
     </mat-card>
   </mat-grid-tile>
 </mat-grid-list>
+
 

@@ -1,0 +1,81 @@
+
+<div class="row">
+
+  <!-- update user personal information-->
+  <mat-card class="col-md-8">
+    <form (ngSubmit)="update()">
+
+      <div  fxLayout="column" fxLayoutAlign="space-between start">
+        <mat-form-field appearance="outline">
+          <mat-label>User Name</mat-label>
+          <input 
+          matInput 
+          type="text" 
+          [(ngModel)]="user.username"
+          [ngModelOptions]="{standalone: true}"
+          readonly
+          >
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>About Me</mat-label>
+          <textarea
+          matInput 
+          cdkTextareaAutosize
+          cdkAutosizeMinRows="4"
+          type="text" 
+          placeholder="Write Something About Yourself"
+          [(ngModel)]="user.aboutMe"
+          [ngModelOptions]="{standalone: true}"
+          ></textarea>
+        </mat-form-field>
+      </div>
+      </form>
+
+      <button mat-stroked-button color="warn">Reset The Password</button>
+
+      <!-- confirm update-button -->
+      <div fxLayout="column" fxLayoutAlign="end end" >
+        <button mat-stroked-button color="primary" type="submit"><mat-icon>update</mat-icon>Update</button>
+      </div>
+
+  </mat-card>
+
+
+
+  <!-- image and upload -->
+  <div class="col-md-2">
+  
+    <h2 class="text-center">Avatar</h2>
+    <label class="hoverable">
+      <img [src]="user.avatar ? user.avatar : 'assets/github-cat-black.jpg' " alt="avatar" />
+      
+      <div class="hover-icon">
+
+        <button mat-stroked-button color="warn" [matMenuTriggerFor]="userMenu" #menuTrigger="matMenuTrigger">
+          <mat-icon>message</mat-icon>
+        </button>
+        
+        <mat-menu #userMenu="matMenu">
+
+          <button mat-menu-item (click)=uploader.click()>
+            <mat-icon>upload</mat-icon>Upload Avatar
+          </button>
+          
+          <button mat-menu-item><mat-icon>remove</mat-icon>Remove Avatar</button>
+        
+        </mat-menu> 
+      
+      </div>
+      
+      <div class="background"></div>
+    </label>
+
+    <input id="fileInput" #uploader type="file" (change)="onSelectedFile($event)"/>
+  
+  </div>
+</div>
+
+
+
+

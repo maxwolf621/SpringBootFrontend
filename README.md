@@ -44,6 +44,8 @@ References for designing the frontend and programming languages reviews
 - [Custom Overlays with Angular's CDK](https://blog.thoughtram.io/angular/2017/11/20/custom-overlays-with-angulars-cdk.html)   
 - [Angular CDK understanding the overlay position system](https://stackoverflow.com/questions/52432447/angular-cdk-understanding-the-overlay-position-system)    
 - [`TemplateRef`](https://angular.io/api/core/TemplateRef)  
+- [fixed `mat-drawer`](https://stackoverflow.com/questions/51945107/angular-material-mat-drawer-in-full-height-flex-content-overflow-auto)   
+  > [not rendering in full screen ](https://stackoverflow.com/questions/37334853/cant-get-angular-material-md-sidenav-to-be-100-height)  
 
 #### Router
 - **[Child Router](https://indepth.dev/posts/1235/how-to-reuse-common-layouts-in-angular-using-router-2)**

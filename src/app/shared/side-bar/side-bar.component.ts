@@ -13,12 +13,9 @@ export class SideBarComponent implements OnInit {
   ngOnInit(): void {
   }
   
-  CreatePost() {
-    this.router.navigateByUrl('/create-post');
-  }
 
-  CreateSub() {
-    this.router.navigateByUrl('/create-subreddit');
+  editProfile(){
+    this.router.navigateByUrl('user-profile');
   }
 
 }

@@ -28,7 +28,8 @@ export class UserActivityComponent implements OnInit {
   constructor(private route: ActivatedRoute, 
     private postService: PostService,
     private commentService: CommentService,
-    private subService : SubService) {
+    private subService : SubService) 
+  {
 
     this.username = this.route.snapshot.params.username;
     console.info("get username fro url " + this.username);

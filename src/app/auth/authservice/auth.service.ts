@@ -1,6 +1,6 @@
 import { EventEmitter, Injectable, Output } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpRequest } from '@angular/common/http';
 import { LoginResponse } from '../login/login-response.payload';
 import { map, tap } from 'rxjs/operators';
 import { LocalStorageService } from 'ngx-webstorage';
@@ -9,6 +9,12 @@ import { AuthDTO } from '../auth-dto';
 import { ActivatedRoute, Router } from '@angular/router';
 import { User } from '../user';
 
+interface UserDTO {
+  username ?: string,
+  mail ?: string,
+  avatar ?: string,
+  aboutMe ?: string
+}
 
 interface OAuth2QueryParameter{
   token ?: string,
@@ -24,7 +30,12 @@ export class AuthService {
   @Output() loggedIn: EventEmitter<boolean> = new EventEmitter();
   @Output() username: EventEmitter<string>  = new EventEmitter();
 
-  user !: User;
+  user = {
+    username : "",
+    avatar : "",
+    mail : "",
+    aboutMe: ""
+  }
   
   refreshTokenPayload = {
     refreshToken: this.getRefreshToken(),
@@ -143,12 +154,27 @@ export class AuthService {
     )
   }
 
-  getUserInformation(){
+  getUserInformation(): Observable<User> {
     return this.http.get<User>(`${environment.apiUserProfile}/account`);
   }
 
   updateUserInformation(user : User){
-    return this.http.post<User>(`${environment.apiUserProfile}/updateAccount`, user );
+    return this.http.post<any>(`${environment.apiUserProfile}/updateAccount`, user );
+  }
+
+  onFileUpload(file : File): Observable<any> {
+    // send file as formData Type to backend
+    const formData = new FormData();
+
+    
+    formData.append("avatar", file, file.name);
+
+    const _header = new HttpHeaders({
+      "content-type"  : "multipart/form-data"
+    });
+
+
+    return this.http.post(`${environment.apiUserProfile}/updateFile`, formData, {headers : _header});
   }
 
 }

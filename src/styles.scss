@@ -18,16 +18,17 @@
 
 // Override typography for all Global variable Angular Material, including mat-base-typography and all components.
 @include angular-material-typography($typography);
+@include angular-material-theme($dark-theme);
+@include custom-components-theme($dark-theme); 
 
-// default theme 
-@include angular-material-theme($light-theme);
 
+.light-theme{
+    @include angular-material-theme($light-theme);
+    @include custom-components-theme($light-theme); 
 
-// switch to dark theme
-.dark-theme {
-    @include angular-material-theme($dark-theme);
-    @include custom-components-theme($dark-theme); 
 }
+
+
  
 
 /* You can add global styles to this file, and also import other style files */

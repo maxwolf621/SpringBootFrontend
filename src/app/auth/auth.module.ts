@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MaterialpackagesModule } from '../materialpackages/materialpackages.module';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
@@ -15,6 +15,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { Oauth2Component } from './oauth2/oauth2.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UserActivityComponent } from './user-activity/user-activity.component';
+import { AuthRoutingModule } from './auth-routing.module';
 @NgModule({
   declarations: [
     SignUpComponent,
@@ -25,12 +26,14 @@ import { UserActivityComponent } from './user-activity/user-activity.component';
   ],
   imports: [
     CommonModule,
-    BrowserAnimationsModule,
-    FlexLayoutModule,
-    ReactiveFormsModule,
+    BrowserAnimationsModule,  
+    FormsModule, // mat-formfield with [(ngModel)]
+    FlexLayoutModule, 
+    ReactiveFormsModule, // mat-formfield woth formgroup 
     FontAwesomeModule,
-    MaterialpackagesModule,
-    SharedModule,
+    MaterialpackagesModule, // angular material
+    SharedModule, 
+    AuthRoutingModule,
   ],
   exports:[
     SignUpComponent,

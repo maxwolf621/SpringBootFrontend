@@ -8,13 +8,14 @@
   <span class="toolbar-seprator"></span>
 
       <!-- theme switcher -->
-      <mat-icon>brightness_5</mat-icon>
+      <mat-icon  color="accent">dark_mode</mat-icon>
         <mat-slide-toggle 
           [color]="color"
           [formControl]="toggleControl" 
           class="mr-8">
         </mat-slide-toggle>
-      <mat-icon  [style.color]="'black'">dark_mode</mat-icon>
+      <mat-icon>brightness_5</mat-icon>
+
       
       <!-- logged In User -->
       <div *ngIf="user.isLoggedIn; else guest">

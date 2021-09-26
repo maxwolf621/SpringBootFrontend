@@ -16,6 +16,7 @@ import { SubModule } from './sub/sub.module';
 import { HomeModule } from './home/home.module';
 import { SharedModule } from './shared/shared.module';
 import { PostModule } from './post/post.module';
+import { AuthRoutingModule } from './auth/auth-routing.module';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { PostModule } from './post/post.module';
     HomeModule,
     SharedModule,
     PostModule,
+    AuthRoutingModule,
     AppRoutingModule
   ],
   exports:[

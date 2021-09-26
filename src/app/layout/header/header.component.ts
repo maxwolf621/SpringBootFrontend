@@ -90,16 +90,16 @@ export class HeaderComponent implements OnInit {
 
     // theme switcher
     this.toggleControl.valueChanges.subscribe((darkMode) => {
-      console.info("turn on dark mode : " + darkMode);
+      console.info("turn on light mode : ");
 
-      const darkClassName = "dark-theme";
+      const lightClassName = "light-theme";
 
       if (darkMode) {
-        this.overlay.getContainerElement().classList.add(darkClassName);
-        document.body.classList.add(darkClassName);
+        this.overlay.getContainerElement().classList.add(lightClassName);
+        document.body.classList.add(lightClassName);
       } else {
-        this.overlay.getContainerElement().classList.remove(darkClassName);
-        document.body.classList.remove(darkClassName);
+        this.overlay.getContainerElement().classList.remove(lightClassName);
+        document.body.classList.remove(lightClassName);
       }
     });
   }
