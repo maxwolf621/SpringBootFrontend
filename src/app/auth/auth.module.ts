@@ -16,20 +16,22 @@ import { Oauth2Component } from './oauth2/oauth2.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UserActivityComponent } from './user-activity/user-activity.component';
 import { AuthRoutingModule } from './auth-routing.module';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
 @NgModule({
   declarations: [
     SignUpComponent,
     LoginComponent,
     UserProfileComponent,
     Oauth2Component,
-    UserActivityComponent
+    UserActivityComponent,
+    ResetPasswordComponent
   ],
   imports: [
     CommonModule,
     BrowserAnimationsModule,  
     FormsModule, // mat-formfield with [(ngModel)]
     FlexLayoutModule, 
-    ReactiveFormsModule, // mat-formfield woth formgroup 
+    ReactiveFormsModule, // form group
     FontAwesomeModule,
     MaterialpackagesModule, // angular material
     SharedModule, 

@@ -5,11 +5,14 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { $providers } from './login-providers';
 import { AuthDTO } from '../auth-dto';
+import { $animations } from '../animations';
+
 
 @Component({
   selector: 'app-sign-up',
   templateUrl: './sign-up.component.html',
-  styleUrls: ['./sign-up.component.scss']
+  styleUrls: ['./sign-up.component.scss'],
+  animations: $animations
 })
 export class SignUpComponent implements OnInit {
 
@@ -25,6 +28,7 @@ export class SignUpComponent implements OnInit {
               private router: Router,
               private toastrService: ToastrService) {
     
+                // initialize payload
                 this.signupRequestPayload = {
                   username: '',
                   mail: '',
@@ -33,7 +37,7 @@ export class SignUpComponent implements OnInit {
   }
     
   ngOnInit(): void {
-
+    // initialize form
     this.signupForm = new FormGroup({
       username: new FormControl("", Validators.required),
       password: new FormControl("", Validators.required),
@@ -42,6 +46,7 @@ export class SignUpComponent implements OnInit {
   }
 
   signup(){
+      // assign value from form to payload
       this.signupRequestPayload = {
         username : this.signupForm.get('username')!.value,
         mail : this.signupForm.get('email')!.value,
@@ -58,10 +63,4 @@ export class SignUpComponent implements OnInit {
         }
       );
   }
-
-  signupWith(url: string){
-    console.info("");
-    this.authService._signOrLoginWithOAuth2(url);
-  }
-
 }

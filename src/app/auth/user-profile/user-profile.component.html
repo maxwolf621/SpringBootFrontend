@@ -32,11 +32,11 @@
       </div>
       </form>
 
-      <button mat-stroked-button color="warn">Reset The Password</button>
+      <button mat-stroked-button color="warn" (click)="openDialog()">Reset The Password</button>
 
       <!-- confirm update-button -->
       <div fxLayout="column" fxLayoutAlign="end end" >
-        <button mat-stroked-button color="primary" type="submit"><mat-icon>update</mat-icon>Update</button>
+        <button mat-stroked-button color="primary" type="submit" (click)="update()"><mat-icon>update</mat-icon>Update</button>
       </div>
 
   </mat-card>
@@ -52,8 +52,8 @@
       
       <div class="hover-icon">
 
-        <button mat-stroked-button color="warn" [matMenuTriggerFor]="userMenu" #menuTrigger="matMenuTrigger">
-          <mat-icon>message</mat-icon>
+        <button mat-raised-button color="primary" [matMenuTriggerFor]="userMenu" #menuTrigger="matMenuTrigger">
+          <mat-icon>edit</mat-icon>
         </button>
         
         <mat-menu #userMenu="matMenu">
@@ -70,9 +70,7 @@
       
       <div class="background"></div>
     </label>
-
-    <input id="fileInput" #uploader type="file" (change)="onSelectedFile($event)"/>
-  
+      <input id="fileInput" name="file" #uploader type="file" (change)="onSelectedFile($event)" multiple />
   </div>
 </div>
 

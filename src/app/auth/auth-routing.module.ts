@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes} from '@angular/router';
 import { HomeComponent } from '../home/home.component';
-import { MainComponent } from '../layout/main/main.component';
+import { AuthGuard } from './auth.guard';
+import { Oauth2Component } from './oauth2/oauth2.component';
 import { UserActivityComponent } from './user-activity/user-activity.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 
@@ -10,14 +11,22 @@ const routes: Routes = [
   {
     path : '',
     component : HomeComponent,
-  },
-  {
-    path : 'user-activity/:username',
-    component : UserActivityComponent
+    children : [
+      {
+        path : 'user-activity/:username',
+        component : UserActivityComponent,
+        canActivate : [AuthGuard],
+      },
+
+    ]
   },
   {
     path : 'user-profile',
     component: UserProfileComponent
+  },
+  {
+    path : 'oauth2',
+    component : Oauth2Component
   }
 ];
 

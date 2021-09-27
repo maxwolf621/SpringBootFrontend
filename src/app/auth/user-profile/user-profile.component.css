@@ -15,13 +15,13 @@ img {
 }
 
 .hoverable .hover-icon{
+    
   position: absolute;
 
   bottom: 10%;
   left: 10%;
 
-  background-color: #242526;
-
+  
   z-index: 2;
   /*
    *   transform: translate(-50%,-50%);   

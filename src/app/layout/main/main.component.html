@@ -1,15 +1,15 @@
 <app-header class="fixed-header" (drawerToggleEvent)=setDrawerState($event)></app-header>
-<mat-drawer-container autosize>
+<mat-drawer-container >
     <!-- side bar's list-->
-    <mat-drawer class="shadow drawer"  mode="side" opened>
+    <mat-drawer class="shadow"  mode="side" opened>
             <mat-nav-list *ngIf = "!isDrawerOpened ; else anotherList">    
-              <a  [routerLink]="''" mat-list-item>
-                <button mat-stroked-button>
-                  <mat-icon color="grey">home</mat-icon>
+              <a  [routerLink]="''" mat-list-item >
+                <button mat-mini-fab color="primary">
+                  <mat-icon>home</mat-icon>
                 </button>
               </a>
-              <a mat-list-item>
-                <button mat-stroked-button>
+              <a [routerLink]="'list-sub'" mat-list-item>
+                <button mat-mini-fab color="primary">
                     <mat-icon>subscriptions</mat-icon>
                 </button>
               </a>
@@ -17,25 +17,14 @@
             </mat-nav-list>
             <mat-divider></mat-divider>
 
-            <ng-template #anotherList>
+            <ng-template #anotherList id="other">
+              <div class="longer-drawer">
                 <mat-nav-list> 
-
-
                         <a [routerLink]="''"  mat-list-item> 
-                            <button mat-icon-button>
-                                <mat-icon color="grey">home</mat-icon>
+                            <button mat-raised-button>
+                                <mat-icon>home</mat-icon>
                             </button>
-                            <span>HOME</span>
                         </a>
-    
-                        <!--
-                        <a [routerLink]="'/user-activity/'" mat-list-item>
-                            <button mat-icon-button>
-                                <mat-icon color="grey">profile</mat-icon>
-                            </button>
-                            <span>User-profile</span>
-                        </a>
-                        -->
                         
                         <mat-divider></mat-divider>
                         
@@ -47,19 +36,20 @@
                         </ng-container>
     
 
-  
 
                       <!-- This is where the bottom items reside.-->
                       <div [ngClass]='appropriateClass'> 
-                        <a mat-list-item>
-                                <button mat-icon-button>
+                        <a [routerLink]="'user-profile'" mat-list-item>
+                                <button mat-raised-button>
                                     <mat-icon>person</mat-icon>
                                 </button>
                         </a>
+                      
                      </div>
                     
 
                 </mat-nav-list>
+              </div>
             </ng-template>
 
     </mat-drawer>

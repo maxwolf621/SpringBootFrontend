@@ -29,19 +29,26 @@
 }
 
 
- 
 
 /* You can add global styles to this file, and also import other style files */
-input.ng-invalid.ng-touched {
-}
+input.ng-invalid.ng-touched {}
 
 
-
-html {
-} 
+html {} 
 
 body {
     font-family: Roboto, "Helvetica Neue", sans-serif;
     margin-top:63px;
 }
 
+
+/**
+  * close-icon for rendering dialog's close button
+  */ 
+.close-icon {
+    transition: 1s ease-in-out;
+}
+  
+.close-icon:hover {
+    transform: rotate(180deg);
+}

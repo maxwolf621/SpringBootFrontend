@@ -17,7 +17,7 @@ export const environment = {
   apiOauth2Login:'http://localhost:8080/oauth2/authorization',
   apiLogout : 'http://localhost:8080/api/auth/logout',
   apiTag: 'http://localhost:8080/api/tag',
-  apiOAuth2RedirectUri:'http://locahost:4200/oauth2/',
+  apiOAuth2RedirectUri:'http://localhost:4200/oauth2/',
 };
 
 /*

@@ -24,10 +24,10 @@ import { AuthRoutingModule } from './auth/auth-routing.module';
   ],   
   imports: [
     LayoutModule,
+    BrowserAnimationsModule,
     ToastrModule.forRoot(),
     NgxWebstorageModule.forRoot(),
     BrowserModule,
-    BrowserAnimationsModule,
     FlexLayoutModule,
     HttpClientModule,
     EditorModule,

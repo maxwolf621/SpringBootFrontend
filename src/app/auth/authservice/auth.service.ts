@@ -16,11 +16,6 @@ interface UserDTO {
   aboutMe ?: string
 }
 
-interface OAuth2QueryParameter{
-  token ?: string,
-  error ?: string
-}
-
 @Injectable({
   providedIn: 'root'
 })
@@ -42,7 +37,6 @@ export class AuthService {
     username: this.getUserName()
   }
 
-  oAuth2QueryParameter !: OAuth2QueryParameter;
 
   /**
    * @constructor for authentication (login, sign up)
@@ -50,14 +44,9 @@ export class AuthService {
    * @param localStorage : to store our jwt
    */
   constructor(private http:HttpClient, 
-              private localStorage: LocalStorageService,
-              private activateRoute: ActivatedRoute) 
+              private localStorage: LocalStorageService) 
   { 
-    // initialize oauth2 redirect url's query parameters
-    this.oAuth2QueryParameter = {
-      token : "",
-      error : ""
-    }
+
   }
 
   getToken(){
@@ -138,22 +127,6 @@ export class AuthService {
   }
 
 
-  signOrLoginWithOAuth2(){
-    // get multiple query parameters
-    this.activateRoute.queryParams.subscribe
-    (
-      (queryParameters) =>{
-        this.oAuth2QueryParameter = {
-          token !: queryParameters.token,
-          error !: queryParameters.error
-        }
-        console.info(this.oAuth2QueryParameter);       
-      }, (error) =>{
-        console.warn("Error" + error);
-      }
-    )
-  }
-
   getUserInformation(): Observable<User> {
     return this.http.get<User>(`${environment.apiUserProfile}/account`);
   }
@@ -162,19 +135,24 @@ export class AuthService {
     return this.http.post<any>(`${environment.apiUserProfile}/updateAccount`, user );
   }
 
+  /* ---- post file to backend  (ERROR RECORDER : Not Multiple File request)
+
   onFileUpload(file : File): Observable<any> {
     // send file as formData Type to backend
     const formData = new FormData();
 
-    
-    formData.append("avatar", file, file.name);
+    formData.append("file", file);
 
-    const _header = new HttpHeaders({
-      "content-type"  : "multipart/form-data"
+    console.info(formData.get('file'));
+    
+    const headers = new HttpHeaders({
     });
 
+    headers.delete("Content-Type");
 
-    return this.http.post(`${environment.apiUserProfile}/updateFile`, formData, {headers : _header});
+    return this.http.post(`${environment.apiUserProfile}/updateFile`, formData, { headers: {}}
+    );
   }
+  */
 
 }
