@@ -21,6 +21,9 @@ export class UserProfileComponent implements OnInit {
   file !: File;
   dialogRef !: MatDialogRef<any>;
 
+  ASSETS : string = "assets"
+
+  imgLocation : string =  "";
 
   constructor(private route: ActivatedRoute, 
               private authService : AuthService,
@@ -33,29 +36,32 @@ export class UserProfileComponent implements OnInit {
         mail : "",
         aboutMe : ""
       }
+
+      this.authService.getUserInformation().subscribe(
+        (user) =>{
+          console.info(user);
+          this.user = {
+            username !: user.username,
+            avatar !: user.avatar,
+            mail !: user.mail,
+            aboutMe !: user.aboutMe 
+          }
+          if(this.user.avatar){
+            this.imgLocation = `${this.ASSETS}/${this.user.username}/${this.user.avatar}`;
+          }
+          console.info("Fetch User Information Successfully")
+        }
+      )
   }
 
 
   
   ngOnInit(): void{
 
-    this.authService.getUserInformation().subscribe(
-      (user) =>{
-        console.info(user);
-        this.user = {
-          username !: user.username,
-          avatar !: user.avatar,
-          mail !: user.mail,
-          aboutMe !: user.aboutMe 
-        }
-        console.info("Fetch User Information Successfully")
-      }
-    )
   }
 
   onSelectedFile($event : any){
     if($event.target.files && $event.target.files.length > 0){
-
 
       // get file object
       this.file = $event.target.files.item(0);
@@ -67,28 +73,29 @@ export class UserProfileComponent implements OnInit {
       reader.readAsDataURL(this.file);
 
       console.info("send image to backend" + this.file);
-
       const formData = new FormData();
 
       formData.append("file", this.file);
-  
       console.info(formData.get('file'));
 
+      /**
+       *  Xhr Request 
+       */      
       const xhrReq = new XMLHttpRequest();
-      const AVATAR_URL = `${environment.apiUserProfile}/updateFile`;
-
-      xhrReq.onreadystatechange = (e) => {
+      const AVATAR_URL = `${environment.apiUserProfile}/updateAvatar`;
+      const jwt =  this.authService.getToken();
+      xhrReq.onreadystatechange = () => {
 
         if (xhrReq.status === 200 && xhrReq.readyState === 4) {
           this.toastr.success('SUCCESS');
           console.log('SUCCESS', xhrReq.responseText);
         } else {
-          this.toastr.error('ERROR');
-          console.warn('request_error');
+          console.info("Failed To upload the file");
         }
       };
 
       xhrReq.open("POST",AVATAR_URL, true);
+      xhrReq.setRequestHeader("Authorization", `Bearer  ${jwt}`)
       xhrReq.send(formData);
      
     }
@@ -104,9 +111,6 @@ export class UserProfileComponent implements OnInit {
       }
     )
   }
-
-
-
 
   // open reset password dialog
   openDialog(){

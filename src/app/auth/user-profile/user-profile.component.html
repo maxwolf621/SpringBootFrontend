@@ -1,10 +1,13 @@
 
 <div class="row">
 
-  <!-- update user personal information-->
+  <!-- 
+    Update user personal information
+  -->
   <mat-card class="col-md-8">
     <form (ngSubmit)="update()">
 
+      <!-- User name -->
       <div  fxLayout="column" fxLayoutAlign="space-between start">
         <mat-form-field appearance="outline">
           <mat-label>User Name</mat-label>
@@ -17,6 +20,7 @@
           >
         </mat-form-field>
 
+        <!-- about me-->
         <mat-form-field appearance="outline">
           <mat-label>About Me</mat-label>
           <textarea
@@ -36,19 +40,18 @@
 
       <!-- confirm update-button -->
       <div fxLayout="column" fxLayoutAlign="end end" >
-        <button mat-stroked-button color="primary" type="submit" (click)="update()"><mat-icon>update</mat-icon>Update</button>
+        <button mat-raised-button color="primary" type="submit" (click)="update()"><mat-icon>update</mat-icon>Update</button>
       </div>
-
   </mat-card>
 
-
-
-  <!-- image and upload -->
+  <!-- 
+    avatar 
+    and avatar-uploading 
+  -->
   <div class="col-md-2">
-  
     <h2 class="text-center">Avatar</h2>
     <label class="hoverable">
-      <img [src]="user.avatar ? user.avatar : 'assets/github-cat-black.jpg' " alt="avatar" />
+      <img [src]="imgLocation" alt="avatar" />
       
       <div class="hover-icon">
 

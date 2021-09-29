@@ -17,6 +17,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UserActivityComponent } from './user-activity/user-activity.component';
 import { AuthRoutingModule } from './auth-routing.module';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { TokenVerifyComponent } from './token-verify/token-verify.component';
 @NgModule({
   declarations: [
     SignUpComponent,
@@ -24,7 +25,8 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
     UserProfileComponent,
     Oauth2Component,
     UserActivityComponent,
-    ResetPasswordComponent
+    ResetPasswordComponent,
+    TokenVerifyComponent
   ],
   imports: [
     CommonModule,

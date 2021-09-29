@@ -25,6 +25,8 @@ References for designing the frontend and programming languages reviews
 - [load image with `[src]`](https://stackoverflow.com/questions/42793292/how-to-load-image-and-other-assets-in-angular-an-project)  
 - [link-preview](https://dev-reboot.com/link-preview/)     
 - [meta tag](https://stackoverflow.com/questions/48330535/dynamically-add-meta-description-based-on-route-in-angular)
+- [file uploading](https://www.freecodecamp.org/news/formdata-explained/)  
+- [`xmlhttprequest`](https://stackoverflow.com/questions/52749230/authorization-token-not-sent-with-xmlhttprequest)   
 
 #### Angular Material
 

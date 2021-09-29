@@ -5,7 +5,8 @@ import { LocalStorageService } from 'ngx-webstorage';
 
 interface OAuth2QueryParameter{
   token ?: string,
-  error ?: string
+  error ?: string,
+  username?:string
 }
 
 @Component({
@@ -19,7 +20,8 @@ export class Oauth2Component implements OnInit {
 
   oAuth2QueryParameter : OAuth2QueryParameter = {
     token : "",
-    error : ""
+    error : "",
+    username:""
   } 
 
   constructor(
@@ -32,10 +34,13 @@ export class Oauth2Component implements OnInit {
       (queryParameters) =>{
         this.oAuth2QueryParameter = {
           token !: queryParameters.token,
-          error !: queryParameters.error
+          error !: queryParameters.error,
+          username!:queryParameters.username
         }
         console.info(this.oAuth2QueryParameter);      
         this.localStorage.store('Token', this.oAuth2QueryParameter.token);
+        this.localStorage.store('username', this.oAuth2QueryParameter.username);
+
       }, (error) =>{
         console.warn("Error" + error);
       }

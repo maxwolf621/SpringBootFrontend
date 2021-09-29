@@ -31,8 +31,10 @@
 
 
 /* You can add global styles to this file, and also import other style files */
-input.ng-invalid.ng-touched {}
+input.ng-invalid.ng-touched {
+    transition: 1s ease-in-out;
 
+}
 
 html {} 
 
@@ -51,4 +53,15 @@ body {
   
 .close-icon:hover {
     transform: rotate(180deg);
+}
+
+// link-color deviating different dialog
+.dialog-link {
+    cursor: pointer;
+    text-decoration: underline;
+    opacity: 0.5;
+  }
+  
+.dialog-link:hover{
+    opacity : 1;
 }

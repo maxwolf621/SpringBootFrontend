@@ -134,7 +134,10 @@ export class HeaderComponent implements OnInit {
    * check loggedIn user activities
    */
   toUserActivity(){
-    this.router.navigateByUrl('/user-activity/' + this.user.username);
+    console.info(this.user.username);
+
+    this.router.navigate(["user-activity",this.user.username]);
+
   }
 
   logout(){

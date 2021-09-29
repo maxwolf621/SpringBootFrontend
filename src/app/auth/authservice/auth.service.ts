@@ -1,6 +1,6 @@
 import { EventEmitter, Injectable, Output } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
-import { HttpClient, HttpHeaders, HttpRequest } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams, HttpRequest, HttpResponse } from '@angular/common/http';
 import { LoginResponse } from '../login/login-response.payload';
 import { map, tap } from 'rxjs/operators';
 import { LocalStorageService } from 'ngx-webstorage';
@@ -36,19 +36,6 @@ export class AuthService {
     refreshToken: this.getRefreshToken(),
     username: this.getUserName()
   }
-
-
-  /**
-   * @constructor for authentication (login, sign up)
-   * @param http : interact with backend
-   * @param localStorage : to store our jwt
-   */
-  constructor(private http:HttpClient, 
-              private localStorage: LocalStorageService) 
-  { 
-
-  }
-
   getToken(){
     return this.localStorage.retrieve('Token');
   }
@@ -59,9 +46,14 @@ export class AuthService {
     return this.localStorage.retrieve('username');
   }
 
-  getUserPhoto(){
-    // 
-  }
+
+  /**
+   * @constructor for authentication (login, sign up)
+   * @param http : interact with backend
+   * @param localStorage : to store our jwt
+   */
+  constructor(private http:HttpClient, 
+              private localStorage: LocalStorageService) {}
 
 
   signup(signupRequestPayload: AuthDTO): Observable<any> {
@@ -109,6 +101,23 @@ export class AuthService {
       this.localStorage.clear('expiresAt');
   }
 
+
+  /**
+   * @description verify account by sending valid token to backend 
+   */
+  verifyWithToken(token : string) : Observable<HttpResponse<any>> {
+    
+    console.info(`${environment.apiAuth}/accountVerification/${token}`);
+
+    const options  = {
+    }
+
+    return this.http.get<any>(`${environment.apiAuth}/accountVerification/`, 
+    {
+      params : new HttpParams().set('token', token),  
+    });
+  }
+
   /**
    * @description this.getToken !=null ? true : false </pre> 
    */
@@ -116,43 +125,17 @@ export class AuthService {
     return !!this.getToken();
   }
 
-
-  _signOrLoginWithOAuth2(url:string){
-    this.http.get<any>(url).pipe
-    (
-      tap(response => {
-        console.info("response" + response);
-      })
-    )
-  }
-
-
+  /**
+   * @description get user profile from backend
+   */
   getUserInformation(): Observable<User> {
     return this.http.get<User>(`${environment.apiUserProfile}/account`);
   }
 
+  /**
+   * @description update user profile 
+   */
   updateUserInformation(user : User){
     return this.http.post<any>(`${environment.apiUserProfile}/updateAccount`, user );
   }
-
-  /* ---- post file to backend  (ERROR RECORDER : Not Multiple File request)
-
-  onFileUpload(file : File): Observable<any> {
-    // send file as formData Type to backend
-    const formData = new FormData();
-
-    formData.append("file", file);
-
-    console.info(formData.get('file'));
-    
-    const headers = new HttpHeaders({
-    });
-
-    headers.delete("Content-Type");
-
-    return this.http.post(`${environment.apiUserProfile}/updateFile`, formData, { headers: {}}
-    );
-  }
-  */
-
 }
