@@ -8,6 +8,7 @@ import { throwError } from 'rxjs';
 import { SubService } from 'src/app/sub/subservice/sub.service';
 import { SubModel } from 'src/app/sub/sub-model';
 import { PostService } from 'src/app/post/postservice/post.service';
+import { User } from '../user';
 
 
 @Component({
@@ -16,6 +17,7 @@ import { PostService } from 'src/app/post/postservice/post.service';
   styleUrls: ['./user-activity.component.scss']
 })
 export class UserActivityComponent implements OnInit {
+  
   
   username: string = "";
   posts!: PostModel[]; // post you have been posted

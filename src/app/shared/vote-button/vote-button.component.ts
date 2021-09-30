@@ -59,7 +59,6 @@ export class VoteButtonComponent implements OnInit {
    * update Vote Details
    */
   ngOnInit(): void {
-    console.info("------postId " + this.post.id);
     this.updateVoteDetails(this.post.id);
     this.votePayload = {
       voteType: 0,
@@ -88,8 +87,8 @@ export class VoteButtonComponent implements OnInit {
     // Which post to vote
     this.votePayload.postId = this.post.id; 
 
-    console.info("** POST ID " + this.votePayload.postId);
-    console.info("** VOTE TYPE " +　this.votePayload.voteType);
+    //console.info("** POST ID " + this.votePayload.postId);
+    //console.info("** VOTE TYPE " +　this.votePayload.voteType);
     // Do voting and Subscribe `the response`
     this.voteService.VoteForPost(this.votePayload).subscribe(() => {
       this.updateVoteDetails(this.votePayload.postId);
@@ -103,12 +102,12 @@ export class VoteButtonComponent implements OnInit {
    * Refresh Certain Post (`api/post/getByPost/{postId}`)
    */
   private updateVoteDetails(postId:number) {
-    console.info("updadteVoteDetails"+ postId);
+    //console.info("updateVoteDetails"+ postId);
     this.postService.getPostById(postId).subscribe(post => {
-      console.info("update the post");
+      //console.info("Update the post");
       this.post = post;
     }, error =>{
-      console.error("Something Happen");
+      console.error("Error");
       throwError(error);
     }
     

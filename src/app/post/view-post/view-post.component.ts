@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { throwError } from 'rxjs';
 import { CommentPayload } from 'src/app/comment/comment.payload';
 import { CommentService } from 'src/app/comment/comment.service';
@@ -30,7 +31,8 @@ export class ViewPostComponent implements OnInit {
   constructor(private postService: PostService, 
               private activateRoute: ActivatedRoute,
               private commentService: CommentService, 
-              private router: Router) { 
+              private router: Router,
+              private toastr : ToastrService) { 
   }
 
   ngOnInit(): void {
@@ -59,15 +61,14 @@ export class ViewPostComponent implements OnInit {
   postComment() {
 
     this.commentPayload.text = this.commentForm.get('text')!.value;
-    this.commentPayload.postId = this.postId;
 
     console.info("comment :" + this.commentPayload.text +
-                 "post id :" + this.commentPayload.postId);
+                 "\npost id :" + this.commentPayload.postId);
 
-    //window.location.reload();
-
-    this.commentService.postComment(this.commentPayload).subscribe(data => {
-      console.info(data);
+    this.commentService.postComment(this.commentPayload).subscribe(newComment => {
+      this.toastr.success("You left a comment");
+      console.info("New Comment" + newComment);
+      this.comments.push(newComment);
     }, error => {
       throwError(error);
     })

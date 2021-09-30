@@ -39,28 +39,9 @@ export class HeaderComponent implements OnInit {
   @Output() 
   drawerToggleEvent = new EventEmitter<boolean>();
 
-  public drawerOnToggle(){
-    this.isDrawerOpened = !this.isDrawerOpened;
+  @Output()
+  usernameEvent = new EventEmitter<string>();
 
-    // emit the value to base component
-    this.drawerToggleEvent.emit(this.isDrawerOpened);
-  }
-
-
-
-  //@Output 
-  //sidenavToggle = new EventEmitter();
-
-  /*
-  public onToggleSidenav = () =>{
-      this.sidenavToggle.emit();
-  }
-  */
-
-
-  
-  faUser = faUser;
-  
   user : User = {
     username : '',
     avatar : '',
@@ -71,8 +52,22 @@ export class HeaderComponent implements OnInit {
   readonly DARKMODE = 'dark-theme';
   color: ThemePalette = "accent";
 
-  // dialog for login/signup
+
+  // dialog references to login or signup dialog
   private dialogRef !: MatDialogRef<any>;
+
+
+
+  /*
+
+  //@Output 
+  //sidenavToggle = new EventEmitter();
+
+  public onToggleSidenav = () =>{
+      this.sidenavToggle.emit();
+  }
+  */
+  
 
   constructor(private router: Router,
     private authService : AuthService,
@@ -82,11 +77,19 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.user = {
-      username : this.authService.getUserName(),
-      avatar :　'',
-      isLoggedIn : this.authService.isLoggedIn()
-    }
+
+    this.authService.getUserInformation().subscribe(
+      (userInformation)=>{
+        this.user = {
+          username !: userInformation.username,
+          avatar !:userInformation.avatar,
+          isLoggedIn : this.authService.isLoggedIn()
+        }
+        this.usernameEvent.emit(this.user.username);
+      },(error) =>{
+        console.warn("Error" + error);
+      }
+    )
 
     // theme switcher
     this.toggleControl.valueChanges.subscribe((darkMode) => {
@@ -104,12 +107,11 @@ export class HeaderComponent implements OnInit {
     });
   }
 
+  /*
   ngAfterViewInit() {
-    /*
-    this.observer
-      .observe(['(max-width: 800px)'])
-      .pipe(delay(1))
-      .subscribe((res) => {
+    this.observer.observe(['(max-width: 800px)']).pipe(delay(1)).subscribe
+    (
+      (res) => {
         if (res.matches) {
           this.sidenav.mode = 'over';
           this.sidenav.close();
@@ -118,10 +120,10 @@ export class HeaderComponent implements OnInit {
           this.sidenav.open();
         }
       });
-      */
   }
+  */
 
-  /* for sideNav 
+  /*
   toggleSideNav(sideNav: MatSidenav) {
     sideNav.toggle().then((result: any) => {
       console.log(result);
@@ -130,12 +132,23 @@ export class HeaderComponent implements OnInit {
   }
   */
 
+
   /**
-   * check loggedIn user activities
+   * @description OutputEvent for drawer
+   */
+  public drawerOnToggle(){
+    this.isDrawerOpened = !this.isDrawerOpened;
+    // emit the value to base component
+    this.drawerToggleEvent.emit(this.isDrawerOpened);
+  }
+
+
+
+  /**
+   * @description check loggedIn user activities
    */
   toUserActivity(){
-    console.info(this.user.username);
-
+    //this.router.navigateByUrl('/user-activity/' + this.user.username);
     this.router.navigate(["user-activity",this.user.username]);
 
   }
@@ -145,7 +158,9 @@ export class HeaderComponent implements OnInit {
     window.location.reload();
   }
 
-  // dialog for login and signup
+  /**
+   * @description dialog for login and signup
+   */
   openDialog(action: string){
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose  = false;

@@ -23,7 +23,7 @@ export class UserProfileComponent implements OnInit {
 
   ASSETS : string = "assets"
 
-  imgLocation : string =  "";
+  imgLocation : string =  "/assets/github-cat.jpg";
 
   constructor(private route: ActivatedRoute, 
               private authService : AuthService,

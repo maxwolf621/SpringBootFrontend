@@ -20,7 +20,8 @@ export class CommentService {
   }
   
   postComment(commentPayload: CommentPayload): Observable<any> {
-    console.info("leave a comment : " + commentPayload);
-    return this.http.post<any>(`${environment.apiComment}`, commentPayload);
+    return this.http.post(`${environment.apiComment}`, commentPayload, {
+      responseType : 'text'
+    });
   }
 }

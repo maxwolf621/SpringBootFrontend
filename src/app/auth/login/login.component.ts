@@ -28,9 +28,11 @@ export class LoginComponent implements OnInit {
 
 
 
-  authDialogs = $AuthDialogs;
+  // title, message for each specific dialog
+  authDialogInstructions = $AuthDialogs;
 
-  dialog!: authAction;
+  // dialog type
+  dialog!: authAction; 
   
   form !: FormGroup
   mail !: FormControl
@@ -48,16 +50,17 @@ export class LoginComponent implements OnInit {
               public matdialogRef : MatDialogRef<LoginComponent>)
   {      
 
-      this.username = new FormControl(null);
-      this.mail = new FormControl(null, [Validators.required, Validators.email]);
-      this.newPassword = new FormControl(null, Validators.required);
-      this.password = new FormControl(null, Validators.required);
+      this.username = new FormControl('');
+      this.mail = new FormControl('', [Validators.required, Validators.email]);
+      this.newPassword = new FormControl('', Validators.required);
+      this.password = new FormControl('', Validators.required);
       
       this.form = new FormGroup({});
 
       // set login-dialog as default
-      this.dialog = 'login';
-      this.switchDialog( this.dialog);
+      this.dialog = 'login'
+      this.switchDialog(this.dialog);
+      console.info("Open the dialog" + this.dialog);
   }
 
   ngOnInit(): void {
@@ -75,7 +78,7 @@ export class LoginComponent implements OnInit {
    * @returns this.dialog or login-dialog if this.dialog is null
    */
     get currentDialog(){
-      return this.authDialogs[this.dialog || 'login']
+      return this.authDialogInstructions[this.dialog || 'login'];
     }
   
     /**
@@ -104,17 +107,18 @@ export class LoginComponent implements OnInit {
         case 'forgotPassword':
         this.form.addControl('mail', this.mail);
         break;
-     
+
         case 'login':
         default:
         this.form.addControl('username', this.username);
         this.form.addControl('password', this.password);      
         break
-        
+
       }
     }
 
   /**
+   * @param action : submit specified formControl values to backend respect to the certain Dialog
    * @description Send payload via {@link AuthService} to backend
    */
   public onSubmit(action: authAction) {
@@ -128,6 +132,7 @@ export class LoginComponent implements OnInit {
 
       case 'forgotPassword':
         console.info("send to backend ForgotPassword");
+        this.forgetPassword();
         break;
 
       case 'login':
@@ -150,9 +155,25 @@ export class LoginComponent implements OnInit {
         this.matdialogRef.close(this.SUCCESS);
     }, error => {
       this.isLoggedIn = false;
-
       this.toastr.error("Login Fail Please Check Again");
       throwError(error);
     });
+  }
+
+  private forgetPassword(){
+
+    this.loginRequestPayload = {
+      mail : this.mail.value,
+    } 
+    this.authService.forgetPassword(this.loginRequestPayload).subscribe(
+      ()=>{
+        this.toastr.success("Toke have been sent");
+      }, () =>{
+        this.toastr.error("Failed");
+      }
+    )
+
+    this.matdialogRef.close(this.SUCCESS);
+
   }
 }

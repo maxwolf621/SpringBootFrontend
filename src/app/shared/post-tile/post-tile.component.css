@@ -99,3 +99,7 @@ mat-chip {
     border-radius: 5px;
     background: #faf887;
 }
+
+.post-marked{
+    color : rgb(240, 123, 123);
+}

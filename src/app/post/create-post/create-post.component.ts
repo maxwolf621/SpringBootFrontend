@@ -49,6 +49,8 @@ export class CreatePostComponent implements OnInit {
 
   postTag !: PostTag;
 
+    
+
   @ViewChild('tagsInput') tagsInput!: ElementRef<HTMLInputElement>;
   @ViewChild('auto') matAutocomplete!: MatAutocomplete;
 
@@ -72,6 +74,13 @@ export class CreatePostComponent implements OnInit {
         map((tag : string | null) => tag ? this._filter(tag)  : this.allTags.slice()),
       )
 
+      //initialize payload (data for backend )
+      this.postPayload = {
+        postname: '',
+        subname: '',
+        url: '',
+        description:'',
+    }
   }
 
   /**
@@ -79,22 +88,13 @@ export class CreatePostComponent implements OnInit {
    * get the subs 
    */
   ngOnInit(): void {
-
     // initialize form (data for frontend)
     this.createPostForm = new FormGroup({
       postname: new FormControl('',Validators.required),
       subname : new FormControl(''),
-      url     : new FormControl(''),
       description: new FormControl('',Validators.required),
+      url : new FormControl('')
     });
-
-    //initialize payload (data for backend )
-    this.postPayload = {
-      postname: '',
-      subname: '',
-      url: '',
-      description:'',
-    }
 
     // get all subs
     this.subService.getAllSubs().subscribe((sub) =>{
@@ -124,16 +124,14 @@ export class CreatePostComponent implements OnInit {
       tagNames : this.selectedTags
     }
 
-
-    this.postService.createPost(this.postTag).subscribe((data) => {
-      
-      window.location.reload();
-    
+    this.postService.createPost(this.postTag).subscribe
+    (
+      () => {
+        window.location.reload();
     }, error => {
       console.warn("Error");
       throwError(error);
     })
-
     this.matDialogRef.close();
   }
 
@@ -145,11 +143,11 @@ export class CreatePostComponent implements OnInit {
   removeTag(tagname:string){
 
     //this.selectedTags = this.selectedTags.filter(tag => tag !== tagname);
-   
-    // find the 
+    
     const index = this.selectedTags.indexOf(tagname);
-    // found it => delete it 
+
     if (index >= 0) {
+      // delete tag
       this.selectedTags.splice(index, 1);
     }
   }
@@ -171,6 +169,7 @@ export class CreatePostComponent implements OnInit {
       }
     }
 
+    // clear the text in tag-input-bar
     if(input){
       input.value = ''
     }
@@ -186,9 +185,11 @@ export class CreatePostComponent implements OnInit {
     
     // check the duplicate if it exists in filter tag
     let index = this.selectedTags.indexOf($event.option.viewValue);
+    
     if(index === -1){
       this.selectedTags.push($event.option.viewValue);
     }
+    
     console.info("tagCtrl now :" +  this.tagCtrl.value);
 
     // choose value from selected-list not the value you type 
@@ -196,6 +197,7 @@ export class CreatePostComponent implements OnInit {
 
     this.tagCtrl.setValue(null);
   }
+
   /**
    * 
    * @param tagname tagname we input

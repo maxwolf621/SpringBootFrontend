@@ -14,13 +14,13 @@
   fxLayoutGap.lt-md="0px"
   >
     <!-- NAME -->
-    <mat-form-field appearance="legacy" *ngIf="signupForm.contains('username')" >
+    <mat-form-field appearance="legacy">
       <mat-label>Full name</mat-label>
       <input matInput formControlName="username">
     </mat-form-field>
 
     <!-- EMAIL -->
-    <mat-form-field>
+    <mat-form-field appearance="legacy" >
       <mat-label>Email</mat-label>
       <input matInput formControlName="email">
       <mat-error *ngIf="signupForm.controls.email.errors?.required">
@@ -32,7 +32,7 @@
     </mat-form-field>
 
     <!-- PASSWORD -->
-    <mat-form-field *ngIf="signupForm.contains('password')" @inflate>
+    <mat-form-field  appearance="legacy">
       <mat-label>Password</mat-label>
       <input matInput [type]="hidePassword ? 'password' : 'text'" formControlName="password">
       <mat-icon matSuffix (click)="hidePassword = !hidePassword">
@@ -43,7 +43,7 @@
       </mat-error>
     </mat-form-field>
     <div dir="rtl" fxLayoutGap="20px">
-      <button matSuffix mat-stroked-button color="primary" type="submit" [disabled]="!signupForm.valid" class="btn">
+      <button matSuffix mat-raised-button color="primary" type="submit" [disabled]="!signupForm.valid">
         SignUp
       </button>
     </div>

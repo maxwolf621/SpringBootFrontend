@@ -12,13 +12,12 @@ import { SubService } from 'src/app/sub/subservice/sub.service';
 export class MainComponent implements OnInit {
 
   events: string[] = [];
-
   isDrawerOpened : boolean = false;
-  
-  appropriateClass:string = '';
+  appropriateClass : string = '';
   
   user : User ={
-    isLoggedIn : false
+    isLoggedIn : false,
+    username : "",
   }
 
   subs !: SubModel[];
@@ -55,7 +54,11 @@ export class MainComponent implements OnInit {
     }
   }
 
+  // receive output event from <app-header></app-header>
   setDrawerState(isOpened : boolean){
     this.isDrawerOpened = isOpened;
+  }
+  setUsername(username : string){
+    this.user.username = username;
   }
 }

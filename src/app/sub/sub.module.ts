@@ -7,12 +7,14 @@ import { ListSubsComponent } from './list-subs/list-subs.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MaterialpackagesModule } from '../materialpackages/materialpackages.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { ViewSubComponent } from './view-sub/view-sub.component';
 
 
 @NgModule({
   declarations: [
     CreateSubComponent,
-    ListSubsComponent
+    ListSubsComponent,
+    ViewSubComponent
   ],
   imports: [
     CommonModule,

@@ -6,6 +6,7 @@ import { ToastrService } from 'ngx-toastr';
 import { $providers } from './login-providers';
 import { AuthDTO } from '../auth-dto';
 import { $animations } from '../animations';
+import { MatDialogRef } from '@angular/material/dialog';
 
 
 @Component({
@@ -26,7 +27,8 @@ export class SignUpComponent implements OnInit {
 
   constructor(private authService: AuthService,
               private router: Router,
-              private toastrService: ToastrService) {
+              private toastrService: ToastrService,
+              private matDialogDef : MatDialogRef<SignUpComponent>) {
     
                 // initialize payload
                 this.signupRequestPayload = {
@@ -56,11 +58,12 @@ export class SignUpComponent implements OnInit {
       this.authService.signup(this.signupRequestPayload).subscribe
       (
         () => { 
-          this.router.navigate(['/login'], { queryParams: { registered: 'true' } });
+          this.toastrService.success('Account Activate Link has been sent to your given email');
         }, 
         (error) => {
           this.toastrService.error('Registration Failed! Please try again' + error);
         }
       );
+      this.matDialogDef.close('SUCCESS');
   }
 }

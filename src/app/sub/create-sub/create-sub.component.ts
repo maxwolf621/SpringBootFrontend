@@ -16,12 +16,6 @@ export class CreateSubComponent implements OnInit {
   createSubForm!: FormGroup;
   constructor(private subService: SubService,
     private router: Router) { 
-    this.sub = {
-      id:-1,
-      subname: '', 
-      description: '',
-      postsCount:-1
-    };
   }
 
   ngOnInit(): void {
@@ -40,6 +34,7 @@ export class CreateSubComponent implements OnInit {
       throwError(error);
     });
   }
+
   discard(){
     this.router.navigateByUrl('/');
   }

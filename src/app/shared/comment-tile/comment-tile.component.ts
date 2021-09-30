@@ -53,7 +53,7 @@ export class CommentTileComponent implements OnInit {
 
     this.commentService.postComment(this.commentPayload).subscribe(
       (data) => {
-        console.info("Successfullye")
+        console.info("Successfully")
     }, error => {    
       console.warn("Error" + error)
     })

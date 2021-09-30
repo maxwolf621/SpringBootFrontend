@@ -57,9 +57,11 @@ export class AuthService {
 
 
   signup(signupRequestPayload: AuthDTO): Observable<any> {
-    return this.http.post(`${environment.apiAuth}/signup`, signupRequestPayload);
+    return this.http.post(`${environment.apiAuth}/signup`, signupRequestPayload,
+    {
+      responseType : 'text'
+    });
   }
-
 
   login(loginRequestPayload: AuthDTO): Observable<boolean> {
     return this.http.post<LoginResponse>(`${environment.apiAuth}/login`, loginRequestPayload).pipe
@@ -126,9 +128,38 @@ export class AuthService {
   }
 
   /**
+   * @description send token for the user who forgetting password 
+   * */ 
+  forgetPassword(resetEmailPayload : AuthDTO) : Observable<any>{
+    const headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
+    return this.http.post(`${environment.apiAuth}/forgetPassword`, resetEmailPayload, 
+    {
+      //headers : headers,
+      responseType : 'text'
+    }); 
+  }
+
+
+  resetPassword(resetPasswordPayload : AuthDTO) : Observable<any>{
+    return this.http.post(`${environment.apiAuth}/resetPassword`, resetPasswordPayload,
+    {
+      responseType : 'text'
+    });
+  }
+
+  changePassword(updatePasswordPayload:AuthDTO): Observable<any>{
+    
+    return this.http.post(`${environment.apiUserProfile}/changePassword`, updatePasswordPayload,
+    {
+      responseType : 'text'
+    });
+  }
+
+  
+  /**
    * @description get user profile from backend
    */
-  getUserInformation(): Observable<User> {
+   getUserInformation(): Observable<User> {
     return this.http.get<User>(`${environment.apiUserProfile}/account`);
   }
 
@@ -138,4 +169,5 @@ export class AuthService {
   updateUserInformation(user : User){
     return this.http.post<any>(`${environment.apiUserProfile}/updateAccount`, user );
   }
+
 }

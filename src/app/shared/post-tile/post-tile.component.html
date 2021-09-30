@@ -26,12 +26,20 @@
         <hr />
         
         <mat-card-actions algin="end">
-            <button mat-button class="commments" > 
+            <button mat-icon-button class="commments"> 
                 <fa-icon [icon]="faComments"></fa-icon> Comments({{post.commentCount}})
             </button>
-            <button mat-button class="share"><mat-icon>share</mat-icon>Share</button>
-            <button mat-button class="mark"><mat-icon>bookmark_border</mat-icon>mark</button>
-            <button mat-button class="read" (click)="goToPost(post.id)"><mat-icon>description</mat-icon>Read</button>
+            <button mat-raised-button class="share">
+                <mat-icon>share</mat-icon>
+                Share</button>
+
+            <button mat-raised-button [ngClass]= "post.marked ? 'post-marked' : '' "  class="mark" (click)="markThePost(post.id)">
+                <mat-icon  >bookmark_border</mat-icon>
+                mark</button>
+
+            <button mat-raised-button class="read" (click)="goToPost(post.id)">
+                <mat-icon>description</mat-icon>
+                Read</button>
         </mat-card-actions>
     
     </div>    

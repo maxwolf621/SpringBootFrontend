@@ -1,6 +1,6 @@
 export interface SubModel {
-    id:  number;
-    subname: string;
-    description: string;
-    postsCount : number;
+    id?:  number;
+    subname?: string;
+    description?: string;
+    postsCount?: number;
 }

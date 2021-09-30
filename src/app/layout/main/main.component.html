@@ -1,4 +1,8 @@
-<app-header class="fixed-header" (drawerToggleEvent)=setDrawerState($event)></app-header>
+<app-header class="fixed-header" 
+(drawerToggleEvent)=setDrawerState($event)
+(usernameEvent)=setUsername($event)>
+</app-header>
+
 <mat-drawer-container >
     <!-- side bar's list-->
     <mat-drawer class="shadow"  mode="side" opened>
@@ -39,7 +43,7 @@
 
                       <!-- This is where the bottom items reside.-->
                       <div [ngClass]='appropriateClass'> 
-                        <a [routerLink]="'user-profile'" mat-list-item>
+                        <a [routerLink]="['user-profile', this.user.username ]" mat-list-item>
                                 <button mat-raised-button>
                                     <mat-icon>person</mat-icon>
                                 </button>

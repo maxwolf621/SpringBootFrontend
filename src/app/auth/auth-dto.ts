@@ -8,5 +8,5 @@ export interface AuthDTO {
     password?: string;
     newPassword?:string;
     oldPassword?:string;
-    confirmNewPassword?:string
+    resetPasswordToken?:string
 }

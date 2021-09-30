@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { PostModel } from 'src/app/shared/post-model';
@@ -57,10 +57,8 @@ export class PostService {
    * @returns a certain post 
    */
   getPostById(id: number): Observable<PostModel> {
-      console.log("Get Post By Id");
       return this.http.get<PostModel>(`${environment.apiPost}/getByPost/` + id);
   }
-
   /**
    * 
    * @param name Looking for a certain post by username
@@ -72,5 +70,12 @@ export class PostService {
 
   getTags():Observable<Array<string>>{
     return this.http.get<Array<string>>(`${environment.apiTag}/getalltags`);
+  }
+
+  markThePost(id : number){
+    return this.http.get(`${environment.apiBookMark}/markThisPost/${id}`);
+  }
+  markSub(subname : string){
+    return this.http.post(`${environment.apiBookMark}/markThisSub/`,{subname});
   }
 }
