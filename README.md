@@ -6,6 +6,7 @@ This project was generated with Angular 11.2.9 built for my spring boot backend 
 #### DEMO
 
 ![](gif/userDemo.gif)
+<<<<<<< HEAD
 #### Oauth2Userig
 ![](gif/oauth2User.gif)
 
@@ -14,6 +15,21 @@ This project was generated with Angular 11.2.9 built for my spring boot backend 
 
 #### Theme switcher
 ![](gif/themeSwitcher.gif)
+=======
+
+#### Oauth2User
+
+![](gif/oauth2User.gif)   
+
+#### Nested comment
+
+![](gif/comment.gif)
+
+#### Theme switcher
+
+![](gif/themeSwitcher.gif)
+
+>>>>>>> 2def0fa83dd710d8f173444982c88dc0e3d1d88c
 
 - Part of functions in this project stay incomplete
 
