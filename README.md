@@ -9,15 +9,15 @@ This project was generated with Angular 11.2.9 built for my spring boot backend 
 
 #### Oauth2User
 
-![](gif\oauth2User.gif)
+![](gif/oauth2User.gif)   
 
 #### Nested comment
 
-![](gif\comment.gif)
+![](gif/comment.gif)
 
 #### Theme switcher
 
-![](gif\themeSwitcher.gif)
+![](gif/themeSwitcher.gif)
 
 
 - Part of functions in this project stay incomplete
