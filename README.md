@@ -5,14 +5,18 @@ This project was generated with Angular 11.2.9 built for my spring boot backend 
 
 #### DEMO
 
-![](gif\userDemo.gif)
+![](gif/userDemo.gif)
+
 #### Oauth2User
+
 ![](gif\oauth2User.gif)
 
 #### Nested comment
+
 ![](gif\comment.gif)
 
 #### Theme switcher
+
 ![](gif\themeSwitcher.gif)
 
 
