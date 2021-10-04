@@ -27,7 +27,7 @@ export class OverlayComponent implements OnInit {
 
   openDialog(){
     this.matDialog.open(CreatePostComponent,{
-      width: '500px'
+      width: '500px',
     });
   }
 }

@@ -18,13 +18,13 @@
       <form [formGroup]="commentForm"  
           *ngIf="isOpened" 
           (ngSubmit)="postComment(comment.commentId)" >
-          <mat-form-field  [style.width.%]="100" appearance="outline">
+          <mat-form-field  [style.width.%]="100" appearance="fill">
             <textarea matInput 
             cdkTextareaAutosize
             placeholder="Reply ..." 
             formControlName="text"
             required></textarea>
-            <button mat-icon-button matSuffix color="accent" type="submit"><mat-icon>comment</mat-icon></button>
+            <button mat-icon-button matSuffix color="accent" type="submit"  [disabled]="!commentForm.valid"><mat-icon>comment</mat-icon></button>
           </mat-form-field>
         </form>
         <div class="replies">

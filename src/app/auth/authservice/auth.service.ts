@@ -9,12 +9,6 @@ import { AuthDTO } from '../auth-dto';
 import { ActivatedRoute, Router } from '@angular/router';
 import { User } from '../user';
 
-interface UserDTO {
-  username ?: string,
-  mail ?: string,
-  avatar ?: string,
-  aboutMe ?: string
-}
 
 @Injectable({
   providedIn: 'root'
@@ -25,7 +19,7 @@ export class AuthService {
   @Output() loggedIn: EventEmitter<boolean> = new EventEmitter();
   @Output() username: EventEmitter<string>  = new EventEmitter();
 
-  user = {
+  user : User = {
     username : "",
     avatar : "",
     mail : "",
@@ -36,6 +30,7 @@ export class AuthService {
     refreshToken: this.getRefreshToken(),
     username: this.getUserName()
   }
+
   getToken(){
     return this.localStorage.retrieve('Token');
   }
@@ -76,10 +71,13 @@ export class AuthService {
     );
   }
 
+  // called by interceptor 
   refreshToken() {
-    return this.http.post<LoginResponse>(`${environment.apiAuth}/refresh/token`,this.refreshTokenPayload).pipe
+    return this.http.post<LoginResponse>(`${environment.apiAuth}/refreshToken`,
+                                          this.refreshTokenPayload).pipe
     (
-      tap(response => {
+      tap(response => { // change the expired token
+        console.info("Refresh Token ..." );
         this.localStorage.clear('Token');
         this.localStorage.clear('expiresAt');
         this.localStorage.store('Token',response.token);
@@ -131,7 +129,7 @@ export class AuthService {
    * @description send token for the user who forgetting password 
    * */ 
   forgetPassword(resetEmailPayload : AuthDTO) : Observable<any>{
-    const headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
+    //const headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
     return this.http.post(`${environment.apiAuth}/forgetPassword`, resetEmailPayload, 
     {
       //headers : headers,

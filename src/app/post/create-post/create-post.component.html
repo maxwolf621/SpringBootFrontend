@@ -5,16 +5,16 @@
 <h2 mat-dialog-title>Create Post</h2>
 
 <!-- form -->
-<form class="post-form" [formGroup]="createPostForm" (ngSubmit)="createPost()" fxLayout="column" fxLayoutAlign="space-evenly none" >
-  <div
-        fxLayout="column"
-        fxLayout.lt-md="column"
-        fxLayoutGap="10px"
-        fxLayoutGap.lt-md="0px"
-  >
+<form class="post-form" 
+      [formGroup]="createPostForm" 
+      (ngSubmit)="createPost()" 
+      fxLayout="column" 
+      fxLayoutAlign="space-evenly none" 
+      fxLayoutGap="10px"
+      >
 
     <!-- title of the post-->
-    <mat-form-field >
+    <mat-form-field>
       <textarea name="title" 
                 matInput 
                 placeholder="Title" 
@@ -23,6 +23,7 @@
                 matTooltipPosition="below"  
                 matTooltipShowDelay="500" 
                 matTooltipHideDelay="500"
+                cdkTextareaAutosize
                 required ></textarea>
     </mat-form-field>
   
@@ -34,7 +35,7 @@
   
     <!-- post's description -->
     <mat-form-field appearance="fill">
-      <textarea name="description" matInput placeholder="Write down your thoughts" formControlName="description" required></textarea>
+      <textarea matInput cdkTextareaAutosize name="description" placeholder="Write down your thoughts" formControlName="description" required></textarea>
     </mat-form-field>
 
     <!-- tag -->
@@ -79,6 +80,4 @@
     <button mat-stroked-button color="warn" type="submit" [disabled]="!createPostForm.valid">
       <mat-icon>send</mat-icon>post
     </button>
-
-  </div>
 </form>

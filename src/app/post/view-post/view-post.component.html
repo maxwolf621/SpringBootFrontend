@@ -11,6 +11,7 @@
                 
                 <!-- post + comment + sub section-->
                 <div class="col-md-11" >
+
                     <!-- sub and post info -->
                     <div class="subname-username">
                         <span><a class="post-url" href="">{{post.subname}}</a></span>
@@ -35,16 +36,19 @@
                         https://stackoverflow.com/questions/49880001/angular-mat-form-field-how-to-set-width100 
                     -->
                     <form [formGroup]="commentForm" (ngSubmit)="postComment()">
-                        <mat-form-field [style.width.%]="100" appearance = "outline"  >
+                        <mat-form-field [style.width.%]="100" appearance = "fill">
+
                             <textarea matInput 
                                     cdkTextareaAutosize
                                     name="leave-comment"  
-                                    placeholder="Write down your thought?" 
+                                    placeholder="leave comment?" 
                                     formControlName="text" 
-                                    ></textarea>
-                                    <button matSuffix mat-icon-button color="primary" type="submit" [disabled]="!commentForm.valid">
+                                    required></textarea>
+                                    <button matSuffix mat-icon-button color="warn" 
+                                            type="submit" [disabled]="!commentForm.valid">
                                         <mat-icon>comment</mat-icon>
                                     </button>
+
                         </mat-form-field>
                     </form>
                     <br>

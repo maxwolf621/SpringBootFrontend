@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, DoCheck, Input, OnChanges, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CommentPayload } from 'src/app/comment/comment.payload';
@@ -9,24 +9,22 @@ import { CommentService } from 'src/app/comment/comment.service';
   templateUrl: './comment-tile.component.html',
   styleUrls: ['./comment-tile.component.css']
 })
-export class CommentTileComponent implements OnInit {
+export class CommentTileComponent implements OnInit, OnChanges, DoCheck {
 
   @Input() comments !: CommentPayload[];
   @Input() postId !: number;
 
   // open the reply form
   isOpened : boolean = false;
+
   commentPayload!: CommentPayload;
-
   commentForm!: FormGroup;
+  
+  constructor(private commentService : CommentService) {}
 
-  text : string = "";
-  constructor(private router: Router, 
-              private commentService : CommentService) {
-  }
 
   ngOnInit(): void {  
-
+    
     this.commentPayload ={
       text : "",
       postId : this.postId,
@@ -38,8 +36,17 @@ export class CommentTileComponent implements OnInit {
     
   }
 
+  ngOnChanges(){
+    //console.info( "ngOnChanges" + this.comments.length);
+  } 
+
+  ngDoCheck(){
+    //console.info( "ngDocheck" + this.comments.length);
+  }
+
   toggle(){
     this.isOpened = !this.isOpened;
+
   }
 
   postComment(rootCommentId : any) {
@@ -47,13 +54,10 @@ export class CommentTileComponent implements OnInit {
     this.commentPayload.repliedTo = rootCommentId;
     this.commentPayload.postId = this.postId;
 
-    console.info("comment :" + this.commentPayload.text+
-                 "\n post id :" + this.commentPayload.postId +
-                 "\n replied to: " + this.commentPayload.repliedTo);
-
     this.commentService.postComment(this.commentPayload).subscribe(
       (data) => {
-        console.info("Successfully")
+        console.info("Replied Successfully")
+        console.info(data);
     }, error => {    
       console.warn("Error" + error)
     })

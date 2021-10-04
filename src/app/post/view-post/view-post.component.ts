@@ -41,9 +41,13 @@ export class ViewPostComponent implements OnInit {
     // load the post content 
     this.getPostById(this.postId);
 
+
+    this.commentService.getAllCommentsForPost(this.postId);
+
+    //this.getCommentsForThisPost$();
     // get comment via the post
     this.getCommentsForThisPost();
-
+    
     // initialize the form
     this.commentForm = new FormGroup({
       text : new FormControl('')
@@ -59,16 +63,18 @@ export class ViewPostComponent implements OnInit {
    * post the comment
    */
   postComment() {
-
     this.commentPayload.text = this.commentForm.get('text')!.value;
-
     console.info("comment :" + this.commentPayload.text +
                  "\npost id :" + this.commentPayload.postId);
 
-    this.commentService.postComment(this.commentPayload).subscribe(newComment => {
-      this.toastr.success("You left a comment");
-      console.info("New Comment" + newComment);
-      this.comments.push(newComment);
+    this.commentService.postComment(this.commentPayload).subscribe
+    (
+      newComment => {
+        this.toastr.success("You left a comment");
+        //console.info("New Comment" + newComment);
+        //this.comments.push(newComment);
+        this.commentService.getAllCommentsForPost(this.postId);
+        //this.getCommentsForThisPost$();
     }, error => {
       throwError(error);
     })
@@ -83,16 +89,24 @@ export class ViewPostComponent implements OnInit {
     });
   }
 
-  /**
-   * display comments of this post
-   */
-  private getCommentsForThisPost() {
-    this.commentService.getAllCommentsForPost(this.postId).subscribe(comment => {
-      console.info(comment);
+  
+  // observable
+  private getCommentsForThisPost$() {
+    this.commentService.getAllCommentsForPost$(this.postId).subscribe(comment => {
       this.comments = comment;
       console.info("this comments"+ this.comments);
     }, error => {
       throwError(error);
     });
   }
+  
+  // behaviorSubject
+  private getCommentsForThisPost(){
+    this.commentService.allCommentsForPostObs.subscribe(
+      (comments)  => {
+        this.comments = comments;
+      }
+    )
+  }
+
 }

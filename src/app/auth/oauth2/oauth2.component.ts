@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { LocalStorageService } from 'ngx-webstorage';
 
 
@@ -26,7 +26,8 @@ export class Oauth2Component implements OnInit {
 
   constructor(
     private activateRoute: ActivatedRoute,
-    private localStorage : LocalStorageService) { }
+    private localStorage : LocalStorageService,
+    private route : Router) { }
 
   ngOnInit(): void {
     this.activateRoute.queryParams.subscribe
@@ -40,11 +41,12 @@ export class Oauth2Component implements OnInit {
         console.info(this.oAuth2QueryParameter);      
         this.localStorage.store('Token', this.oAuth2QueryParameter.token);
         this.localStorage.store('username', this.oAuth2QueryParameter.username);
-
       }, (error) =>{
         console.warn("Error" + error);
       }
-    )
-  }
 
+
+    )
+    this.route.navigateByUrl("/");
+  }
 }

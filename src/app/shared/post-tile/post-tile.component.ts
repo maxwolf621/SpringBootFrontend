@@ -14,10 +14,6 @@ import { AuthService } from 'src/app/auth/authservice/auth.service';
 })
 export class PostTileComponent implements OnInit {
 
-
-  /**
-   * base : home.component.ts
-   */
   @Input() posts!: PostModel[];
 
   thumbnail : string ="";
@@ -26,13 +22,10 @@ export class PostTileComponent implements OnInit {
   
   faComments = faComments;
 
-
   constructor(private router: Router,
               private postService:PostService,
               private toastr : ToastrService,
-              private authService: AuthService) {
-  }
-
+              private authService: AuthService) {}
 
   ngOnInit(): void {}
 
@@ -46,7 +39,6 @@ export class PostTileComponent implements OnInit {
         this.postService.getPostById(postId).subscribe(
           (post)=>{
             this.updatePost(postId, post);
-            this.toastr.success("Post Is Marked");
           },(Error)=>{
             console.warn("Error" + Error );
           }
@@ -57,6 +49,7 @@ export class PostTileComponent implements OnInit {
     );
   }
 
+  // update the certain post
   private updatePost(postId:number, updatedPost : PostModel){
     const updatePost = this.posts?.find(p => p.id === postId);
     if(updatePost){

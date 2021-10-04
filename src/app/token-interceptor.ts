@@ -20,6 +20,7 @@ import { AuthService } from './auth/authservice/auth.service';
 export class TokenInterceptor implements HttpInterceptor {
 
     refreshTokenSubject: BehaviorSubject<any> = new BehaviorSubject(null);
+
     NeedToRefreshToken = false;
     
     constructor(private authService:AuthService) {}
@@ -29,14 +30,14 @@ export class TokenInterceptor implements HttpInterceptor {
         // get token from Local Storage
         let jwt = this.authService.getToken();
 
+        // if token exists add it to the header
         if (jwt) {
             req = this.addToken(req, jwt);
         }
 
         return next.handle(req).pipe(
             catchError(error => {
-                // if http status equal 403 then
-                if (error instanceof HttpErrorResponse && error.status === 403) {
+                if (error instanceof HttpErrorResponse && error.status === 401) {
                     return this.handleAuthErrors(req, next);
                 } else {
                     return throwError(error);
@@ -45,39 +46,35 @@ export class TokenInterceptor implements HttpInterceptor {
     }
 
     /**
-     * @description check if the user's jwt needs to refresh or not 
-     * @param req request to backend
+     * @description refresh the jwt of the user 
      * @param next The `next` object represents the next interceptor in the chain of interceptors 
-     * @returns refresh token
      */
     private handleAuthErrors(req: HttpRequest<any>, next: HttpHandler) {
         if (!this.NeedToRefreshToken) {
             this.NeedToRefreshToken = true;
             this.refreshTokenSubject.next(null);
         }
+
         return this.authService.refreshToken().pipe(
             // get a valid refresh jwt
             switchMap((refreshTokenResponse: LoginResponse) => {
-                this.NeedToRefreshToken = false;
+                console.info("Token Is Expired");
                 
-                // to next interceptor
+                this.NeedToRefreshToken = false;
+
                 this.refreshTokenSubject.next(refreshTokenResponse.token);
                
-                // add jwt in the request header
                 return next.handle(this.addToken(req, refreshTokenResponse.token));
             })
         )
     }
 
     /**
-     * @description To ADD A HEADER In a request, 
-     * clone it first and modify the clone before passing it to next.handle()
-     * @param req request to backend
-     * @param token token we sent to backend
+     * @description To ADD A HEADER In a request
      * @returns A request that contains the header { 'Authorization' : 'bearer TOKEN'}
      */
     private addToken(req: HttpRequest<any>, jwt: string){
-        console.log("Add JWT header In Request");
+        console.log("Add JWT header In Request" + jwt);
         return req.clone({
             setHeaders: {
                 'Content-Type' : 'application/json; charset=utf-8',
@@ -86,7 +83,4 @@ export class TokenInterceptor implements HttpInterceptor {
             },
         });
     }
-
-    
-
 }

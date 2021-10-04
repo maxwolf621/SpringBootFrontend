@@ -72,9 +72,11 @@ export class PostService {
     return this.http.get<Array<string>>(`${environment.apiTag}/getalltags`);
   }
 
+  
   markThePost(id : number){
     return this.http.get(`${environment.apiBookMark}/markThisPost/${id}`);
   }
+
   markSub(subname : string){
     return this.http.post(`${environment.apiBookMark}/markThisSub/`,{subname});
   }

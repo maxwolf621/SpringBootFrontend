@@ -1,10 +1,22 @@
 # Frontend
 
-This project was generated with Angular 11.2.9 built for my spring boot backend application 
+This project was generated with Angular 11.2.9 built for my spring boot backend application testing 
 
-> Please do make sure version of node packaged modules in `package.json` in my application are fully installed
 
-FYI :: Part of functions in this project stay incomplete
+#### DEMO
+
+![](gif\userDemo.gif)
+#### Oauth2User
+![](gif\oauth2User.gif)
+
+#### Nested comment
+![](gif\comment.gif)
+
+#### Theme switcher
+![](gif\themeSwitcher.gif)
+
+
+- Part of functions in this project stay incomplete
 
 ## Reference 
 
