@@ -6,7 +6,7 @@ This project was generated with Angular 11.2.9 built for my spring boot backend 
 #### DEMO
 
 ![](gif/userDemo.gif)
-#### Oauth2Userig
+#### Oauth2
 ![](gif/oauth2User.gif)
 
 #### Nested comment
